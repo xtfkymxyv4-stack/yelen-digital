@@ -714,26 +714,26 @@ body { }
   object-position: center top;
   display: block;
 }
-/* Gold gradient overlay on right edge */
 .bio-left::after {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(to right,
-    transparent 60%,
-    rgba(10,10,10,0.85) 100%);
+    transparent 55%,
+    rgba(10,10,10,0.9) 100%);
+  pointer-events: none;
 }
-/* Subtle top overlay for elegance */
 .bio-left::before {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(to bottom,
-    rgba(10,10,10,0.2) 0%,
-    transparent 30%,
-    transparent 70%,
-    rgba(10,10,10,0.4) 100%);
+    rgba(10,10,10,0.15) 0%,
+    transparent 25%,
+    transparent 75%,
+    rgba(10,10,10,0.35) 100%);
   z-index: 1;
+  pointer-events: none;
 }
 
 /* RIGHT — text content */
@@ -755,10 +755,8 @@ body { }
   opacity: 0.3;
 }
 
-/* Name block at top of right panel */
-.bio-name-block {
-  margin-bottom: 32px;
-}
+.bio-name-block { margin-bottom: 28px; }
+
 .bio-name {
   font-size: clamp(22px, 3vw, 36px);
   font-weight: 900;
@@ -772,29 +770,17 @@ body { }
   font-style: italic;
   font-size: clamp(13px, 1.4vw, 17px);
   color: var(--gold);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
-.bio-badges {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
+.bio-badges { display: flex; flex-direction: column; gap: 6px; }
 .bio-badge {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  color: var(--gray);
-  text-transform: uppercase;
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11px; letter-spacing: 0.12em;
+  color: var(--gray); text-transform: uppercase;
 }
 .bio-badge span { color: var(--gold-lt); }
 
-/* Timeline */
-.timeline {
-  position: relative;
-  padding-left: 24px;
-}
+.timeline { position: relative; padding-left: 24px; }
 .timeline::before {
   content: '';
   position: absolute;
@@ -803,11 +789,8 @@ body { }
   background: linear-gradient(to bottom, var(--gold), rgba(212,175,55,0.1));
 }
 .timeline-item {
-  position: relative;
-  padding-bottom: 22px;
-  transform: translateX(20px);
-  opacity: 0;
-  transition: all 0.5s ease;
+  position: relative; padding-bottom: 20px;
+  transform: translateX(20px); opacity: 0; transition: all 0.5s ease;
 }
 .timeline-item.show { transform: translateX(0); opacity: 1; }
 .timeline-item:nth-child(1) { transition-delay: 0s; }
@@ -817,57 +800,75 @@ body { }
 .timeline-item:nth-child(5) { transition-delay: 0.48s; }
 
 .timeline-dot {
-  position: absolute;
-  left: -30px; top: 4px;
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  border: 1.5px solid var(--gold);
-  background: var(--black);
-  transition: background 0.3s;
+  position: absolute; left: -30px; top: 4px;
+  width: 10px; height: 10px; border-radius: 50%;
+  border: 1.5px solid var(--gold); background: var(--black); transition: background 0.3s;
 }
 .timeline-item:hover .timeline-dot { background: var(--gold); }
-.timeline-company {
-  font-size: clamp(12px, 1.2vw, 15px);
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 3px;
-}
-.timeline-role {
-  font-family: var(--font-body);
-  font-style: italic;
-  font-size: clamp(11px, 1.1vw, 14px);
-  color: var(--gold-lt);
-  margin-bottom: 3px;
-}
-.timeline-desc {
-  font-size: clamp(10px, 1vw, 12px);
-  color: var(--gray);
-  line-height: 1.5;
-}
+.timeline-company { font-size: clamp(12px, 1.2vw, 15px); font-weight: 700; color: var(--white); margin-bottom: 3px; }
+.timeline-role { font-family: var(--font-body); font-style: italic; font-size: clamp(11px, 1.1vw, 14px); color: var(--gold-lt); margin-bottom: 3px; }
+.timeline-desc { font-size: clamp(10px, 1vw, 12px); color: var(--gray); line-height: 1.5; }
 
-/* Mobile */
-@media (max-width:768px) {
+/* ── MOBILE PORTRAIT ── */
+@media (max-width:768px) and (orientation: portrait) {
   .bio-content {
     grid-template-columns: 1fr;
-    grid-template-rows: 45vh 1fr;
+    grid-template-rows: 42vh 1fr;
     height: 100%;
   }
+  .bio-left img {
+    object-position: center 15%;
+  }
   .bio-left::after {
-    background: linear-gradient(to bottom, transparent 50%, rgba(10,10,10,0.95) 100%);
+    background: linear-gradient(to bottom,
+      transparent 50%,
+      rgba(10,10,10,0.95) 100%);
   }
   .bio-right {
-    padding: 20px 24px 24px;
+    padding: 20px 24px 20px;
     overflow-y: auto;
     border-top: 1px solid rgba(212,175,55,0.15);
+    justify-content: flex-start;
   }
   .bio-right::before { display: none; }
+  .bio-name-block { margin-bottom: 16px; }
   .bio-name { font-size: 20px !important; }
-  .bio-title { font-size: 13px !important; }
+  .bio-title { font-size: 13px !important; margin-bottom: 8px; }
   .bio-badge { font-size: 10px; }
   .timeline-company { font-size: 12px !important; }
   .timeline-role { font-size: 11px !important; }
-  .timeline-desc { font-size: 10px !important; }
-  .timeline-item { padding-bottom: 14px; }
+  .timeline-desc { font-size: 10px !important; display: none; }
+  .timeline-item { padding-bottom: 12px; }
+  #slide-bio { overflow: hidden; }
+}
+
+/* ── MOBILE LANDSCAPE ── */
+@media (max-width:900px) and (orientation: landscape) {
+  .bio-content {
+    grid-template-columns: 45vw 1fr;
+    height: 100%;
+  }
+  .bio-left img {
+    object-position: center top;
+  }
+  .bio-left::after {
+    background: linear-gradient(to right,
+      transparent 55%,
+      rgba(10,10,10,0.95) 100%);
+  }
+  .bio-right {
+    padding: 50px 24px 16px 28px;
+    overflow-y: auto;
+    justify-content: flex-start;
+  }
+  .bio-name { font-size: 18px !important; }
+  .bio-title { font-size: 12px !important; margin-bottom: 8px; }
+  .bio-badge { font-size: 9px; }
+  .bio-name-block { margin-bottom: 14px; }
+  .timeline-company { font-size: 11px !important; }
+  .timeline-role { font-size: 10px !important; }
+  .timeline-desc { font-size: 9px !important; }
+  .timeline-item { padding-bottom: 10px; }
   #slide-bio { overflow: hidden; }
 }
 
@@ -1562,7 +1563,7 @@ body { }
 ```
   <!-- LEFT — Photo plein fond -->
   <div class="bio-left fade-left">
-    <img src="3BDA0FAF-AFA5-4590-9F52-253493CEFE03.jpeg" alt="Rosalie Gueye">
+    <img src="7B0FFA58-2431-4426-A93E-39E0D9DCCE0B.jpeg" alt="Rosalie Gueye">
   </div>
 
   <!-- RIGHT — Texte -->
