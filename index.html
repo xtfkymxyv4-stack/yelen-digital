@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="Yelen Digital — Agence de communication digitale à Dakar. Éclairons votre marque.">
+<meta name="theme-color" content="#0A0A0A">
+<title>Yelen Digital — Éclairons votre marque</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&display=swap" rel="stylesheet">
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<style>
+/* =============================================
+   ROOT & RESET
+============================================= */
+:root {
+  --black:   #0A0A0A;
+  --charcoal:#1C1C1E;
+  --white:   #FFFFFF;
+  --cream:   #F8F5EE;
+  --gold:    #D4AF37;
+  --gold-lt: #F0D060;
+  --gold-dk: #9A7B1A;
+  --gray:    #888888;
+  --gray-lt: #CCCCCC;
+
+  --font-head: 'Montserrat', sans-serif;
+  --font-body: 'Cormorant Garamond', serif;
+
+  --slide-duration: 0.9s;
+  --ease: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-head);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  cursor: none;
+}
+
+::selection { background: var(--gold); color: var(--black); }
+
+/* =============================================
+   CUSTOM CURSOR (desktop only)
+============================================= */
+.cursor-dot {
+  position: fixed; top:0; left:0; z-index:9999;
+  width:8px; height:8px; border-radius:50%;
+  background: var(--gold);
+  pointer-events: none;
+  transform: translate(-50%,-50%);
+  transition: transform 0.1s, opacity 0.3s;
+  mix-blend-mode: difference;
+}
+.cursor-ring {
+  position: fixed; top:0; left:0; z-index:9998;
+  width:36px; height:36px; border-radius:50%;
+  border: 1.5px solid var(--gold);
+  pointer-events: none;
+  transform: translate(-50%,-50%);
+  transition: all 0.15s ease;
+  opacity: 0.6;
+}
+@media (max-width: 768px) {
+  .cursor-dot, .cursor-ring { display: none; }
+  body { cursor: auto; }
+}
+
+/* =============================================
+   LOADING SCREEN
+============================================= */
+#loader {
+  position: fixed; inset:0; z-index:10000;
+  background: var(--black);
+  display: flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  gap: 32px;
+}
+
+.loader-sun {
+  width: 80px; height: 80px;
+  position: relative;
+}
+.loader-sun svg {
+  width:100%; height:100%;
+}
+.sun-circle {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: drawCircle 1.2s ease forwards 0.3s;
+}
+.sun-ray {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  animation: drawRay 0.4s ease forwards;
+}
+.sun-ray:nth-child(2)  { animation-delay: 1.0s; }
+.sun-ray:nth-child(3)  { animation-delay: 1.1s; }
+.sun-ray:nth-child(4)  { animation-delay: 1.15s; }
+.sun-ray:nth-child(5)  { animation-delay: 1.2s; }
+.sun-ray:nth-child(6)  { animation-delay: 1.25s; }
+.sun-ray:nth-child(7)  { animation-delay: 1.3s; }
+.sun-ray:nth-child(8)  { animation-delay: 1.35s; }
+.sun-ray:nth-child(9)  { animation-delay: 1.4s; }
+
+@keyframes drawCircle {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes drawRay {
+  to { stroke-dashoffset: 0; }
+}
+
+.loader-brand {
+  display: flex; flex-direction:column; align-items:center; gap:6px;
+  overflow: hidden;
+}
+.loader-name {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: clamp(28px, 6vw, 48px);
+  letter-spacing: 0.12em;
+  color: var(--white);
+  clip-path: inset(0 100% 0 0);
+  animation: revealText 0.8s var(--ease) forwards 1.6s;
+}
+.loader-name span { color: var(--gold); }
+.loader-sub {
+  font-family: var(--font-head);
+  font-weight: 300;
+  font-size: clamp(10px, 2vw, 13px);
+  letter-spacing: 0.35em;
+  color: var(--gray);
+  text-transform: uppercase;
+  clip-path: inset(0 100% 0 0);
+  animation: revealText 0.8s var(--ease) forwards 2.0s;
+}
+@keyframes revealText {
+  to { clip-path: inset(0 0% 0 0); }
+}
+
+.loader-bar-wrap {
+  width: 200px; height: 1px;
+  background: rgba(255,255,255,0.1);
+  position: relative; overflow: hidden;
+}
+.loader-bar {
+  position: absolute; left:0; top:0;
+  height:100%; width:0%;
+  background: linear-gradient(90deg, var(--gold-dk), var(--gold), var(--gold-lt));
+  animation: loadBar 2.2s ease forwards 0.2s;
+}
+@keyframes loadBar {
+  0%   { width: 0%; }
+  60%  { width: 70%; }
+  100% { width: 100%; }
+}
+
+/* =============================================
+   NAVIGATION
+============================================= */
+#nav {
+  position: fixed; top:0; left:0; right:0; z-index:1000;
+  padding: 24px 48px;
+  display: flex; align-items:center; justify-content:space-between;
+  transition: all 0.4s ease;
+}
+#nav.scrolled {
+  background: rgba(10,10,10,0.95);
+  backdrop-filter: blur(12px);
+  padding: 16px 48px;
+  border-bottom: 1px solid rgba(212,175,55,0.15);
+}
+.nav-logo {
+  display: flex; align-items:center; gap:12px;
+  text-decoration:none; cursor:pointer;
+}
+.nav-logo-icon svg { width:28px; height:28px; }
+.nav-logo-text {
+  display: flex; flex-direction:column; line-height:1;
+}
+.nav-logo-name {
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--white);
+}
+.nav-logo-name span { color: var(--gold); }
+.nav-logo-tagline {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 11px;
+  color: var(--gray);
+  letter-spacing: 0.05em;
+}
+
+/* Side dot navigation */
+#dot-nav {
+  position: fixed; right:28px; top:50%;
+  transform: translateY(-50%);
+  z-index:1000;
+  display: flex; flex-direction:column; gap:14px;
+  align-items:center;
+}
+.dot-item {
+  width: 8px; height: 8px; border-radius:50%;
+  border: 1.5px solid rgba(212,175,55,0.5);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.dot-item:hover { background: rgba(212,175,55,0.4); transform: scale(1.3); }
+.dot-item.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  transform: scale(1.2);
+}
+.dot-item::before {
+  content: attr(data-label);
+  position: absolute; right: 20px; top:50%;
+  transform: translateY(-50%);
+  font-size: 10px; font-weight:500; letter-spacing:0.1em;
+  color: var(--gold-lt); white-space: nowrap;
+  opacity:0; pointer-events:none;
+  transition: opacity 0.2s ease;
+  text-transform: uppercase;
+}
+.dot-item:hover::before { opacity:1; }
+
+@media (max-width:768px) {
+  #dot-nav { right:14px; }
+  .dot-item { width:6px; height:6px; }
+}
+
+/* Hamburger */
+.nav-burger {
+  display: none; flex-direction:column; gap:5px;
+  cursor:pointer; padding:8px; z-index:1001;
+}
+.nav-burger span {
+  display:block; width:24px; height:1.5px;
+  background: var(--white);
+  transition: all 0.3s ease;
+}
+.nav-burger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.nav-burger.open span:nth-child(2) { opacity:0; }
+.nav-burger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+/* Mobile menu */
+.nav-mobile-menu {
+  position: fixed; inset:0; z-index:999;
+  background: var(--black);
+  display: flex; flex-direction:column; align-items:center; justify-content:center;
+  gap: 40px;
+  opacity:0; pointer-events:none;
+  transition: opacity 0.4s ease;
+}
+.nav-mobile-menu.open { opacity:1; pointer-events:all; }
+.nav-mobile-menu a {
+  font-size: 28px; font-weight:700; letter-spacing:0.1em;
+  color: var(--white); text-decoration:none;
+  text-transform: uppercase;
+  position: relative;
+  transition: color 0.3s;
+}
+.nav-mobile-menu a::after {
+  content:''; position:absolute; bottom:-4px; left:0;
+  width:0; height:1px; background: var(--gold);
+  transition: width 0.3s ease;
+}
+.nav-mobile-menu a:hover { color: var(--gold); }
+.nav-mobile-menu a:hover::after { width:100%; }
+
+@media (max-width:900px) {
+  .nav-burger { display:flex; }
+  #nav { padding: 20px 24px; }
+  #nav.scrolled { padding: 14px 24px; }
+}
+
+/* =============================================
+   FULLPAGE SLIDES
+============================================= */
+#slides-container {
+  position: fixed; inset:0;
+  transition: transform var(--slide-duration) var(--ease);
+}
+
+.slide {
+  position: absolute; left:0; width:100vw; height:100vh;
+  overflow: hidden;
+  display: flex; align-items:center; justify-content:center;
+}
+
+/* Position slides vertically */
+.slide:nth-child(1)  { top: calc(0 * 100vh); }
+.slide:nth-child(2)  { top: calc(1 * 100vh); }
+.slide:nth-child(3)  { top: calc(2 * 100vh); }
+.slide:nth-child(4)  { top: calc(3 * 100vh); }
+.slide:nth-child(5)  { top: calc(4 * 100vh); }
+.slide:nth-child(6)  { top: calc(5 * 100vh); }
+.slide:nth-child(7)  { top: calc(6 * 100vh); }
+.slide:nth-child(8)  { top: calc(7 * 100vh); }
+
+/* =============================================
+   SLIDE 1 — HERO
+============================================= */
+#slide-hero {
+  background: var(--black);
+  flex-direction: column;
+}
+
+/* Animated particles background */
+.particles-canvas {
+  position: absolute; inset:0;
+  pointer-events:none;
+  opacity: 0.5;
+}
+
+.hero-content {
+  position: relative; z-index:2;
+  text-align: center;
+  padding: 24px;
+}
+
+.hero-overline {
+  font-size: clamp(10px, 1.5vw, 13px);
+  font-weight: 400;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  opacity:0; transform: translateY(20px);
+  transition: all 0.8s ease 0.2s;
+}
+.hero-overline.show { opacity:1; transform: translateY(0); }
+
+.hero-title {
+  font-size: clamp(52px, 10vw, 130px);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.hero-title .line-1 {
+  display: block; color: var(--white);
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.9s var(--ease) 0.4s;
+}
+.hero-title .line-2 {
+  display: block;
+  background: linear-gradient(135deg, var(--gold-dk), var(--gold), var(--gold-lt));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.9s var(--ease) 0.7s;
+}
+.hero-title .line-1.show,
+.hero-title .line-2.show { clip-path: inset(0 0% 0 0); }
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(16px, 2.5vw, 24px);
+  color: var(--gray-lt);
+  margin-bottom: 48px;
+  opacity:0; transform: translateY(20px);
+  transition: all 0.8s ease 1.1s;
+}
+.hero-subtitle.show { opacity:1; transform: translateY(0); }
+
+.hero-sub-text {
+  font-size: clamp(11px, 1.5vw, 14px);
+  letter-spacing: 0.2em;
+  color: var(--gray);
+  margin-bottom: 56px;
+  opacity:0; transform: translateY(20px);
+  transition: all 0.8s ease 1.3s;
+}
+.hero-sub-text.show { opacity:1; transform: translateY(0); }
+
+.hero-ctas {
+  display: flex; align-items:center; justify-content:center; gap:20px;
+  flex-wrap: wrap;
+  opacity:0; transform: translateY(20px);
+  transition: all 0.8s ease 1.5s;
+}
+.hero-ctas.show { opacity:1; transform: translateY(0); }
+
+.btn-primary {
+  padding: 16px 40px;
+  background: linear-gradient(135deg, var(--gold-dk), var(--gold));
+  color: var(--black);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none; cursor: pointer;
+  position: relative; overflow: hidden;
+  transition: all 0.4s ease;
+}
+.btn-primary::before {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+  opacity:0; transition: opacity 0.4s;
+}
+.btn-primary:hover::before { opacity:1; }
+.btn-primary span { position:relative; z-index:1; }
+
+.btn-outline {
+  padding: 14px 38px;
+  border: 1.5px solid rgba(212,175,55,0.5);
+  color: var(--gold-lt);
+  font-family: var(--font-head);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: transparent; cursor: pointer;
+  transition: all 0.4s ease;
+}
+.btn-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(212,175,55,0.06);
+}
+
+/* Gold animated line at bottom */
+.hero-line {
+  position: absolute; bottom: 48px; left:50%; transform: translateX(-50%);
+  display: flex; flex-direction:column; align-items:center; gap:8px;
+  opacity:0; animation: fadeIn 1s ease forwards 2.2s;
+  cursor: pointer;
+}
+.hero-line span {
+  font-size: 10px; letter-spacing:0.3em; color: var(--gray);
+  text-transform: uppercase;
+}
+.hero-line-bar {
+  width: 1px; height: 48px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: pulseBar 2s ease-in-out infinite;
+}
+@keyframes pulseBar {
+  0%,100% { opacity:0.5; transform: scaleY(1); }
+  50% { opacity:1; transform: scaleY(1.1); }
+}
+@keyframes fadeIn { to { opacity:1; } }
+
+/* =============================================
+   SLIDE 2 — MOT DE LA FONDATRICE
+============================================= */
+#slide-fondatrice {
+  background: var(--charcoal);
+  overflow: hidden;
+}
+
+.split-slide {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width:100%; height:100%;
+}
+
+.split-left {
+  background: var(--black);
+  display: flex; align-items:center; justify-content:center;
+  padding: 80px 60px;
+  position: relative; overflow:hidden;
+}
+.split-left::after {
+  content:'';
+  position: absolute; right:0; top:10%; bottom:10%;
+  width:1px; background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+}
+
+.split-right {
+  display: flex; align-items:center; justify-content:center;
+  padding: 80px 60px;
+}
+
+@media (max-width:768px) {
+  .split-slide {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    overflow-y: auto;
+  }
+  .split-left, .split-right { padding: 60px 32px; }
+  .split-left::after { display:none; }
+}
+
+.slide-label {
+  position: absolute; left: -40px; top:50%;
+  transform: translateY(-50%) rotate(-90deg);
+  font-size: 10px; letter-spacing:0.4em;
+  color: var(--gold); text-transform:uppercase;
+  opacity:0.6;
+  white-space: nowrap;
+}
+
+.section-number {
+  font-size: clamp(80px, 12vw, 140px);
+  font-weight: 900;
+  color: rgba(212,175,55,0.06);
+  line-height:1;
+  position: absolute; top:20px; left:20px;
+  pointer-events:none;
+  font-family: var(--font-head);
+}
+
+.quote-block {
+  position: relative; z-index:2;
+}
+.quote-mark {
+  font-family: var(--font-body);
+  font-size: 120px; line-height:0.5;
+  color: var(--gold); opacity:0.3;
+  display:block; margin-bottom:12px;
+}
+.quote-text {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(18px, 2.5vw, 26px);
+  line-height: 1.6;
+  color: var(--gray-lt);
+  margin-bottom: 32px;
+}
+.quote-text em { color: var(--gold); font-style:normal; }
+.quote-author {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing:0.15em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.quote-role {
+  font-size: 11px;
+  color: var(--gray);
+  letter-spacing: 0.1em;
+  margin-top:4px;
+}
+
+.fondatrice-content {
+  position: relative; z-index:2;
+}
+.section-tag {
+  display: inline-block;
+  font-size: 10px; letter-spacing:0.35em;
+  color: var(--gold); text-transform:uppercase;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 6px; margin-bottom: 28px;
+}
+.section-title {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800; line-height:1.1;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+.section-title span { color: var(--gold); }
+.section-body {
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1.8vw, 18px);
+  line-height: 1.8; color: var(--gray-lt);
+  max-width: 480px;
+}
+.section-body em { color: var(--gold); font-style:normal; }
+
+/* =============================================
+   SLIDE 3 — VISION & MISSION
+============================================= */
+#slide-vision {
+  background: var(--black);
+  position: relative; overflow:hidden;
+}
+
+.vision-bg-text {
+  position: absolute; bottom:-40px; left:-20px;
+  font-size: clamp(80px, 18vw, 200px);
+  font-weight: 900; color: rgba(255,255,255,0.02);
+  pointer-events:none; white-space:nowrap;
+  letter-spacing: -0.03em;
+}
+
+.vision-content {
+  position: relative; z-index:2;
+  width: 100%; max-width: 1100px;
+  padding: 40px 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+@media (max-width:768px) {
+  .vision-content {
+    grid-template-columns: 1fr;
+    gap:48px; padding: 60px 32px;
+    overflow-y:auto; height:100vh;
+  }
+}
+
+.vision-block {}
+.vision-icon {
+  width:48px; height:48px; margin-bottom:20px;
+}
+.vision-label {
+  font-size: 10px; letter-spacing:0.4em;
+  color: var(--gold); text-transform:uppercase;
+  margin-bottom:16px;
+}
+.vision-heading {
+  font-size: clamp(22px, 3vw, 36px);
+  font-weight: 800; line-height:1.15;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+.vision-heading em { color: var(--gold); font-style:normal; }
+.vision-text {
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1.6vw, 18px);
+  line-height: 1.8; color: var(--gray-lt);
+}
+.vision-divider {
+  width:40px; height:2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  margin: 24px 0;
+}
+
+/* =============================================
+   SLIDE 4 — VALEURS
+============================================= */
+#slide-valeurs {
+  background: var(--charcoal);
+  flex-direction: column;
+  padding: 40px 48px;
+  overflow:hidden;
+}
+
+.slide-header {
+  text-align: center; margin-bottom: 48px; width:100%;
+  flex-shrink:0;
+}
+.slide-header .section-tag { display:inline-block; }
+.slide-header h2 {
+  font-size: clamp(28px, 5vw, 56px);
+  font-weight: 900; letter-spacing:-0.02em;
+  margin-top:16px;
+}
+.slide-header h2 span { color: var(--gold); }
+
+.valeurs-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px; width:100%; max-width:1200px;
+}
+
+@media (max-width:1024px) {
+  .valeurs-grid { grid-template-columns: repeat(3, 1fr); }
+  #slide-valeurs { overflow-y:auto; padding:40px 24px; }
+}
+@media (max-width:600px) {
+  .valeurs-grid { grid-template-columns: repeat(1, 1fr); }
+}
+
+.valeur-card {
+  background: var(--black);
+  border: 1px solid rgba(212,175,55,0.1);
+  padding: 28px 20px;
+  position: relative; overflow:hidden;
+  transition: all 0.4s ease;
+  cursor: default;
+  transform: translateY(60px); opacity:0;
+}
+.valeur-card.show {
+  transform: translateY(0); opacity:1;
+}
+.valeur-card:nth-child(1) { transition-delay: 0s; }
+.valeur-card:nth-child(2) { transition-delay: 0.1s; }
+.valeur-card:nth-child(3) { transition-delay: 0.2s; }
+.valeur-card:nth-child(4) { transition-delay: 0.3s; }
+.valeur-card:nth-child(5) { transition-delay: 0.4s; }
+
+.valeur-card::before {
+  content:''; position:absolute; bottom:0; left:0;
+  width:0; height:2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-lt));
+  transition: width 0.4s ease;
+}
+.valeur-card:hover::before { width:100%; }
+.valeur-card:hover { border-color: rgba(212,175,55,0.3); transform: translateY(-4px); }
+
+.valeur-num {
+  font-size: 11px; font-weight:700; letter-spacing:0.2em;
+  color: var(--gold); margin-bottom:16px;
+  opacity:0.6;
+}
+.valeur-icon { font-size:28px; margin-bottom:12px; display:block; }
+.valeur-title {
+  font-size: clamp(12px, 1.2vw, 14px);
+  font-weight: 700; letter-spacing:0.05em;
+  margin-bottom:10px; text-transform:uppercase;
+  line-height:1.3;
+}
+.valeur-desc {
+  font-family: var(--font-body);
+  font-size: clamp(13px, 1.1vw, 15px);
+  line-height:1.7; color: var(--gray);
+}
+
+/* =============================================
+   SLIDE 5 — MÉTHODE
+============================================= */
+#slide-methode {
+  background: var(--black);
+  flex-direction: column;
+  padding: 40px 48px;
+  overflow:hidden;
+}
+
+.methode-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0; width:100%; max-width:1200px;
+  position:relative;
+}
+.methode-steps::before {
+  content:''; position:absolute;
+  top: 56px; left: calc(12.5%);
+  width: calc(75%); height:1px;
+  background: linear-gradient(90deg, var(--gold), rgba(212,175,55,0.1));
+}
+
+@media (max-width:900px) {
+  .methode-steps {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .methode-steps::before { display:none; }
+  #slide-methode { overflow-y:auto; }
+}
+@media (max-width:500px) {
+  .methode-steps { grid-template-columns:1fr; }
+}
+
+.methode-step {
+  padding: 0 24px;
+  position: relative;
+  transform: translateY(40px); opacity:0;
+  transition: all 0.6s ease;
+}
+.methode-step.show { transform:translateY(0); opacity:1; }
+.methode-step:nth-child(1) { transition-delay:0s; }
+.methode-step:nth-child(2) { transition-delay:0.15s; }
+.methode-step:nth-child(3) { transition-delay:0.3s; }
+.methode-step:nth-child(4) { transition-delay:0.45s; }
+
+.step-num-wrap {
+  width: 56px; height:56px; border-radius:50%;
+  border: 1.5px solid var(--gold);
+  display: flex; align-items:center; justify-content:center;
+  margin-bottom: 28px; position:relative;
+  background: var(--black);
+  z-index:1;
+  transition: all 0.4s ease;
+}
+.methode-step:hover .step-num-wrap {
+  background: var(--gold);
+}
+.step-num {
+  font-size: 14px; font-weight:800;
+  color: var(--gold); letter-spacing:0.05em;
+  transition: color 0.4s;
+}
+.methode-step:hover .step-num { color: var(--black); }
+
+.step-title {
+  font-size: clamp(13px, 1.3vw, 16px);
+  font-weight: 700; letter-spacing:0.05em;
+  margin-bottom:12px; text-transform:uppercase;
+  color: var(--white);
+}
+.step-desc {
+  font-family: var(--font-body);
+  font-size: clamp(13px, 1.2vw, 16px);
+  line-height:1.7; color: var(--gray);
+}
+
+/* =============================================
+   SLIDE 6 — SERVICES
+============================================= */
+#slide-services {
+  background: var(--charcoal);
+  flex-direction: column;
+  padding: 40px 48px;
+  overflow:hidden;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width:100%; max-width:1100px;
+}
+@media (max-width:900px) {
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  #slide-services { overflow-y:auto; }
+}
+@media (max-width:500px) {
+  .services-grid { grid-template-columns:1fr; }
+}
+
+.service-card {
+  background: var(--black);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 36px 28px;
+  position:relative; overflow:hidden;
+  transition: all 0.4s ease;
+  transform: scale(0.95); opacity:0;
+}
+.service-card.show { transform:scale(1); opacity:1; }
+.service-card:nth-child(1) { transition: all 0.5s ease 0s; }
+.service-card:nth-child(2) { transition: all 0.5s ease 0.1s; }
+.service-card:nth-child(3) { transition: all 0.5s ease 0.2s; }
+.service-card:nth-child(4) { transition: all 0.5s ease 0.3s; }
+.service-card:nth-child(5) { transition: all 0.5s ease 0.4s; }
+.service-card:nth-child(6) { transition: all 0.5s ease 0.5s; }
+
+.service-card::after {
+  content:''; position:absolute;
+  inset:0; background: linear-gradient(135deg, rgba(212,175,55,0.05), transparent);
+  opacity:0; transition:opacity 0.4s;
+}
+.service-card:hover::after { opacity:1; }
+.service-card:hover { border-color: rgba(212,175,55,0.25); transform:translateY(-6px); }
+
+.service-icon { font-size:36px; margin-bottom:16px; display:block; }
+.service-title {
+  font-size: clamp(14px, 1.4vw, 17px);
+  font-weight: 700; margin-bottom:10px;
+  letter-spacing:0.03em;
+}
+.service-desc {
+  font-family: var(--font-body);
+  font-size: clamp(13px, 1.2vw, 15px);
+  line-height:1.7; color: var(--gray);
+}
+.service-arrow {
+  position: absolute; bottom:20px; right:20px;
+  color: var(--gold); font-size:18px; opacity:0;
+  transition: all 0.3s ease;
+  transform: translateX(-10px);
+}
+.service-card:hover .service-arrow { opacity:1; transform:translateX(0); }
+
+/* =============================================
+   SLIDE 7 — FONDATRICE BIO
+============================================= */
+#slide-bio {
+  background: var(--black);
+  overflow:hidden;
+}
+
+.bio-content {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  width:100%; height:100%;
+}
+
+.bio-left {
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1410 100%);
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  padding: 60px 48px;
+  border-right: 1px solid rgba(212,175,55,0.1);
+  position:relative; overflow:hidden;
+}
+.bio-left::before {
+  content:''; position:absolute;
+  width:300px; height:300px; border-radius:50%;
+  background: radial-gradient(circle, rgba(212,175,55,0.06) 0%, transparent 70%);
+  top:50%; left:50%; transform:translate(-50%,-50%);
+}
+
+.bio-avatar {
+  width: clamp(100px, 14vw, 160px);
+  height: clamp(100px, 14vw, 160px);
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  background: var(--charcoal);
+  display:flex; align-items:center; justify-content:center;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight:900;
+  color: var(--gold);
+  margin-bottom: 24px;
+  position:relative; z-index:1;
+  flex-shrink:0;
+}
+.bio-name {
+  font-size: clamp(18px, 2.5vw, 28px);
+  font-weight:800; letter-spacing:-0.01em;
+  text-align:center; margin-bottom:8px;
+  position:relative; z-index:1;
+}
+.bio-title {
+  font-family: var(--font-body);
+  font-style:italic;
+  font-size: clamp(13px, 1.4vw, 16px);
+  color: var(--gold); text-align:center;
+  margin-bottom:28px;
+  position:relative; z-index:1;
+}
+.bio-badge {
+  display:flex; align-items:center; gap:8px;
+  font-size:11px; letter-spacing:0.15em;
+  color: var(--gray); text-transform:uppercase;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 8px 16px;
+  margin-bottom:8px;
+  position:relative; z-index:1;
+}
+.bio-badge span { color: var(--gold-lt); }
+
+.bio-right {
+  display:flex; flex-direction:column; justify-content:center;
+  padding: 60px 48px;
+  overflow-y:auto;
+}
+
+.timeline {
+  position:relative;
+  padding-left: 28px;
+}
+.timeline::before {
+  content:''; position:absolute; left:0; top:8px; bottom:8px;
+  width:1px; background: linear-gradient(to bottom, var(--gold), rgba(212,175,55,0.1));
+}
+
+.timeline-item {
+  position:relative; padding-bottom:28px;
+  transform: translateX(20px); opacity:0;
+  transition: all 0.5s ease;
+}
+.timeline-item.show { transform:translateX(0); opacity:1; }
+.timeline-item:nth-child(1) { transition-delay:0s; }
+.timeline-item:nth-child(2) { transition-delay:0.12s; }
+.timeline-item:nth-child(3) { transition-delay:0.24s; }
+.timeline-item:nth-child(4) { transition-delay:0.36s; }
+.timeline-item:nth-child(5) { transition-delay:0.48s; }
+.timeline-item:nth-child(6) { transition-delay:0.6s; }
+
+.timeline-dot {
+  position:absolute; left:-34px; top:4px;
+  width:12px; height:12px; border-radius:50%;
+  border:2px solid var(--gold); background:var(--black);
+  transition: background 0.3s;
+}
+.timeline-item:hover .timeline-dot { background:var(--gold); }
+
+.timeline-company {
+  font-size: clamp(13px, 1.3vw, 16px);
+  font-weight:700; color:var(--white);
+  margin-bottom:4px;
+}
+.timeline-role {
+  font-family: var(--font-body);
+  font-style:italic;
+  font-size: clamp(12px, 1.2vw, 15px);
+  color: var(--gold-lt); margin-bottom:4px;
+}
+.timeline-desc {
+  font-size: clamp(11px, 1.1vw, 13px);
+  color: var(--gray); line-height:1.6;
+}
+
+@media (max-width:768px) {
+  .bio-content {
+    grid-template-columns:1fr;
+    grid-template-rows: auto 1fr;
+  }
+  .bio-left { padding:40px 24px; }
+  .bio-right { padding:40px 24px; overflow-y:auto; }
+  #slide-bio { overflow:auto; }
+}
+
+/* =============================================
+   SLIDE 8 — CONTACT
+============================================= */
+#slide-contact {
+  background: var(--charcoal);
+  flex-direction:column;
+  overflow:hidden;
+}
+
+.contact-inner {
+  display:grid;
+  grid-template-columns: 1fr 1.5fr;
+  width:100%; height:100%;
+}
+
+.contact-left {
+  background: var(--black);
+  display:flex; flex-direction:column;
+  justify-content:center;
+  padding: 60px 48px;
+  border-right: 1px solid rgba(212,175,55,0.1);
+  position:relative; overflow:hidden;
+}
+.contact-left::before {
+  content:'';
+  position:absolute; bottom:-80px; left:-80px;
+  width:300px; height:300px; border-radius:50%;
+  background: radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 70%);
+}
+
+.contact-info-item {
+  display:flex; align-items:flex-start; gap:16px;
+  margin-bottom:32px;
+}
+.contact-info-icon {
+  width:40px; height:40px; border-radius:50%;
+  border: 1px solid rgba(212,175,55,0.3);
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px; flex-shrink:0;
+  color: var(--gold);
+}
+.contact-info-label {
+  font-size:10px; letter-spacing:0.3em; color:var(--gray);
+  text-transform:uppercase; margin-bottom:4px;
+}
+.contact-info-val {
+  font-size: clamp(13px, 1.4vw, 16px);
+  color:var(--white); font-weight:500;
+  text-decoration:none;
+  transition: color 0.3s;
+}
+.contact-info-val:hover { color:var(--gold); }
+
+.contact-socials {
+  display:flex; gap:12px; margin-top:40px;
+}
+.social-btn {
+  width:40px; height:40px;
+  border: 1px solid rgba(212,175,55,0.25);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--gold-lt); font-size:14px;
+  text-decoration:none; transition:all 0.3s;
+  font-weight:700;
+}
+.social-btn:hover { background:var(--gold); color:var(--black); border-color:var(--gold); }
+
+.contact-right {
+  display:flex; flex-direction:column; justify-content:center;
+  padding: 60px 48px;
+  overflow-y:auto;
+}
+
+.contact-form { width:100%; max-width:480px; }
+
+.form-row {
+  display:grid; grid-template-columns:1fr 1fr; gap:16px;
+  margin-bottom:16px;
+}
+@media (max-width:500px) { .form-row { grid-template-columns:1fr; } }
+
+.form-group { margin-bottom:16px; }
+.form-label {
+  display:block; font-size:10px; letter-spacing:0.3em;
+  color:var(--gray); text-transform:uppercase;
+  margin-bottom:8px;
+}
+.form-input, .form-textarea, .form-select {
+  width:100%; background:rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  color:var(--white); font-family:var(--font-head);
+  font-size:14px; padding:14px 16px;
+  outline:none; transition:all 0.3s ease;
+  appearance:none;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  border-color: var(--gold);
+  background: rgba(212,175,55,0.04);
+}
+.form-input::placeholder,
+.form-textarea::placeholder { color:rgba(255,255,255,0.2); }
+.form-textarea { resize:vertical; min-height:100px; }
+.form-select option { background:var(--charcoal); }
+
+.form-submit {
+  width:100%;
+  padding:16px;
+  background: linear-gradient(135deg, var(--gold-dk), var(--gold));
+  border:none; color:var(--black);
+  font-family:var(--font-head); font-weight:800;
+  font-size:12px; letter-spacing:0.25em;
+  text-transform:uppercase; cursor:pointer;
+  position:relative; overflow:hidden;
+  transition:all 0.4s ease;
+  margin-top:8px;
+}
+.form-submit:hover { background:linear-gradient(135deg, var(--gold), var(--gold-lt)); }
+
+@media (max-width:768px) {
+  .contact-inner { grid-template-columns:1fr; }
+  .contact-left { padding:40px 24px; border-right:none; border-bottom:1px solid rgba(212,175,55,0.1); }
+  .contact-right { padding:40px 24px; }
+  #slide-contact { overflow-y:auto; }
+}
+
+/* =============================================
+   FOOTER (inside contact slide)
+============================================= */
+.slide-footer {
+  position: absolute; bottom:0; left:0; right:0;
+  padding: 16px 48px;
+  display:flex; align-items:center; justify-content:space-between;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  background: rgba(10,10,10,0.8);
+  z-index:10;
+}
+.footer-copy {
+  font-size:11px; color:var(--gray); letter-spacing:0.1em;
+}
+.footer-copy span { color:var(--gold); }
+.footer-tagline {
+  font-family:var(--font-body); font-style:italic;
+  font-size:13px; color:rgba(255,255,255,0.3);
+}
+
+/* =============================================
+   WHATSAPP FLOATING BUTTON
+============================================= */
+.whatsapp-fab {
+  position: fixed; bottom:32px; left:32px; z-index:2000;
+  width:52px; height:52px; border-radius:50%;
+  background: #25D366;
+  display:flex; align-items:center; justify-content:center;
+  text-decoration:none; color:white;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  transition:all 0.3s ease;
+}
+.whatsapp-fab:hover { transform:scale(1.1); box-shadow:0 6px 28px rgba(37,211,102,0.6); }
+.whatsapp-fab svg { width:26px; height:26px; }
+
+.whatsapp-tooltip {
+  position:absolute; left:64px; top:50%; transform:translateY(-50%);
+  background:var(--black); color:var(--white);
+  font-size:11px; letter-spacing:0.1em; white-space:nowrap;
+  padding:6px 12px; border: 1px solid rgba(37,211,102,0.3);
+  opacity:0; pointer-events:none;
+  transition:opacity 0.3s ease;
+}
+.whatsapp-fab:hover .whatsapp-tooltip { opacity:1; }
+
+/* =============================================
+   SLIDE PROGRESS INDICATOR
+============================================= */
+.slide-progress {
+  position:fixed; bottom:32px; left:50%; transform:translateX(-50%);
+  z-index:1000;
+  display:flex; align-items:center; gap:8px;
+}
+.progress-label {
+  font-size:10px; letter-spacing:0.3em; color:var(--gray);
+  text-transform:uppercase;
+  min-width:50px; text-align:center;
+}
+.progress-num {
+  font-size:11px; font-weight:700; color:var(--gold-lt);
+  min-width:30px; text-align:center;
+}
+
+/* =============================================
+   ANIMATIONS UTILITY
+============================================= */
+.fade-up {
+  opacity:0; transform:translateY(30px);
+  transition: all 0.7s ease;
+}
+.fade-up.show { opacity:1; transform:translateY(0); }
+
+.fade-left {
+  opacity:0; transform:translateX(-30px);
+  transition: all 0.7s ease;
+}
+.fade-left.show { opacity:1; transform:translateX(0); }
+
+.fade-right {
+  opacity:0; transform:translateX(30px);
+  transition: all 0.7s ease;
+}
+.fade-right.show { opacity:1; transform:translateX(0); }
+
+/* Stagger delays */
+.delay-1 { transition-delay: 0.1s !important; }
+.delay-2 { transition-delay: 0.2s !important; }
+.delay-3 { transition-delay: 0.3s !important; }
+.delay-4 { transition-delay: 0.4s !important; }
+.delay-5 { transition-delay: 0.5s !important; }
+.delay-6 { transition-delay: 0.6s !important; }
+</style>
+</head>
+<body>
+
+<!-- CUSTOM CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- LOADING SCREEN -->
+<div id="loader">
+  <div class="loader-sun">
+    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle class="sun-circle" cx="40" cy="40" r="14" stroke="#D4AF37" stroke-width="2"/>
+      <!-- Rays -->
+      <line class="sun-ray" x1="40" y1="4" x2="40" y2="16" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+      <line class="sun-ray" x1="40" y1="64" x2="40" y2="76" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+      <line class="sun-ray" x1="4" y1="40" x2="16" y2="40" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+      <line class="sun-ray" x1="64" y1="40" x2="76" y2="40" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+      <line class="sun-ray" x1="12.7" y1="12.7" x2="21.2" y2="21.2" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+      <line class="sun-ray" x1="58.8" y1="58.8" x2="67.3" y2="67.3" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+      <line class="sun-ray" x1="67.3" y1="12.7" x2="58.8" y2="21.2" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+      <line class="sun-ray" x1="21.2" y1="58.8" x2="12.7" y2="67.3" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="loader-brand">
+    <div class="loader-name"><span>Y</span>ELEN DIGITAL</div>
+    <div class="loader-sub">Éclairons votre marque</div>
+  </div>
+  <div class="loader-bar-wrap">
+    <div class="loader-bar"></div>
+  </div>
+</div>
+
+<!-- NAVIGATION -->
+<nav id="nav">
+  <a class="nav-logo" onclick="goToSlide(0)">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="14" r="5" stroke="#D4AF37" stroke-width="1.5"/>
+        <line x1="14" y1="1" x2="14" y2="6" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="14" y1="22" x2="14" y2="27" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="1" y1="14" x2="6" y2="14" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="22" y1="14" x2="27" y2="14" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="4.6" y1="4.6" x2="8.1" y2="8.1" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="19.9" y1="19.9" x2="23.4" y2="23.4" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="23.4" y1="4.6" x2="19.9" y2="8.1" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="8.1" y1="19.9" x2="4.6" y2="23.4" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="nav-logo-text">
+      <span class="nav-logo-name"><span>Y</span>ELEN DIGITAL</span>
+      <span class="nav-logo-tagline">Éclairons votre marque</span>
+    </div>
+  </a>
+  <div class="nav-burger" id="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a onclick="goToSlide(0);toggleMenu()">Accueil</a>
+  <a onclick="goToSlide(1);toggleMenu()">L'Agence</a>
+  <a onclick="goToSlide(2);toggleMenu()">Vision</a>
+  <a onclick="goToSlide(3);toggleMenu()">Valeurs</a>
+  <a onclick="goToSlide(4);toggleMenu()">Méthode</a>
+  <a onclick="goToSlide(5);toggleMenu()">Services</a>
+  <a onclick="goToSlide(6);toggleMenu()">Fondatrice</a>
+  <a onclick="goToSlide(7);toggleMenu()">Contact</a>
+</div>
+
+<!-- DOT NAVIGATION -->
+<div id="dot-nav">
+  <div class="dot-item active" data-label="Accueil"    onclick="goToSlide(0)"></div>
+  <div class="dot-item"        data-label="L'Agence"   onclick="goToSlide(1)"></div>
+  <div class="dot-item"        data-label="Vision"     onclick="goToSlide(2)"></div>
+  <div class="dot-item"        data-label="Valeurs"    onclick="goToSlide(3)"></div>
+  <div class="dot-item"        data-label="Méthode"    onclick="goToSlide(4)"></div>
+  <div class="dot-item"        data-label="Services"   onclick="goToSlide(5)"></div>
+  <div class="dot-item"        data-label="Fondatrice" onclick="goToSlide(6)"></div>
+  <div class="dot-item"        data-label="Contact"    onclick="goToSlide(7)"></div>
+</div>
+
+<!-- SLIDES CONTAINER -->
+<div id="slides-container">
+
+  <!-- ===== SLIDE 1 — HERO ===== -->
+  <div class="slide" id="slide-hero">
+    <canvas class="particles-canvas" id="particles"></canvas>
+    <div class="hero-content">
+      <div class="hero-overline" id="heroOverline">Agence de Communication Digitale · Dakar, Sénégal</div>
+      <h1 class="hero-title">
+        <span class="line-1" id="heroL1">ÉCLAIRONS</span>
+        <span class="line-2" id="heroL2">VOTRE MARQUE</span>
+      </h1>
+      <p class="hero-subtitle" id="heroSub">Nous transformons votre présence digitale en actif stratégique.</p>
+      <p class="hero-sub-text" id="heroSubTxt">Excellence · Ancrage local · Ambition globale</p>
+      <div class="hero-ctas" id="heroCtas">
+        <a class="btn-primary" onclick="goToSlide(1)"><span>Découvrir l'agence</span></a>
+        <a class="btn-outline" onclick="goToSlide(7)">Nous contacter</a>
+      </div>
+    </div>
+    <div class="hero-line" onclick="goToSlide(1)">
+      <span>Défiler</span>
+      <div class="hero-line-bar"></div>
+    </div>
+  </div>
+
+  <!-- ===== SLIDE 2 — MOT DE LA FONDATRICE ===== -->
+  <div class="slide" id="slide-fondatrice">
+    <div class="split-slide">
+      <div class="split-left">
+        <div class="section-number">01</div>
+        <div class="quote-block fade-left">
+          <span class="quote-mark">"</span>
+          <p class="quote-text">
+            C'est de cette double appartenance — la rigueur des institutions financières européennes et l'ambition du développement économique africain — qu'est née <em>Yelen Digital</em>.
+          </p>
+          <p class="quote-author">Rosalie Gueye</p>
+          <p class="quote-role">Fondatrice & Directrice Stratégique</p>
+        </div>
+      </div>
+      <div class="split-right">
+        <div class="fondatrice-content fade-right">
+          <span class="section-tag">Qui sommes-nous</span>
+          <h2 class="section-title">L'agence qui parle<br>le langage de <span>votre business</span></h2>
+          <p class="section-body">
+            <em>Yelen Digital</em> est l'agence de communication digitale qui allie la rigueur du conseil financier et l'agilité créative pour faire rayonner les marques sénégalaises sur leur marché.<br><br>
+            Contrairement aux agences classiques qui proposent du contenu générique, nous parlons le langage de la finance, nous adaptrons chaque action au contexte spécifique du marché sénégalais, et nous vous fournissons des rapports <em>actionnables</em>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SLIDE 3 — VISION & MISSION ===== -->
+  <div class="slide" id="slide-vision">
+    <div class="vision-bg-text">VISION</div>
+    <div class="vision-content">
+      <div class="vision-block fade-left">
+        <svg class="vision-icon" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="10" stroke="#D4AF37" stroke-width="1.5"/>
+          <line x1="24" y1="4" x2="24" y2="12" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="24" y1="36" x2="24" y2="44" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="4" y1="24" x2="12" y2="24" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="36" y1="24" x2="44" y2="24" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <p class="vision-label">Notre Vision</p>
+        <h3 class="vision-heading">Devenir la <em>référence</em> en Afrique de l'Ouest</h3>
+        <div class="vision-divider"></div>
+        <p class="vision-text">
+          Faire de Yelen Digital la référence des agences de communication digitale en Afrique de l'Ouest, reconnue pour l'impact mesurable sur la croissance de ses clients et pour sa capacité à construire des ponts stratégiques entre les marchés européens et africains.
+        </p>
+      </div>
+      <div class="vision-block fade-right delay-2">
+        <svg class="vision-icon" viewBox="0 0 48 48" fill="none">
+          <path d="M8 40 L24 8 L40 40" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="13" y1="30" x2="35" y2="30" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <p class="vision-label">Notre Mission</p>
+        <h3 class="vision-heading">Transformer votre présence digitale en <em>actif stratégique</em></h3>
+        <div class="vision-divider"></div>
+        <p class="vision-text">
+          Combiner expertise financière, stratégie de marque, créativité éditoriale et intelligence artificielle pour offrir à nos clients une communication digitale qui génère une croissance mesurable — pas juste des likes.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SLIDE 4 — VALEURS ===== -->
+  <div class="slide" id="slide-valeurs">
+    <div class="slide-header fade-up">
+      <span class="section-tag">Ce qui nous guide</span>
+      <h2>Nos <span>Valeurs</span></h2>
+    </div>
+    <div class="valeurs-grid">
+      <div class="valeur-card">
+        <div class="valeur-num">01</div>
+        <span class="valeur-icon">⭐</span>
+        <h4 class="valeur-title">Excellence sans compromis</h4>
+        <p class="valeur-desc">Des standards élevés appliqués à chaque contenu, chaque stratégie, chaque interaction.</p>
+      </div>
+      <div class="valeur-card">
+        <div class="valeur-num">02</div>
+        <span class="valeur-icon">🤝</span>
+        <h4 class="valeur-title">Intégrité & Transparence</h4>
+        <p class="valeur-desc">Honoraires justifiés, rapports clairs, recommandations honnêtes — même quand c'est difficile.</p>
+      </div>
+      <div class="valeur-card">
+        <div class="valeur-num">03</div>
+        <span class="valeur-icon">🌍</span>
+        <h4 class="valeur-title">Ancrage local, ambition globale</h4>
+        <p class="valeur-desc">Maîtrise des codes locaux sénégalais avec une exécution aux standards internationaux.</p>
+      </div>
+      <div class="valeur-card">
+        <div class="valeur-num">04</div>
+        <span class="valeur-icon">🔗</span>
+        <h4 class="valeur-title">Partenariat durable</h4>
+        <p class="valeur-desc">Nous investissons dans le succès de nos clients sur le long terme, pas dans la transaction.</p>
+      </div>
+      <div class="valeur-card">
+        <div class="valeur-num">05</div>
+        <span class="valeur-icon">🤖</span>
+        <h4 class="valeur-title">Innovation responsable</h4>
+        <p class="valeur-desc">L'IA pour amplifier la réflexion humaine — jamais pour la remplacer.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SLIDE 5 — MÉTHODE ===== -->
+  <div class="slide" id="slide-methode">
+    <div class="slide-header fade-up">
+      <span class="section-tag">Notre approche</span>
+      <h2>La <span>Méthode</span> Yelen</h2>
+    </div>
+    <div class="methode-steps">
+      <div class="methode-step">
+        <div class="step-num-wrap"><span class="step-num">01</span></div>
+        <h4 class="step-title">Écoute & Diagnostic</h4>
+        <p class="step-desc">Compréhension profonde de votre business, de vos objectifs, de votre marché et de vos concurrents.</p>
+      </div>
+      <div class="methode-step">
+        <div class="step-num-wrap"><span class="step-num">02</span></div>
+        <h4 class="step-title">Stratégie & Positionnement</h4>
+        <p class="step-desc">Définition de la ligne éditoriale, des indicateurs de performance et du plan de déploiement.</p>
+      </div>
+      <div class="methode-step">
+        <div class="step-num-wrap"><span class="step-num">03</span></div>
+        <h4 class="step-title">Production & Déploiement</h4>
+        <p class="step-desc">Création de contenus premium et gestion de communauté avec une régularité d'horloger.</p>
+      </div>
+      <div class="methode-step">
+        <div class="step-num-wrap"><span class="step-num">04</span></div>
+        <h4 class="step-title">Mesure & Optimisation</h4>
+        <p class="step-desc">Analyse mensuelle des performances avec des rapports actionnables et des ajustements continus.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SLIDE 6 — SERVICES ===== -->
+  <div class="slide" id="slide-services">
+    <div class="slide-header fade-up">
+      <span class="section-tag">Ce que nous faisons</span>
+      <h2>Nos <span>Services</span></h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">📊</span>
+        <h4 class="service-title">Stratégie Digitale</h4>
+        <p class="service-desc">Audit de votre présence, définition de votre positionnement et feuille de route digitale sur-mesure.</p>
+        <span class="service-arrow">→</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">✍️</span>
+        <h4 class="service-title">Création de Contenu</h4>
+        <p class="service-desc">Rédaction, visuels, vidéos — une production premium qui incarne votre identité de marque.</p>
+        <span class="service-arrow">→</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">📱</span>
+        <h4 class="service-title">Community Management</h4>
+        <p class="service-desc">Animation quotidienne de vos réseaux sociaux, engagement de votre communauté, veille sectorielle.</p>
+        <span class="service-arrow">→</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🎯</span>
+        <h4 class="service-title">Publicité Digitale</h4>
+        <p class="service-desc">Campagnes Meta Ads, Google Ads ciblées avec suivi ROI et optimisation continue.</p>
+        <span class="service-arrow">→</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🌐</span>
+        <h4 class="service-title">Identité de Marque</h4>
+        <p class="service-desc">Création ou refonte de votre identité visuelle et de votre charte graphique digitale.</p>
+        <span class="service-arrow">→</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">📈</span>
+        <h4 class="service-title">Reporting & Analytics</h4>
+        <p class="service-desc">Tableaux de bord et rapports mensuels avec indicateurs clés pour piloter votre croissance.</p>
+        <span class="service-arrow">→</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SLIDE 7 — FONDATRICE BIO ===== -->
+  <div class="slide" id="slide-bio">
+    <div class="bio-content">
+      <div class="bio-left">
+        <div class="bio-avatar fade-up">RG</div>
+        <div class="bio-name fade-up delay-1">Rosalie Gueye</div>
+        <div class="bio-title fade-up delay-2">Fondatrice & Directrice Stratégique</div>
+        <div class="bio-badge fade-up delay-3">
+          <span>🎓</span> Master 2 — Paris 13 Sorbonne
+        </div>
+        <div class="bio-badge fade-up delay-4">
+          <span>📍</span> Dakar, Sénégal · Paris, France
+        </div>
+        <div class="bio-badge fade-up delay-5">
+          <span>🏛️</span> Vice-Présidente <span>ALFI</span>
+        </div>
+      </div>
+      <div class="bio-right">
+        <div class="section-tag fade-up">Parcours professionnel</div>
+        <div class="timeline" style="margin-top:24px;">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-company">Groupe Generali — La Médicale</div>
+            <div class="timeline-role">Responsable Développement Commercial</div>
+            <div class="timeline-desc">Développement du portefeuille clients et pilotage de la stratégie commerciale.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-company">France Travail</div>
+            <div class="timeline-role">Conseillère Entreprise</div>
+            <div class="timeline-desc">Accompagnement des entreprises dans leurs recrutements et politiques RH.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-company">Consulat Général du Sénégal à Paris</div>
+            <div class="timeline-role">Transformation Digitale</div>
+            <div class="timeline-desc">Pilotage de la transition numérique des services consulaires.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-company">BNP Paribas</div>
+            <div class="timeline-role">Chargée d'Affaires</div>
+            <div class="timeline-desc">Gestion de portefeuille clients professionnels et entreprises.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-company">CHANCES — Fondatrice</div>
+            <div class="timeline-role">Entrepreneuriat Social</div>
+            <div class="timeline-desc">Création d'une structure d'accompagnement à l'insertion professionnelle.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SLIDE 8 — CONTACT ===== -->
+  <div class="slide" id="slide-contact">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <div class="section-number">08</div>
+        <div class="fade-up">
+          <span class="section-tag">Parlons de votre projet</span>
+          <h2 class="section-title" style="font-size:clamp(24px,3.5vw,40px);margin-bottom:40px;">
+            Prêt à <span>rayonner</span> ?
+          </h2>
+        </div>
+        <div class="contact-info-item fade-up delay-1">
+          <div class="contact-info-icon">📞</div>
+          <div>
+            <div class="contact-info-label">Téléphone</div>
+            <a class="contact-info-val" href="tel:+33661490292">+33 6 61 49 02 92</a>
+          </div>
+        </div>
+        <div class="contact-info-item fade-up delay-2">
+          <div class="contact-info-icon">✉️</div>
+          <div>
+            <div class="contact-info-label">Email</div>
+            <a class="contact-info-val" href="/cdn-cgi/l/email-protection#0f6c60617b6e6c7b4f766a636a616b6668667b6e63216c6062"><span class="__cf_email__" data-cfemail="d9bab6b7adb8baad99a0bcb5bcb7bdb0beb0adb8b5f7bab6b4">[email&#160;protected]</span></a>
+          </div>
+        </div>
+        <div class="contact-info-item fade-up delay-3">
+          <div class="contact-info-icon">📍</div>
+          <div>
+            <div class="contact-info-label">Localisation</div>
+            <span class="contact-info-val">Dakar, Sénégal</span>
+          </div>
+        </div>
+        <div class="contact-socials fade-up delay-4">
+          <a class="social-btn" href="#" title="LinkedIn">in</a>
+          <a class="social-btn" href="#" title="Instagram">IG</a>
+          <a class="social-btn" href="#" title="Facebook">fb</a>
+        </div>
+      </div>
+      <div class="contact-right">
+        <div class="fade-up" style="margin-bottom:28px;">
+          <p style="font-size:11px;letter-spacing:0.3em;color:var(--gray);text-transform:uppercase;margin-bottom:8px;">Envoyez-nous un message</p>
+          <h3 style="font-size:clamp(20px,2.5vw,30px);font-weight:800;letter-spacing:-0.01em;">Démarrons <span style="color:var(--gold);">ensemble</span></h3>
+        </div>
+        <!-- Netlify Form -->
+        <form class="contact-form fade-up delay-1" name="contact" method="POST" netlify netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="contact">
+          <p style="display:none"><input name="bot-field"></p>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Prénom *</label>
+              <input class="form-input" type="text" name="prenom" placeholder="Votre prénom" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Nom *</label>
+              <input class="form-input" type="text" name="nom" placeholder="Votre nom" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email *</label>
+            <input class="form-input" type="email" name="email" placeholder="votre@email.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Entreprise</label>
+            <input class="form-input" type="text" name="entreprise" placeholder="Nom de votre entreprise">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Besoin</label>
+            <select class="form-select form-input" name="besoin">
+              <option value="">Sélectionnez un service</option>
+              <option>Stratégie Digitale</option>
+              <option>Création de Contenu</option>
+              <option>Community Management</option>
+              <option>Publicité Digitale</option>
+              <option>Identité de Marque</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message *</label>
+            <textarea class="form-textarea" name="message" placeholder="Parlez-nous de votre projet..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit">Envoyer le message ✦</button>
+        </form>
+      </div>
+    </div>
+    <!-- Footer -->
+    <div class="slide-footer">
+      <span class="footer-copy">© 2025 <span>Yelen Digital</span>. Tous droits réservés.</span>
+      <span class="footer-tagline">Éclairons votre marque</span>
+    </div>
+  </div>
+
+</div><!-- /slides-container -->
+
+<!-- WHATSAPP FAB -->
+<a class="whatsapp-fab" href="https://wa.me/33661490292?text=Bonjour%20Yelen%20Digital%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20services." target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+  <span class="whatsapp-tooltip">Écrire sur WhatsApp</span>
+</a>
+
+<!-- PROGRESS INDICATOR -->
+<div class="slide-progress" id="slideProgress">
+  <span class="progress-num" id="progressCurrent">01</span>
+  <span class="progress-label">/ 08</span>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* =============================================
+   FULLPAGE SLIDE ENGINE
+============================================= */
+const TOTAL_SLIDES = 8;
+let currentSlide = 0;
+let isAnimating = false;
+let touchStartY = 0;
+let touchStartX = 0;
+
+const container = document.getElementById('slides-container');
+const dots = document.querySelectorAll('.dot-item');
+const progressCurrent = document.getElementById('progressCurrent');
+
+function goToSlide(index) {
+  if (isAnimating || index === currentSlide) return;
+  if (index < 0 || index >= TOTAL_SLIDES) return;
+
+  isAnimating = true;
+  currentSlide = index;
+
+  // Move container
+  container.style.transform = `translateY(-${currentSlide * 100}vh)`;
+
+  // Update dots
+  dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+
+  // Update progress
+  progressCurrent.textContent = String(currentSlide + 1).padStart(2, '0');
+
+  // Trigger slide animations
+  setTimeout(() => {
+    triggerSlideAnimations(currentSlide);
+    isAnimating = false;
+  }, 600);
+}
+
+// Scroll handling
+let wheelTimeout;
+window.addEventListener('wheel', (e) => {
+  clearTimeout(wheelTimeout);
+  wheelTimeout = setTimeout(() => {
+    if (e.deltaY > 30) goToSlide(currentSlide + 1);
+    else if (e.deltaY < -30) goToSlide(currentSlide - 1);
+  }, 30);
+}, { passive: true });
+
+// Keyboard navigation
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowDown' || e.key === 'PageDown') goToSlide(currentSlide + 1);
+  if (e.key === 'ArrowUp'   || e.key === 'PageUp')   goToSlide(currentSlide - 1);
+});
+
+// Touch/swipe navigation
+window.addEventListener('touchstart', (e) => {
+  touchStartY = e.touches[0].clientY;
+  touchStartX = e.touches[0].clientX;
+}, { passive: true });
+
+window.addEventListener('touchend', (e) => {
+  const dy = touchStartY - e.changedTouches[0].clientY;
+  const dx = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 50) {
+    if (dy > 0) goToSlide(currentSlide + 1);
+    else        goToSlide(currentSlide - 1);
+  }
+}, { passive: true });
+
+/* =============================================
+   SLIDE ANIMATIONS
+============================================= */
+function triggerSlideAnimations(index) {
+  const slideIds = [
+    'slide-hero', 'slide-fondatrice', 'slide-vision',
+    'slide-valeurs', 'slide-methode', 'slide-services',
+    'slide-bio', 'slide-contact'
+  ];
+  const slide = document.getElementById(slideIds[index]);
+  if (!slide) return;
+
+  const animEls = slide.querySelectorAll('.fade-up, .fade-left, .fade-right, .valeur-card, .methode-step, .service-card, .timeline-item');
+  animEls.forEach(el => el.classList.add('show'));
+}
+
+/* =============================================
+   LOADING SCREEN
+============================================= */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const loader = document.getElementById('loader');
+    loader.style.opacity = '0';
+    loader.style.transition = 'opacity 0.8s ease';
+    setTimeout(() => {
+      loader.style.display = 'none';
+      // Trigger hero animations
+      document.getElementById('heroOverline').classList.add('show');
+      document.getElementById('heroL1').classList.add('show');
+      document.getElementById('heroL2').classList.add('show');
+      setTimeout(() => {
+        document.getElementById('heroSub').classList.add('show');
+        document.getElementById('heroSubTxt').classList.add('show');
+        document.getElementById('heroCtas').classList.add('show');
+      }, 200);
+    }, 800);
+  }, 2800);
+});
+
+/* =============================================
+   PARTICLES CANVAS
+============================================= */
+(function initParticles() {
+  const canvas = document.getElementById('particles');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const particles = [];
+  const N = 60;
+
+  for (let i = 0; i < N; i++) {
+    particles.push({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      r: Math.random() * 1.5 + 0.3,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      o: Math.random() * 0.5 + 0.1,
+      gold: Math.random() > 0.4
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = canvas.width;
+      if (p.x > canvas.width) p.x = 0;
+      if (p.y < 0) p.y = canvas.height;
+      if (p.y > canvas.height) p.y = 0;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.gold
+        ? `rgba(212,175,55,${p.o})`
+        : `rgba(255,255,255,${p.o * 0.4})`;
+      ctx.fill();
+    });
+
+    // Draw connections
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(212,175,55,${(1 - dist/120) * 0.12})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* =============================================
+   CUSTOM CURSOR
+============================================= */
+(function initCursor() {
+  const dot  = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  if (!dot || !ring) return;
+
+  let mouseX = 0, mouseY = 0;
+  let ringX = 0, ringY = 0;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    dot.style.left = mouseX + 'px';
+    dot.style.top  = mouseY + 'px';
+  });
+
+  function animRing() {
+    ringX += (mouseX - ringX) * 0.12;
+    ringY += (mouseY - ringY) * 0.12;
+    ring.style.left = ringX + 'px';
+    ring.style.top  = ringY + 'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+
+  document.querySelectorAll('a, button, .dot-item, .valeur-card, .service-card').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      ring.style.transform = 'translate(-50%,-50%) scale(1.8)';
+      ring.style.borderColor = 'var(--gold-lt)';
+      dot.style.transform = 'translate(-50%,-50%) scale(0.5)';
+    });
+    el.addEventListener('mouseleave', () => {
+      ring.style.transform = 'translate(-50%,-50%) scale(1)';
+      ring.style.borderColor = 'var(--gold)';
+      dot.style.transform = 'translate(-50%,-50%) scale(1)';
+    });
+  });
+})();
+
+/* =============================================
+   NAV SCROLLED STATE (based on slide)
+============================================= */
+function updateNav() {
+  const nav = document.getElementById('nav');
+  nav.classList.toggle('scrolled', currentSlide > 0);
+}
+
+const origGoTo = goToSlide;
+// No override needed, nav auto-updates via CSS
+
+/* =============================================
+   MOBILE MENU
+============================================= */
+function toggleMenu() {
+  const burger = document.getElementById('burger');
+  const menu   = document.getElementById('mobileMenu');
+  burger.classList.toggle('open');
+  menu.classList.toggle('open');
+}
+
+/* =============================================
+   NAV SCROLLED on slide change — patch
+============================================= */
+const _goToSlide = goToSlide;
+window.goToSlide = function(index) {
+  _goToSlide(index);
+  setTimeout(() => {
+    const nav = document.getElementById('nav');
+    nav.classList.toggle('scrolled', index > 0);
+  }, 100);
+};
+</script>
+</body>
+</html>
