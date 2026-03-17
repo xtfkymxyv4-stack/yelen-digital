@@ -56,6 +56,11 @@ body {
   cursor: none;
 }
 
+/* Mobile base font smaller */
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+}
+
 ::selection { background: var(--gold); color: var(--black); }
 
 /* =============================================
@@ -290,8 +295,25 @@ body { }
 
 @media (max-width:900px) {
   .nav-burger { display:flex; }
-  #nav { padding: 20px 24px; }
-  #nav.scrolled { padding: 14px 24px; }
+  #nav { padding: 16px 20px; }
+  #nav.scrolled { padding: 12px 20px; }
+  .lang-switcher { right: 52px; }
+}
+
+/* =============================================
+   HERO MOBILE
+============================================= */
+@media (max-width: 480px) {
+  .hero-title { font-size: 48px !important; line-height: 0.88; margin-bottom: 14px; }
+  .hero-overline { font-size: 9px; letter-spacing: 0.25em; margin-bottom: 16px; }
+  .hero-subtitle { font-size: 15px !important; margin-bottom: 28px; }
+  .hero-sub-text { font-size: 10px; letter-spacing: 0.15em; margin-bottom: 32px; }
+  .hero-ctas { gap: 12px; }
+  .btn-primary { padding: 13px 28px; font-size: 10px; }
+  .btn-outline { padding: 11px 24px; font-size: 10px; }
+  .hero-line { bottom: 24px; }
+  .slide-progress { bottom: 16px; }
+  .whatsapp-fab { bottom: 16px; left: 16px; }
 }
 
 /* =============================================
@@ -428,9 +450,20 @@ body { }
 .split-right { display: flex; align-items:center; justify-content:center; padding: 80px 60px; }
 
 @media (max-width:768px) {
-  .split-slide { grid-template-columns: 1fr; grid-template-rows: auto auto; overflow-y: auto; }
-  .split-left, .split-right { padding: 60px 32px; }
+  .split-slide {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 100%;
+  }
+  .split-left { padding: 50px 24px 16px; justify-content: flex-end; }
+  .split-right { padding: 16px 24px 40px; justify-content: flex-start; }
   .split-left::after { display:none; }
+  .quote-mark { font-size: 50px; margin-bottom: 4px; }
+  .quote-text { font-size: 13px !important; line-height: 1.5; margin-bottom: 12px; }
+  .section-number { font-size: 60px; }
+  .section-title { font-size: 18px !important; margin-bottom: 10px; }
+  .section-body { font-size: 13px !important; line-height: 1.6; }
+  .section-tag { font-size: 9px; margin-bottom: 12px; }
 }
 
 .slide-label {
@@ -489,7 +522,19 @@ body { }
   padding: 40px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
 }
 @media (max-width:768px) {
-  .vision-content { grid-template-columns: 1fr; gap:48px; padding: 60px 32px; overflow-y:auto; height:100vh; }
+  .vision-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 70px 24px 24px;
+    height: 100vh;
+    overflow-y: auto;
+    align-items: start;
+  }
+  .vision-icon { width: 32px; height: 32px; margin-bottom: 10px; }
+  .vision-heading { font-size: 16px !important; margin-bottom: 8px; }
+  .vision-text { font-size: 13px !important; line-height: 1.6; }
+  .vision-divider { margin: 12px 0; }
+  .vision-bg-text { font-size: 60px; }
 }
 .vision-block {}
 .vision-icon { width:48px; height:48px; margin-bottom:20px; }
@@ -510,8 +555,29 @@ body { }
 .slide-header h2 span { color: var(--gold); }
 
 .valeurs-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; width:100%; max-width:1200px; }
-@media (max-width:1024px) { .valeurs-grid { grid-template-columns: repeat(3, 1fr); } #slide-valeurs { overflow-y:auto; padding:40px 24px; } }
-@media (max-width:600px)  { .valeurs-grid { grid-template-columns: repeat(1, 1fr); } }
+@media (max-width:1024px) {
+  .valeurs-grid { grid-template-columns: repeat(3, 1fr); }
+  #slide-valeurs { padding: 40px 24px; }
+}
+@media (max-width:600px) {
+  .valeurs-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  #slide-valeurs {
+    padding: 70px 16px 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+  .slide-header { margin-bottom: 16px; }
+  .slide-header h2 { font-size: 22px !important; margin-top: 8px; }
+  .valeur-card { padding: 16px 12px; }
+  .valeur-num { font-size: 10px; margin-bottom: 8px; }
+  .valeur-icon { font-size: 20px; margin-bottom: 6px; }
+  .valeur-title { font-size: 11px !important; margin-bottom: 6px; }
+  .valeur-desc { font-size: 11px !important; line-height: 1.5; }
+}
 
 .valeur-card {
   background: var(--black); border: 1px solid rgba(212,175,55,0.1);
@@ -548,8 +614,21 @@ body { }
   content:''; position:absolute; top: 56px; left: calc(12.5%); width: calc(75%); height:1px;
   background: linear-gradient(90deg, var(--gold), rgba(212,175,55,0.1));
 }
-@media (max-width:900px) { .methode-steps { grid-template-columns: 1fr 1fr; gap: 32px; } .methode-steps::before { display:none; } #slide-methode { overflow-y:auto; } }
-@media (max-width:500px) { .methode-steps { grid-template-columns:1fr; } }
+@media (max-width:900px) {
+  .methode-steps { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .methode-steps::before { display:none; }
+  #slide-methode { padding: 70px 24px 24px; }
+}
+@media (max-width:500px) {
+  .methode-steps { grid-template-columns: 1fr 1fr; gap: 16px; }
+  #slide-methode { padding: 70px 16px 16px; overflow-y: auto; justify-content: flex-start; align-items: flex-start; }
+  .slide-header { margin-bottom: 20px; }
+  .methode-step { padding: 0 8px; }
+  .step-num-wrap { width: 40px; height: 40px; margin-bottom: 12px; }
+  .step-num { font-size: 12px; }
+  .step-title { font-size: 11px !important; margin-bottom: 6px; }
+  .step-desc { font-size: 11px !important; line-height: 1.5; }
+}
 
 .methode-step { padding: 0 24px; position: relative; transform: translateY(40px); opacity:0; transition: all 0.6s ease; }
 .methode-step.show { transform:translateY(0); opacity:1; }
@@ -575,8 +654,18 @@ body { }
 #slide-services { background: var(--charcoal); flex-direction: column; padding: 40px 48px; overflow:hidden; }
 
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width:100%; max-width:1100px; }
-@media (max-width:900px) { .services-grid { grid-template-columns: 1fr 1fr; } #slide-services { overflow-y:auto; } }
-@media (max-width:500px) { .services-grid { grid-template-columns:1fr; } }
+@media (max-width:900px) {
+  .services-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  #slide-services { padding: 70px 24px 24px; }
+}
+@media (max-width:500px) {
+  .services-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  #slide-services { padding: 70px 16px 16px; overflow-y: auto; justify-content: flex-start; align-items: flex-start; }
+  .service-card { padding: 16px 14px; }
+  .service-icon { font-size: 22px; margin-bottom: 8px; }
+  .service-title { font-size: 12px !important; margin-bottom: 6px; }
+  .service-desc { font-size: 11px !important; line-height: 1.5; }
+}
 
 .service-card {
   background: var(--black); border: 1px solid rgba(255,255,255,0.05);
@@ -603,67 +692,183 @@ body { }
 .service-card:hover .service-arrow { opacity:1; transform:translateX(0); }
 
 /* =============================================
-   SLIDE 7 - FONDATRICE BIO
+   SLIDE 7 - FONDATRICE BIO (Magazine style)
 ============================================= */
 #slide-bio { background: var(--black); overflow:hidden; }
 
-.bio-content { display: grid; grid-template-columns: 1fr 1.4fr; width:100%; height:100%; }
+.bio-content {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  width:100%; height:100%;
+}
 
+/* LEFT — full bleed photo */
 .bio-left {
-  background: linear-gradient(135deg, #0f0f0f 0%, #1a1410 100%);
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  padding: 60px 48px; border-right: 1px solid rgba(212,175,55,0.1);
-  position:relative; overflow:hidden;
+  position: relative;
+  overflow: hidden;
 }
+.bio-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+/* Gold gradient overlay on right edge */
+.bio-left::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+    transparent 60%,
+    rgba(10,10,10,0.85) 100%);
+}
+/* Subtle top overlay for elegance */
 .bio-left::before {
-  content:''; position:absolute; width:300px; height:300px; border-radius:50%;
-  background: radial-gradient(circle, rgba(212,175,55,0.06) 0%, transparent 70%);
-  top:50%; left:50%; transform:translate(-50%,-50%);
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(10,10,10,0.2) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba(10,10,10,0.4) 100%);
+  z-index: 1;
 }
 
-.bio-avatar {
-  width: clamp(100px, 14vw, 160px); height: clamp(100px, 14vw, 160px);
-  border-radius: 50%; border: 2px solid var(--gold);
-  overflow: hidden; margin-bottom: 24px; position:relative; z-index:1; flex-shrink:0;
+/* RIGHT — text content */
+.bio-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 48px 60px 40px;
+  overflow-y: auto;
+  background: var(--black);
+  position: relative;
 }
-.bio-avatar img { width:100%; height:100%; object-fit:cover; object-position: center top; }
+.bio-right::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 15%; bottom: 15%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  opacity: 0.3;
+}
 
-.bio-name { font-size: clamp(18px, 2.5vw, 28px); font-weight:800; letter-spacing:-0.01em; text-align:center; margin-bottom:8px; position:relative; z-index:1; }
-.bio-title { font-family: var(--font-body); font-style:italic; font-size: clamp(13px, 1.4vw, 16px); color: var(--gold); text-align:center; margin-bottom:28px; position:relative; z-index:1; }
+/* Name block at top of right panel */
+.bio-name-block {
+  margin-bottom: 32px;
+}
+.bio-name {
+  font-size: clamp(22px, 3vw, 36px);
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  margin-bottom: 6px;
+  line-height: 1;
+}
+.bio-title {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(13px, 1.4vw, 17px);
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.bio-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
 .bio-badge {
-  display:flex; align-items:center; gap:8px; font-size:11px; letter-spacing:0.15em;
-  color: var(--gray); text-transform:uppercase; background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08); padding: 8px 16px; margin-bottom:8px; position:relative; z-index:1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--gray);
+  text-transform: uppercase;
 }
 .bio-badge span { color: var(--gold-lt); }
 
-.bio-right { display:flex; flex-direction:column; justify-content:center; padding: 60px 48px; overflow-y:auto; }
-
-.timeline { position:relative; padding-left: 28px; }
-.timeline::before {
-  content:''; position:absolute; left:0; top:8px; bottom:8px;
-  width:1px; background: linear-gradient(to bottom, var(--gold), rgba(212,175,55,0.1));
+/* Timeline */
+.timeline {
+  position: relative;
+  padding-left: 24px;
 }
-.timeline-item { position:relative; padding-bottom:28px; transform: translateX(20px); opacity:0; transition: all 0.5s ease; }
-.timeline-item.show { transform:translateX(0); opacity:1; }
-.timeline-item:nth-child(1) { transition-delay:0s; }
-.timeline-item:nth-child(2) { transition-delay:0.12s; }
-.timeline-item:nth-child(3) { transition-delay:0.24s; }
-.timeline-item:nth-child(4) { transition-delay:0.36s; }
-.timeline-item:nth-child(5) { transition-delay:0.48s; }
-.timeline-item:nth-child(6) { transition-delay:0.6s; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 8px; bottom: 8px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--gold), rgba(212,175,55,0.1));
+}
+.timeline-item {
+  position: relative;
+  padding-bottom: 22px;
+  transform: translateX(20px);
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.timeline-item.show { transform: translateX(0); opacity: 1; }
+.timeline-item:nth-child(1) { transition-delay: 0s; }
+.timeline-item:nth-child(2) { transition-delay: 0.12s; }
+.timeline-item:nth-child(3) { transition-delay: 0.24s; }
+.timeline-item:nth-child(4) { transition-delay: 0.36s; }
+.timeline-item:nth-child(5) { transition-delay: 0.48s; }
 
-.timeline-dot { position:absolute; left:-34px; top:4px; width:12px; height:12px; border-radius:50%; border:2px solid var(--gold); background:var(--black); transition: background 0.3s; }
-.timeline-item:hover .timeline-dot { background:var(--gold); }
-.timeline-company { font-size: clamp(13px, 1.3vw, 16px); font-weight:700; color:var(--white); margin-bottom:4px; }
-.timeline-role { font-family: var(--font-body); font-style:italic; font-size: clamp(12px, 1.2vw, 15px); color: var(--gold-lt); margin-bottom:4px; }
-.timeline-desc { font-size: clamp(11px, 1.1vw, 13px); color: var(--gray); line-height:1.6; }
+.timeline-dot {
+  position: absolute;
+  left: -30px; top: 4px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid var(--gold);
+  background: var(--black);
+  transition: background 0.3s;
+}
+.timeline-item:hover .timeline-dot { background: var(--gold); }
+.timeline-company {
+  font-size: clamp(12px, 1.2vw, 15px);
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 3px;
+}
+.timeline-role {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(11px, 1.1vw, 14px);
+  color: var(--gold-lt);
+  margin-bottom: 3px;
+}
+.timeline-desc {
+  font-size: clamp(10px, 1vw, 12px);
+  color: var(--gray);
+  line-height: 1.5;
+}
 
+/* Mobile */
 @media (max-width:768px) {
-  .bio-content { grid-template-columns:1fr; grid-template-rows: auto 1fr; }
-  .bio-left { padding:40px 24px; }
-  .bio-right { padding:40px 24px; overflow-y:auto; }
-  #slide-bio { overflow:auto; }
+  .bio-content {
+    grid-template-columns: 1fr;
+    grid-template-rows: 45vh 1fr;
+    height: 100%;
+  }
+  .bio-left::after {
+    background: linear-gradient(to bottom, transparent 50%, rgba(10,10,10,0.95) 100%);
+  }
+  .bio-right {
+    padding: 20px 24px 24px;
+    overflow-y: auto;
+    border-top: 1px solid rgba(212,175,55,0.15);
+  }
+  .bio-right::before { display: none; }
+  .bio-name { font-size: 20px !important; }
+  .bio-title { font-size: 13px !important; }
+  .bio-badge { font-size: 10px; }
+  .timeline-company { font-size: 12px !important; }
+  .timeline-role { font-size: 11px !important; }
+  .timeline-desc { font-size: 10px !important; }
+  .timeline-item { padding-bottom: 14px; }
+  #slide-bio { overflow: hidden; }
 }
 
 /* =============================================
@@ -722,10 +927,28 @@ body { }
 .form-submit:hover { background:linear-gradient(135deg, var(--gold), var(--gold-lt)); }
 
 @media (max-width:768px) {
-  .contact-inner { grid-template-columns:1fr; }
-  .contact-left { padding:40px 24px; border-right:none; border-bottom:1px solid rgba(212,175,55,0.1); }
-  .contact-right { padding:40px 24px; }
-  #slide-contact { overflow-y:auto; }
+  .contact-inner {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    height: 100%;
+  }
+  .contact-left {
+    padding: 55px 24px 16px;
+    border-right: none;
+    border-bottom: 1px solid rgba(212,175,55,0.1);
+  }
+  .contact-right { padding: 16px 24px 24px; overflow-y: auto; }
+  #slide-contact { overflow: hidden; }
+  .contact-info-item { margin-bottom: 12px; }
+  .contact-info-icon { width: 32px; height: 32px; font-size: 13px; }
+  .contact-info-label { font-size: 9px; }
+  .contact-info-val { font-size: 13px !important; }
+  .contact-socials { margin-top: 12px; }
+  .slide-footer { padding: 8px 20px; }
+  .footer-copy, .footer-tagline { font-size: 10px; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .form-input, .form-textarea, .form-select { padding: 10px 12px; font-size: 13px; }
+  .form-group { margin-bottom: 10px; }
 }
 
 /* =============================================
@@ -744,13 +967,13 @@ body { }
    WHATSAPP FLOATING BUTTON
 ============================================= */
 .whatsapp-fab {
-  position: fixed; bottom:32px; left:32px; z-index:2000;
-  width:52px; height:52px; border-radius:50%; background: #25D366;
+  position: fixed; bottom:24px; left:24px; z-index:2000;
+  width:42px; height:42px; border-radius:50%; background: #25D366;
   display:flex; align-items:center; justify-content:center;
-  text-decoration:none; color:white; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition:all 0.3s ease;
+  text-decoration:none; color:white; box-shadow: 0 3px 14px rgba(37,211,102,0.35); transition:all 0.3s ease;
 }
-.whatsapp-fab:hover { transform:scale(1.1); box-shadow:0 6px 28px rgba(37,211,102,0.6); }
-.whatsapp-fab svg { width:26px; height:26px; }
+.whatsapp-fab:hover { transform:scale(1.08); box-shadow:0 5px 20px rgba(37,211,102,0.55); }
+.whatsapp-fab svg { width:20px; height:20px; }
 .whatsapp-tooltip {
   position:absolute; left:64px; top:50%; transform:translateY(-50%);
   background:var(--black); color:var(--white); font-size:11px; letter-spacing:0.1em;
@@ -800,14 +1023,23 @@ body { }
   <div class="loader-sun">
     <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle class="sun-circle" cx="40" cy="40" r="14" stroke="#D4AF37" stroke-width="2"/>
-      <line class="sun-ray" x1="40" y1="4" x2="40" y2="16" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
-      <line class="sun-ray" x1="40" y1="64" x2="40" y2="76" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
-      <line class="sun-ray" x1="4" y1="40" x2="16" y2="40" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
-      <line class="sun-ray" x1="64" y1="40" x2="76" y2="40" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
-      <line class="sun-ray" x1="12.7" y1="12.7" x2="21.2" y2="21.2" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
-      <line class="sun-ray" x1="58.8" y1="58.8" x2="67.3" y2="67.3" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
-      <line class="sun-ray" x1="67.3" y1="12.7" x2="58.8" y2="21.2" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
-      <line class="sun-ray" x1="21.2" y1="58.8" x2="12.7" y2="67.3" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+      <!-- Long rays cardinal -->
+      <line class="sun-ray" x1="40" y1="4" x2="40" y2="22" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+      <line class="sun-ray" x1="40" y1="58" x2="40" y2="76" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+      <line class="sun-ray" x1="4" y1="40" x2="22" y2="40" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+      <line class="sun-ray" x1="58" y1="40" x2="76" y2="40" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+      <!-- Short rays diagonal -->
+      <line class="sun-ray" x1="14.5" y1="14.5" x2="24.5" y2="24.5" stroke="#F0D060" stroke-width="1.5" stroke-linecap="round"/>
+      <line class="sun-ray" x1="55.5" y1="55.5" x2="65.5" y2="65.5" stroke="#F0D060" stroke-width="1.5" stroke-linecap="round"/>
+      <line class="sun-ray" x1="65.5" y1="14.5" x2="55.5" y2="24.5" stroke="#F0D060" stroke-width="1.5" stroke-linecap="round"/>
+      <line class="sun-ray" x1="24.5" y1="55.5" x2="14.5" y2="65.5" stroke="#F0D060" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- Kente squares on long rays -->
+      <rect x="37" y="7" width="6" height="6" fill="#D4AF37" opacity="0.7"/>
+      <rect x="37" y="67" width="6" height="6" fill="#D4AF37" opacity="0.7"/>
+      <rect x="7" y="37" width="6" height="6" fill="#D4AF37" opacity="0.7"/>
+      <rect x="67" y="37" width="6" height="6" fill="#D4AF37" opacity="0.7"/>
+      <!-- Center dot -->
+      <circle cx="40" cy="40" r="4" fill="#D4AF37"/>
     </svg>
   </div>
   <div class="loader-brand">
@@ -823,15 +1055,24 @@ body { }
   <a class="nav-logo" onclick="goToSlide(0)">
     <div class="nav-logo-icon">
       <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="14" cy="14" r="5" stroke="#D4AF37" stroke-width="1.5"/>
-        <line x1="14" y1="1" x2="14" y2="6" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="14" y1="22" x2="14" y2="27" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="1" y1="14" x2="6" y2="14" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="22" y1="14" x2="27" y2="14" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="4.6" y1="4.6" x2="8.1" y2="8.1" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="19.9" y1="19.9" x2="23.4" y2="23.4" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="23.4" y1="4.6" x2="19.9" y2="8.1" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="8.1" y1="19.9" x2="4.6" y2="23.4" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="14" cy="14" r="4.5" stroke="#D4AF37" stroke-width="1.2"/>
+        <!-- Long rays cardinal -->
+        <line x1="14" y1="1.5" x2="14" y2="7" stroke="#D4AF37" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="14" y1="21" x2="14" y2="26.5" stroke="#D4AF37" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="1.5" y1="14" x2="7" y2="14" stroke="#D4AF37" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="21" y1="14" x2="26.5" y2="14" stroke="#D4AF37" stroke-width="1.4" stroke-linecap="round"/>
+        <!-- Short rays diagonal -->
+        <line x1="5.5" y1="5.5" x2="9.5" y2="9.5" stroke="#F0D060" stroke-width="1" stroke-linecap="round"/>
+        <line x1="18.5" y1="18.5" x2="22.5" y2="22.5" stroke="#F0D060" stroke-width="1" stroke-linecap="round"/>
+        <line x1="22.5" y1="5.5" x2="18.5" y2="9.5" stroke="#F0D060" stroke-width="1" stroke-linecap="round"/>
+        <line x1="9.5" y1="18.5" x2="5.5" y2="22.5" stroke="#F0D060" stroke-width="1" stroke-linecap="round"/>
+        <!-- Kente squares on long rays -->
+        <rect x="12.5" y="3" width="3" height="3" fill="#D4AF37" opacity="0.7"/>
+        <rect x="12.5" y="22" width="3" height="3" fill="#D4AF37" opacity="0.7"/>
+        <rect x="3" y="12.5" width="3" height="3" fill="#D4AF37" opacity="0.7"/>
+        <rect x="22" y="12.5" width="3" height="3" fill="#D4AF37" opacity="0.7"/>
+        <!-- Center dot -->
+        <circle cx="14" cy="14" r="1.8" fill="#D4AF37"/>
       </svg>
     </div>
     <div class="nav-logo-text">
@@ -1317,110 +1558,122 @@ body { }
 
   <div class="slide" id="slide-bio">
     <div class="bio-content">
-      <div class="bio-left">
-        <div class="bio-avatar fade-up">
-          <img src="3BDA0FAF-AFA5-4590-9F52-253493CEFE03.jpeg" alt="Rosalie Gueye">
-        </div>
-        <div class="bio-name fade-up delay-1">Rosalie Gueye</div>
-        <div class="bio-title fade-up delay-2">
-          <span data-lang="fr">Fondatrice & Directrice Générale</span>
-          <span data-lang="en">Founder & CEO</span>
-          <span data-lang="pt">Fundadora & Diretora Geral</span>
-        </div>
-        <div class="bio-badge fade-up delay-3">
+
+```
+  <!-- LEFT — Photo plein fond -->
+  <div class="bio-left fade-left">
+    <img src="3BDA0FAF-AFA5-4590-9F52-253493CEFE03.jpeg" alt="Rosalie Gueye">
+  </div>
+
+  <!-- RIGHT — Texte -->
+  <div class="bio-right">
+    <div class="bio-name-block fade-up">
+      <div class="bio-name">Rosalie Gueye</div>
+      <div class="bio-title">
+        <span data-lang="fr">Fondatrice & Directrice Générale</span>
+        <span data-lang="en">Founder & CEO</span>
+        <span data-lang="pt">Fundadora & Diretora Geral</span>
+      </div>
+      <div class="bio-badges">
+        <div class="bio-badge">
           <span>📍</span> Dakar, Sénégal - Paris, France
         </div>
-        <div class="bio-badge fade-up delay-4">
+        <div class="bio-badge">
           <span>🏛️</span>
           <span data-lang="fr">DEX, <span>Kajar Group</span></span>
           <span data-lang="en">Executive Director, <span>Kajar Group</span></span>
           <span data-lang="pt">Diretora Executiva, <span>Kajar Group</span></span>
         </div>
       </div>
-      <div class="bio-right">
-        <div class="section-tag fade-up">
-          <span data-lang="fr">Parcours professionnel</span>
-          <span data-lang="en">Professional background</span>
-          <span data-lang="pt">Percurso profissional</span>
+    </div>
+
+    <div class="section-tag fade-up delay-1" style="margin-bottom:20px;">
+      <span data-lang="fr">Parcours professionnel</span>
+      <span data-lang="en">Professional background</span>
+      <span data-lang="pt">Percurso profissional</span>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-company">Groupe Generali - La Médicale</div>
+        <div class="timeline-role">
+          <span data-lang="fr">Responsable Développement Commercial</span>
+          <span data-lang="en">Business Development Manager</span>
+          <span data-lang="pt">Responsável pelo Desenvolvimento Comercial</span>
         </div>
-        <div class="timeline" style="margin-top:24px;">
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-company">Groupe Generali - La Médicale</div>
-            <div class="timeline-role">
-              <span data-lang="fr">Responsable Développement Commercial</span>
-              <span data-lang="en">Business Development Manager</span>
-              <span data-lang="pt">Responsável pelo Desenvolvimento Comercial</span>
-            </div>
-            <div class="timeline-desc">
-              <span data-lang="fr">Stratégies de développement sur les marchés à forte valeur, structuration de portefeuilles clients complexes.</span>
-              <span data-lang="en">Development strategies on high-value markets, structuring complex client portfolios.</span>
-              <span data-lang="pt">Estratégias de desenvolvimento em mercados de alto valor, estruturação de carteiras de clientes complexas.</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-company">France Travail</div>
-            <div class="timeline-role">
-              <span data-lang="fr">Conseillère Entreprise</span>
-              <span data-lang="en">Business Advisor</span>
-              <span data-lang="pt">Consultora Empresarial</span>
-            </div>
-            <div class="timeline-desc">
-              <span data-lang="fr">Analyse financière, étude d'éligibilité, conseil aux entreprises et grands comptes.</span>
-              <span data-lang="en">Financial analysis, eligibility assessment, business and key account advisory.</span>
-              <span data-lang="pt">Análise financeira, estudo de elegibilidade, consultoria a empresas e grandes contas.</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-company">
-              <span data-lang="fr">Consulat Général du Sénégal à Paris</span>
-              <span data-lang="en">Senegalese Consulate General, Paris</span>
-              <span data-lang="pt">Consulado Geral do Senegal em Paris</span>
-            </div>
-            <div class="timeline-role">
-              <span data-lang="fr">Transformation Digitale</span>
-              <span data-lang="en">Digital Transformation</span>
-              <span data-lang="pt">Transformação Digital</span>
-            </div>
-            <div class="timeline-desc">
-              <span data-lang="fr">Pilotage de la transition numérique des services consulaires.</span>
-              <span data-lang="en">Leading the digital transition of consular services.</span>
-              <span data-lang="pt">Pilotagem da transição digital dos serviços consulares.</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-company">BNP Paribas</div>
-            <div class="timeline-role">
-              <span data-lang="fr">Chargée d'Affaires Professionnels</span>
-              <span data-lang="en">Professional Accounts Manager</span>
-              <span data-lang="pt">Gestora de Contas Profissionais</span>
-            </div>
-            <div class="timeline-desc">
-              <span data-lang="fr">Gestion de portefeuille clients professionnels dans un environnement bancaire fortement réglementé.</span>
-              <span data-lang="en">Managing professional client portfolios in a highly regulated banking environment.</span>
-              <span data-lang="pt">Gestão de carteira de clientes profissionais num ambiente bancário altamente regulado.</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-company">ALFI - African Leaders Factory Initiative</div>
-            <div class="timeline-role">
-              <span data-lang="fr">Vice-Présidente</span>
-              <span data-lang="en">Vice-President</span>
-              <span data-lang="pt">Vice-Presidente</span>
-            </div>
-            <div class="timeline-desc">
-              <span data-lang="fr">Émergence de leaders économiques africains.</span>
-              <span data-lang="en">Developing African economic leaders.</span>
-              <span data-lang="pt">Desenvolvimento de líderes económicos africanos.</span>
-            </div>
-          </div>
+        <div class="timeline-desc">
+          <span data-lang="fr">Stratégies de développement sur les marchés à forte valeur.</span>
+          <span data-lang="en">Development strategies on high-value markets.</span>
+          <span data-lang="pt">Estratégias de desenvolvimento em mercados de alto valor.</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-company">France Travail</div>
+        <div class="timeline-role">
+          <span data-lang="fr">Conseillère Entreprise</span>
+          <span data-lang="en">Business Advisor</span>
+          <span data-lang="pt">Consultora Empresarial</span>
+        </div>
+        <div class="timeline-desc">
+          <span data-lang="fr">Analyse financière, conseil aux entreprises et grands comptes.</span>
+          <span data-lang="en">Financial analysis, business and key account advisory.</span>
+          <span data-lang="pt">Análise financeira, consultoria a empresas e grandes contas.</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-company">
+          <span data-lang="fr">Consulat Général du Sénégal à Paris</span>
+          <span data-lang="en">Senegalese Consulate General, Paris</span>
+          <span data-lang="pt">Consulado Geral do Senegal em Paris</span>
+        </div>
+        <div class="timeline-role">
+          <span data-lang="fr">Transformation Digitale</span>
+          <span data-lang="en">Digital Transformation</span>
+          <span data-lang="pt">Transformação Digital</span>
+        </div>
+        <div class="timeline-desc">
+          <span data-lang="fr">Pilotage de la transition numérique des services consulaires.</span>
+          <span data-lang="en">Leading the digital transition of consular services.</span>
+          <span data-lang="pt">Pilotagem da transição digital dos serviços consulares.</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-company">BNP Paribas</div>
+        <div class="timeline-role">
+          <span data-lang="fr">Chargée d'Affaires Professionnels</span>
+          <span data-lang="en">Professional Accounts Manager</span>
+          <span data-lang="pt">Gestora de Contas Profissionais</span>
+        </div>
+        <div class="timeline-desc">
+          <span data-lang="fr">Gestion de portefeuille dans un environnement bancaire fortement réglementé.</span>
+          <span data-lang="en">Portfolio management in a highly regulated banking environment.</span>
+          <span data-lang="pt">Gestão de carteira num ambiente bancário altamente regulado.</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-company">ALFI - African Leaders Factory Initiative</div>
+        <div class="timeline-role">
+          <span data-lang="fr">Vice-Présidente</span>
+          <span data-lang="en">Vice-President</span>
+          <span data-lang="pt">Vice-Presidente</span>
+        </div>
+        <div class="timeline-desc">
+          <span data-lang="fr">Émergence de leaders économiques africains.</span>
+          <span data-lang="en">Developing African economic leaders.</span>
+          <span data-lang="pt">Desenvolvimento de líderes económicos africanos.</span>
         </div>
       </div>
     </div>
+  </div>
+
+</div>
+```
+
   </div>
 
   <!-- ===== SLIDE 8 - CONTACT ===== -->
@@ -1435,7 +1688,7 @@ body { }
             <span data-lang="en">Let's talk about your project</span>
             <span data-lang="pt">Vamos falar do seu projeto</span>
           </span>
-          <h2 class="section-title" style="font-size:clamp(24px,3.5vw,40px);margin-bottom:40px;">
+          <h2 class="section-title" style="font-size:clamp(20px,3.5vw,40px);margin-bottom:40px;white-space:nowrap;">
             <span data-lang="fr">Prêt à <span>rayonner</span> ?</span>
             <span data-lang="en">Ready to <span>shine</span>?</span>
             <span data-lang="pt">Pronto para <span>brilhar</span>?</span>
@@ -1456,7 +1709,7 @@ body { }
           <div class="contact-info-icon">✉️</div>
           <div>
             <div class="contact-info-label">Email</div>
-            <a class="contact-info-val" href="mailto:rosaliegueye@gmail.com">rosaliegueye@gmail.com</a>
+            <a class="contact-info-val" href="mailto:yelendigital.sn@gmail.com">yelendigital.sn@gmail.com</a>
           </div>
         </div>
         <div class="contact-info-item fade-up delay-3">
@@ -1467,7 +1720,7 @@ body { }
               <span data-lang="en">Location</span>
               <span data-lang="pt">Localização</span>
             </div>
-            <span class="contact-info-val">Dakar, Sénégal</span>
+            <span class="contact-info-val">Dakar, Sénégal & Paris, France</span>
           </div>
         </div>
         <div class="contact-socials fade-up delay-4">
