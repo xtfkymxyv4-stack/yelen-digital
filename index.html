@@ -498,9 +498,11 @@ body { }
 }
 .section-title {
   font-size: clamp(28px, 4vw, 48px); font-weight: 800; line-height:1.1;
-  margin-bottom: 24px; letter-spacing: -0.02em;
+  margin-bottom: 24px; letter-spacing: -0.02em; color: var(--white);
 }
-.section-title span { color: var(--gold); }
+.section-title > span[data-lang] { color: var(--white); }
+.section-title > span[data-lang] > span { color: var(--gold); }
+.section-title span.gold { color: var(--gold); }
 .section-body {
   font-family: var(--font-body); font-size: clamp(15px, 1.8vw, 18px);
   line-height: 1.8; color: var(--gray-lt); max-width: 480px;
@@ -813,16 +815,23 @@ body { }
 @media (max-width:768px) and (orientation: portrait) {
   .bio-content {
     grid-template-columns: 1fr;
-    grid-template-rows: 42vh 1fr;
+    grid-template-rows: 50vh 1fr;
+    height: 100%;
+  }
+  .bio-left {
+    width: 100%;
     height: 100%;
   }
   .bio-left img {
-    object-position: center 15%;
+    object-position: center 10%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   .bio-left::after {
     background: linear-gradient(to bottom,
-      transparent 50%,
-      rgba(10,10,10,0.95) 100%);
+      transparent 40%,
+      rgba(10,10,10,0.97) 100%);
   }
   .bio-right {
     padding: 20px 24px 20px;
@@ -831,7 +840,7 @@ body { }
     justify-content: flex-start;
   }
   .bio-right::before { display: none; }
-  .bio-name-block { margin-bottom: 16px; }
+  .bio-name-block { margin-bottom: 14px; }
   .bio-name { font-size: 20px !important; }
   .bio-title { font-size: 13px !important; margin-bottom: 8px; }
   .bio-badge { font-size: 10px; }
@@ -845,30 +854,38 @@ body { }
 /* ── MOBILE LANDSCAPE ── */
 @media (max-width:900px) and (orientation: landscape) {
   .bio-content {
-    grid-template-columns: 45vw 1fr;
+    grid-template-columns: 42% 58%;
+    height: 100%;
+  }
+  .bio-left {
+    width: 100%;
     height: 100%;
   }
   .bio-left img {
     object-position: center top;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   .bio-left::after {
     background: linear-gradient(to right,
-      transparent 55%,
-      rgba(10,10,10,0.95) 100%);
+      transparent 50%,
+      rgba(10,10,10,0.97) 100%);
   }
   .bio-right {
-    padding: 50px 24px 16px 28px;
+    padding: 48px 20px 16px 28px;
     overflow-y: auto;
     justify-content: flex-start;
   }
+  .bio-right::before { display: none; }
   .bio-name { font-size: 18px !important; }
-  .bio-title { font-size: 12px !important; margin-bottom: 8px; }
+  .bio-title { font-size: 12px !important; margin-bottom: 6px; }
   .bio-badge { font-size: 9px; }
-  .bio-name-block { margin-bottom: 14px; }
+  .bio-name-block { margin-bottom: 12px; }
   .timeline-company { font-size: 11px !important; }
   .timeline-role { font-size: 10px !important; }
   .timeline-desc { font-size: 9px !important; }
-  .timeline-item { padding-bottom: 10px; }
+  .timeline-item { padding-bottom: 8px; }
   #slide-bio { overflow: hidden; }
 }
 
@@ -1252,11 +1269,20 @@ body { }
     <div class="vision-content">
       <div class="vision-block fade-left">
         <svg class="vision-icon" viewBox="0 0 48 48" fill="none">
-          <circle cx="24" cy="24" r="10" stroke="#D4AF37" stroke-width="1.5"/>
-          <line x1="24" y1="4" x2="24" y2="12" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="24" y1="36" x2="24" y2="44" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="4" y1="24" x2="12" y2="24" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="36" y1="24" x2="44" y2="24" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="24" cy="24" r="7.5" stroke="#D4AF37" stroke-width="1.5"/>
+          <line x1="24" y1="3" x2="24" y2="13" stroke="#D4AF37" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="24" y1="35" x2="24" y2="45" stroke="#D4AF37" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="3" y1="24" x2="13" y2="24" stroke="#D4AF37" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="35" y1="24" x2="45" y2="24" stroke="#D4AF37" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="9.5" y1="9.5" x2="16" y2="16" stroke="#F0D060" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="32" y1="32" x2="38.5" y2="38.5" stroke="#F0D060" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="38.5" y1="9.5" x2="32" y2="16" stroke="#F0D060" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="16" y1="32" x2="9.5" y2="38.5" stroke="#F0D060" stroke-width="1.2" stroke-linecap="round"/>
+          <rect x="22.5" y="5" width="3" height="3" fill="#D4AF37" opacity="0.8"/>
+          <rect x="22.5" y="40" width="3" height="3" fill="#D4AF37" opacity="0.8"/>
+          <rect x="5" y="22.5" width="3" height="3" fill="#D4AF37" opacity="0.8"/>
+          <rect x="40" y="22.5" width="3" height="3" fill="#D4AF37" opacity="0.8"/>
+          <circle cx="24" cy="24" r="2.5" fill="#D4AF37"/>
         </svg>
         <p class="vision-label">
           <span data-lang="fr">Notre Vision</span>
@@ -1277,8 +1303,20 @@ body { }
       </div>
       <div class="vision-block fade-right delay-2">
         <svg class="vision-icon" viewBox="0 0 48 48" fill="none">
-          <path d="M8 40 L24 8 L40 40" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <line x1="13" y1="30" x2="35" y2="30" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="24" cy="24" r="7.5" stroke="#D4AF37" stroke-width="1.5"/>
+          <line x1="24" y1="3" x2="24" y2="13" stroke="#D4AF37" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="24" y1="35" x2="24" y2="45" stroke="#D4AF37" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="3" y1="24" x2="13" y2="24" stroke="#D4AF37" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="35" y1="24" x2="45" y2="24" stroke="#D4AF37" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="9.5" y1="9.5" x2="16" y2="16" stroke="#F0D060" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="32" y1="32" x2="38.5" y2="38.5" stroke="#F0D060" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="38.5" y1="9.5" x2="32" y2="16" stroke="#F0D060" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="16" y1="32" x2="9.5" y2="38.5" stroke="#F0D060" stroke-width="1.2" stroke-linecap="round"/>
+          <rect x="22.5" y="5" width="3" height="3" fill="#D4AF37" opacity="0.8"/>
+          <rect x="22.5" y="40" width="3" height="3" fill="#D4AF37" opacity="0.8"/>
+          <rect x="5" y="22.5" width="3" height="3" fill="#D4AF37" opacity="0.8"/>
+          <rect x="40" y="22.5" width="3" height="3" fill="#D4AF37" opacity="0.8"/>
+          <circle cx="24" cy="24" r="2.5" fill="#D4AF37"/>
         </svg>
         <p class="vision-label">
           <span data-lang="fr">Notre Mission</span>
