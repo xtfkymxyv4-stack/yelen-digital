@@ -327,6 +327,15 @@ body { }
 .slide {
   position: absolute; left:0; width:100vw; height:100vh;
   overflow: hidden; display: flex; align-items:center; justify-content:center;
+   #slide-services {
+  overflow-y: scroll !important;
+  align-items: flex-start !important;
+}
+
+#slide-valeurs {
+  overflow-y: scroll !important;
+  align-items: flex-start !important;
+}
 }
 
 .slide:nth-child(1) { top: calc(0 * 100vh); }
