@@ -702,10 +702,18 @@ body { }
   padding: 4px 10px;
 }
 .offre-nom { font-size: 22px; font-weight: 900; letter-spacing: 0.04em; color: var(--gold-lt); margin-bottom: 2px; }
-.offre-sens { font-family: var(--font-body); font-style: italic; font-size: 13px; color: var(--gray); margin-bottom: 14px; }
+.offre-sens { font-family: var(--font-body); font-style: italic; font-size: 13px; color: var(--gray); margin-bottom: 16px; }
+.offre-promesse {
+  font-family: var(--font-body); font-size: clamp(17px, 1.5vw, 20px); line-height: 1.4;
+  color: var(--white); margin-bottom: 14px; min-height: 56px;
+}
+.offre-promesse em { color: var(--gold); font-style: normal; }
+.offre-pourqui { font-size: 13px; line-height: 1.5; color: var(--gray); margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.offre-pourqui b { display:block; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-lt); font-weight: 700; margin-bottom: 4px; }
 .offre-pack { font-size: 11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color: var(--white); margin-bottom: 6px; }
-.offre-prix { font-size: clamp(15px, 1.5vw, 18px); font-weight: 800; color: var(--white); margin-bottom: 18px; }
+.offre-prix { font-size: clamp(15px, 1.5vw, 18px); font-weight: 800; color: var(--white); margin-bottom: 12px; }
 .offre-prix span { color: var(--gold); }
+.offre-livrables-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); margin-bottom: 10px; }
 .offre-list { list-style:none; margin-bottom: 20px; flex-grow:1; }
 .offre-list li {
   font-family: var(--font-body); font-size: 15px; line-height: 1.55; color: var(--gray-lt);
@@ -1609,12 +1617,28 @@ body { }
           <span data-lang="en">The path, in Bambara</span>
           <span data-lang="pt">O caminho, em bambara</span>
         </div>
+        <p class="offre-promesse">
+          <span data-lang="fr">Une présence <em>professionnelle et crédible</em>, qui rassure vos prospects dès le premier mois.</span>
+          <span data-lang="en">A <em>professional, credible</em> presence that reassures your prospects from month one.</span>
+          <span data-lang="pt">Uma presença <em>profissional e credível</em>, que tranquiliza os seus clientes desde o primeiro mês.</span>
+        </p>
+        <p class="offre-pourqui">
+          <b><span data-lang="fr">Pour qui</span><span data-lang="en">For whom</span><span data-lang="pt">Para quem</span></b>
+          <span data-lang="fr">PME, commerçants et indépendants qui veulent exister sérieusement en ligne.</span>
+          <span data-lang="en">SMEs, shop owners and freelancers who want a serious online presence.</span>
+          <span data-lang="pt">PME, comerciantes e profissionais liberais que querem existir a sério online.</span>
+        </p>
         <div class="offre-pack">
           <span data-lang="fr">Pack Essentiel</span>
           <span data-lang="en">Essential Pack</span>
           <span data-lang="pt">Pacote Essencial</span>
         </div>
         <div class="offre-prix"><span>75 000 – 100 000</span> FCFA<span data-lang="fr"> / mois</span><span data-lang="en"> / month</span><span data-lang="pt"> / mês</span></div>
+        <div class="offre-livrables-label">
+          <span data-lang="fr">Ce qui est livré chaque mois</span>
+          <span data-lang="en">What's delivered every month</span>
+          <span data-lang="pt">O que é entregue todos os meses</span>
+        </div>
         <ul class="offre-list">
           <li>
             <span data-lang="fr">3 publications hebdomadaires sur Facebook et Instagram</span>
@@ -1656,12 +1680,28 @@ body { }
           <span data-lang="en">The power, in Bambara</span>
           <span data-lang="pt">O poder, em bambara</span>
         </div>
+        <p class="offre-promesse">
+          <span data-lang="fr">Une marque qui <em>se remarque, engage</em> sa communauté et fait entrer des demandes chaque mois.</span>
+          <span data-lang="en">A brand that <em>gets noticed, engages</em> its community and brings in leads every month.</span>
+          <span data-lang="pt">Uma marca que <em>se destaca, envolve</em> a comunidade e gera pedidos todos os meses.</span>
+        </p>
+        <p class="offre-pourqui">
+          <b><span data-lang="fr">Pour qui</span><span data-lang="en">For whom</span><span data-lang="pt">Para quem</span></b>
+          <span data-lang="fr">Entreprises avec une base solide, prêtes à accélérer leur acquisition client.</span>
+          <span data-lang="en">Businesses with solid foundations, ready to accelerate client acquisition.</span>
+          <span data-lang="pt">Empresas com bases sólidas, prontas para acelerar a aquisição de clientes.</span>
+        </p>
         <div class="offre-pack">
           <span data-lang="fr">Pack Croissance</span>
           <span data-lang="en">Growth Pack</span>
           <span data-lang="pt">Pacote Crescimento</span>
         </div>
         <div class="offre-prix"><span>150 000 – 200 000</span> FCFA<span data-lang="fr"> / mois</span><span data-lang="en"> / month</span><span data-lang="pt"> / mês</span></div>
+        <div class="offre-livrables-label">
+          <span data-lang="fr">Ce qui est livré chaque mois</span>
+          <span data-lang="en">What's delivered every month</span>
+          <span data-lang="pt">O que é entregue todos os meses</span>
+        </div>
         <ul class="offre-list">
           <li>
             <span data-lang="fr">5 publications hebdomadaires + stories et reels</span>
@@ -1703,12 +1743,28 @@ body { }
           <span data-lang="en">The radiance, in Bambara</span>
           <span data-lang="pt">O brilho, em bambara</span>
         </div>
+        <p class="offre-promesse">
+          <span data-lang="fr">La <em>référence de votre secteur</em> : visible partout, cohérente sur tous les canaux.</span>
+          <span data-lang="en">The <em>reference in your sector</em>: visible everywhere, consistent across every channel.</span>
+          <span data-lang="pt">A <em>referência do seu setor</em>: visível em todo o lado, coerente em todos os canais.</span>
+        </p>
+        <p class="offre-pourqui">
+          <b><span data-lang="fr">Pour qui</span><span data-lang="en">For whom</span><span data-lang="pt">Para quem</span></b>
+          <span data-lang="fr">Marques ambitieuses qui veulent dominer leur marché digital, sans compromis.</span>
+          <span data-lang="en">Ambitious brands aiming to dominate their digital market, without compromise.</span>
+          <span data-lang="pt">Marcas ambiciosas que querem dominar o seu mercado digital, sem compromissos.</span>
+        </p>
         <div class="offre-pack">
           <span data-lang="fr">Pack Visibilité 360°</span>
           <span data-lang="en">360° Visibility Pack</span>
           <span data-lang="pt">Pacote Visibilidade 360°</span>
         </div>
         <div class="offre-prix"><span data-lang="fr">À partir de</span><span data-lang="en">From</span><span data-lang="pt">A partir de</span> <span>400 000</span> FCFA</div>
+        <div class="offre-livrables-label">
+          <span data-lang="fr">Ce qui est livré chaque mois</span>
+          <span data-lang="en">What's delivered every month</span>
+          <span data-lang="pt">O que é entregue todos os meses</span>
+        </div>
         <ul class="offre-list">
           <li>
             <span data-lang="fr">L'intégralité du Pack Croissance</span>
@@ -1750,6 +1806,17 @@ body { }
           <span data-lang="en">The word, the counsel, in Bambara</span>
           <span data-lang="pt">A palavra, o conselho, em bambara</span>
         </div>
+        <p class="offre-promesse">
+          <span data-lang="fr">Un regard stratégique extérieur pour structurer <em>durablement</em> votre communication.</span>
+          <span data-lang="en">An outside strategic perspective to structure your communication for the <em>long term</em>.</span>
+          <span data-lang="pt">Um olhar estratégico externo para estruturar a sua comunicação a <em>longo prazo</em>.</span>
+        </p>
+        <p class="offre-pourqui">
+          <b><span data-lang="fr">Pour qui</span><span data-lang="en">For whom</span><span data-lang="pt">Para quem</span></b>
+          <span data-lang="fr">Dirigeants qui veulent une vraie stratégie, pas juste de l'exécution externalisée.</span>
+          <span data-lang="en">Leaders who want real strategy, not just outsourced execution.</span>
+          <span data-lang="pt">Dirigentes que querem uma verdadeira estratégia, não apenas execução terceirizada.</span>
+        </p>
         <div class="offre-pack">
           <span data-lang="fr">Conseil Stratégique</span>
           <span data-lang="en">Strategic Advisory</span>
@@ -1759,6 +1826,11 @@ body { }
           <span data-lang="fr">Sur devis</span>
           <span data-lang="en">Custom quote</span>
           <span data-lang="pt">Sob orçamento</span>
+        </div>
+        <div class="offre-livrables-label">
+          <span data-lang="fr">Ce qui est inclus</span>
+          <span data-lang="en">What's included</span>
+          <span data-lang="pt">O que está incluído</span>
         </div>
         <ul class="offre-list">
           <li>
