@@ -711,8 +711,9 @@ body { }
 .offre-pourqui { font-size: 13px; line-height: 1.5; color: var(--gray); margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.07); }
 .offre-pourqui b { display:block; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-lt); font-weight: 700; margin-bottom: 4px; }
 .offre-pack { font-size: 11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color: var(--white); margin-bottom: 6px; }
-.offre-prix { font-size: clamp(15px, 1.5vw, 18px); font-weight: 800; color: var(--white); margin-bottom: 12px; }
+.offre-prix { font-size: clamp(15px, 1.5vw, 18px); font-weight: 800; color: var(--white); margin-bottom: 4px; }
 .offre-prix span { color: var(--gold); }
+.offre-prix-note { font-family: var(--font-body); font-style: italic; font-size: 13px; color: var(--gray); margin-bottom: 12px; }
 .offre-livrables-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); margin-bottom: 10px; }
 .offre-list { list-style:none; margin-bottom: 20px; flex-grow:1; }
 .offre-list li {
@@ -1633,7 +1634,7 @@ body { }
           <span data-lang="en">Essential Pack</span>
           <span data-lang="pt">Pacote Essencial</span>
         </div>
-        <div class="offre-prix"><span>75 000 – 100 000</span> FCFA<span data-lang="fr"> / mois</span><span data-lang="en"> / month</span><span data-lang="pt"> / mês</span></div>
+        <div class="offre-prix"><span data-lang="fr">À partir de</span><span data-lang="en">From</span><span data-lang="pt">A partir de</span> <span>75 000</span> FCFA<span data-lang="fr"> / mois</span><span data-lang="en"> / month</span><span data-lang="pt"> / mês</span></div>
         <div class="offre-livrables-label">
           <span data-lang="fr">Ce qui est livré chaque mois</span>
           <span data-lang="en">What's delivered every month</span>
@@ -1696,7 +1697,16 @@ body { }
           <span data-lang="en">Growth Pack</span>
           <span data-lang="pt">Pacote Crescimento</span>
         </div>
-        <div class="offre-prix"><span>150 000 – 200 000</span> FCFA<span data-lang="fr"> / mois</span><span data-lang="en"> / month</span><span data-lang="pt"> / mês</span></div>
+        <div class="offre-prix">
+          <span data-lang="fr">Sur devis</span>
+          <span data-lang="en">Custom quote</span>
+          <span data-lang="pt">Sob orçamento</span>
+        </div>
+        <div class="offre-prix-note">
+          <span data-lang="fr">Après audit offert · 30 min</span>
+          <span data-lang="en">After a free 30-min audit</span>
+          <span data-lang="pt">Após auditoria oferecida · 30 min</span>
+        </div>
         <div class="offre-livrables-label">
           <span data-lang="fr">Ce qui est livré chaque mois</span>
           <span data-lang="en">What's delivered every month</span>
@@ -1759,7 +1769,16 @@ body { }
           <span data-lang="en">360° Visibility Pack</span>
           <span data-lang="pt">Pacote Visibilidade 360°</span>
         </div>
-        <div class="offre-prix"><span data-lang="fr">À partir de</span><span data-lang="en">From</span><span data-lang="pt">A partir de</span> <span>400 000</span> FCFA</div>
+        <div class="offre-prix">
+          <span data-lang="fr">Sur devis</span>
+          <span data-lang="en">Custom quote</span>
+          <span data-lang="pt">Sob orçamento</span>
+        </div>
+        <div class="offre-prix-note">
+          <span data-lang="fr">Après audit offert · 30 min</span>
+          <span data-lang="en">After a free 30-min audit</span>
+          <span data-lang="pt">Após auditoria oferecida · 30 min</span>
+        </div>
         <div class="offre-livrables-label">
           <span data-lang="fr">Ce qui est livré chaque mois</span>
           <span data-lang="en">What's delivered every month</span>
@@ -1826,6 +1845,11 @@ body { }
           <span data-lang="fr">Sur devis</span>
           <span data-lang="en">Custom quote</span>
           <span data-lang="pt">Sob orçamento</span>
+        </div>
+        <div class="offre-prix-note">
+          <span data-lang="fr">Après audit offert · 30 min</span>
+          <span data-lang="en">After a free 30-min audit</span>
+          <span data-lang="pt">Após auditoria oferecida · 30 min</span>
         </div>
         <div class="offre-livrables-label">
           <span data-lang="fr">Ce qui est inclus</span>
