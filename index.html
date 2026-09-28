@@ -3,7 +3,7 @@
 <html lang="fr" id="html-root">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Yelen Digital — Agence de communication digitale à Dakar. Éclairons votre marque.">
 <meta name="theme-color" content="#0A0A0A">
 <title>Yelen Digital — Éclairons votre marque</title>
@@ -299,6 +299,12 @@ body { }
   #nav.scrolled { padding: 12px 20px; }
   .lang-switcher { right: 52px; }
 }
+@media (max-width:380px) {
+  .nav-logo-tagline { display:none; }
+  .lang-switcher { right: 46px; gap: 5px; }
+  .nav-logo-icon svg { width: 24px; height: 24px; }
+  .nav-logo-name { font-size: 15px; }
+}
 
 /* =============================================
    HERO MOBILE
@@ -348,6 +354,7 @@ body { }
 .slide:nth-child(6) { top: calc(5 * 100vh); }
 .slide:nth-child(7) { top: calc(6 * 100vh); }
 .slide:nth-child(8) { top: calc(7 * 100vh); }
+.slide:nth-child(9) { top: calc(8 * 100vh); }
 
 /* =============================================
    SLIDE 1 - HERO
@@ -660,6 +667,69 @@ body { }
 .methode-step:hover .step-num { color: var(--black); }
 .step-title { font-size: clamp(13px, 1.3vw, 16px); font-weight: 700; letter-spacing:0.05em; margin-bottom:12px; text-transform:uppercase; color: var(--white); }
 .step-desc { font-family: var(--font-body); font-size: clamp(17px, 1.6vw, 20px); line-height:1.7; color: var(--gray); }
+
+/* =============================================
+   SLIDE OFFRES - SIRA / FANGA / DIYA / KUMA
+============================================= */
+#slide-offres { background: var(--black); flex-direction: column; padding: 32px 48px; overflow:hidden; }
+
+.offres-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; width:100%; max-width:1280px; }
+@media (max-width:1100px) {
+  .offres-grid { grid-template-columns: 1fr 1fr; }
+  #slide-offres { overflow-y: scroll !important; padding: 70px 24px 24px; height: 100vh; display: block !important; }
+}
+@media (max-width:600px) {
+  .offres-grid { grid-template-columns: 1fr; gap: 12px; }
+  #slide-offres { padding: 70px 16px 24px; }
+  .offre-card { padding: 20px 18px; }
+}
+
+.offre-card {
+  background: var(--charcoal); border: 1px solid rgba(212,175,55,0.12);
+  padding: 26px 20px; position: relative; display:flex; flex-direction:column;
+  transition: all 0.4s ease; transform: translateY(40px); opacity:0;
+}
+.offre-card.show { transform: translateY(0); opacity:1; }
+.offre-card:nth-child(1) { transition-delay: 0s; }
+.offre-card:nth-child(2) { transition-delay: 0.1s; }
+.offre-card:nth-child(3) { transition-delay: 0.2s; }
+.offre-card:nth-child(4) { transition-delay: 0.3s; }
+.offre-card:hover { border-color: rgba(212,175,55,0.35); transform: translateY(-4px); }
+.offre-card.featured { border-color: var(--gold); background: linear-gradient(180deg, rgba(212,175,55,0.07), var(--charcoal) 40%); }
+.offre-badge {
+  position: absolute; top:-11px; left: 20px; background: var(--gold); color: var(--black);
+  font-size: 9px; font-weight:800; letter-spacing:0.15em; text-transform:uppercase;
+  padding: 4px 10px;
+}
+.offre-nom { font-size: 22px; font-weight: 900; letter-spacing: 0.04em; color: var(--gold-lt); margin-bottom: 2px; }
+.offre-sens { font-family: var(--font-body); font-style: italic; font-size: 13px; color: var(--gray); margin-bottom: 14px; }
+.offre-pack { font-size: 11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color: var(--white); margin-bottom: 6px; }
+.offre-prix { font-size: clamp(15px, 1.5vw, 18px); font-weight: 800; color: var(--white); margin-bottom: 18px; }
+.offre-prix span { color: var(--gold); }
+.offre-list { list-style:none; margin-bottom: 20px; flex-grow:1; }
+.offre-list li {
+  font-family: var(--font-body); font-size: 15px; line-height: 1.55; color: var(--gray-lt);
+  padding-left: 18px; position: relative; margin-bottom: 8px;
+}
+.offre-list li::before { content:'✦'; position:absolute; left:0; top:1px; color: var(--gold); font-size: 11px; }
+.offre-cta {
+  display:block; text-align:center; padding: 12px; border: 1.5px solid rgba(212,175,55,0.4);
+  color: var(--gold-lt); font-size: 11px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase;
+  text-decoration:none; transition: all 0.3s ease;
+}
+.offre-cta:hover { background: var(--gold); border-color: var(--gold); color: var(--black); }
+.offre-card.featured .offre-cta { background: linear-gradient(135deg, var(--gold-dk), var(--gold)); color: var(--black); border-color: transparent; }
+
+.offres-stats {
+  display:flex; justify-content:center; gap: 40px; flex-wrap:wrap;
+  margin-top: 26px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.06);
+  width:100%; max-width:1280px;
+}
+@media (max-width:1100px) { .offres-stats { display:none; } }
+.offre-stat { text-align:center; }
+.offre-stat-num { font-size: 22px; font-weight:900; color: var(--gold); display:block; }
+.offre-stat-label { font-size: 10px; letter-spacing:0.1em; color: var(--gray); text-transform:uppercase; max-width:140px; }
+.offres-note { text-align:center; font-family: var(--font-body); font-style:italic; font-size:13px; color: var(--gray); margin-top:14px; }
 
 /* =============================================
    SLIDE 6 - SERVICES
@@ -1151,13 +1221,18 @@ body { }
     <span data-lang="en">Method</span>
     <span data-lang="pt">Método</span>
   </a>
-  <a onclick="goToSlide(5);toggleMenu()">Services</a>
-  <a onclick="goToSlide(6);toggleMenu()">
+  <a onclick="goToSlide(5);toggleMenu()">
+    <span data-lang="fr">Offres</span>
+    <span data-lang="en">Packages</span>
+    <span data-lang="pt">Pacotes</span>
+  </a>
+  <a onclick="goToSlide(6);toggleMenu()">Services</a>
+  <a onclick="goToSlide(7);toggleMenu()">
     <span data-lang="fr">Fondatrice</span>
     <span data-lang="en">Founder</span>
     <span data-lang="pt">Fundadora</span>
   </a>
-  <a onclick="goToSlide(7);toggleMenu()">Contact</a>
+  <a onclick="goToSlide(8);toggleMenu()">Contact</a>
 </div>
 
 <!-- DOT NAVIGATION -->
@@ -1168,9 +1243,10 @@ body { }
   <div class="dot-item"        data-label="Vision"     onclick="goToSlide(2)"></div>
   <div class="dot-item"        data-label="Valeurs"    onclick="goToSlide(3)"></div>
   <div class="dot-item"        data-label="Méthode"    onclick="goToSlide(4)"></div>
-  <div class="dot-item"        data-label="Services"   onclick="goToSlide(5)"></div>
-  <div class="dot-item"        data-label="Fondatrice" onclick="goToSlide(6)"></div>
-  <div class="dot-item"        data-label="Contact"    onclick="goToSlide(7)"></div>
+  <div class="dot-item"        data-label="Offres"     onclick="goToSlide(5)"></div>
+  <div class="dot-item"        data-label="Services"   onclick="goToSlide(6)"></div>
+  <div class="dot-item"        data-label="Fondatrice" onclick="goToSlide(7)"></div>
+  <div class="dot-item"        data-label="Contact"    onclick="goToSlide(8)"></div>
 </div>
 
 <!-- SLIDES CONTAINER -->
@@ -1215,7 +1291,7 @@ body { }
           <span data-lang="en">Discover the agency</span>
           <span data-lang="pt">Descobrir a agência</span>
         </a>
-        <a class="btn-outline" onclick="goToSlide(7)">
+        <a class="btn-outline" onclick="goToSlide(8)">
           <span data-lang="fr">Nous contacter</span>
           <span data-lang="en">Contact us</span>
           <span data-lang="pt">Contactar-nos</span>
@@ -1509,6 +1585,253 @@ body { }
     </div>
   </div>
 
+  <!-- ===== SLIDE OFFRES - SIRA / FANGA / DIYA / KUMA ===== -->
+
+  <div class="slide" id="slide-offres">
+    <div class="slide-header fade-up">
+      <span class="section-tag">
+        <span data-lang="fr">Nos forfaits</span>
+        <span data-lang="en">Our packages</span>
+        <span data-lang="pt">Nossos pacotes</span>
+      </span>
+      <h2>
+        <span data-lang="fr">Nos <span>Offres</span></span>
+        <span data-lang="en">Our <span>Packages</span></span>
+        <span data-lang="pt">Nossos <span>Pacotes</span></span>
+      </h2>
+    </div>
+    <div class="offres-grid">
+
+      <div class="offre-card">
+        <div class="offre-nom">SIRA</div>
+        <div class="offre-sens">
+          <span data-lang="fr">Le chemin, en bambara</span>
+          <span data-lang="en">The path, in Bambara</span>
+          <span data-lang="pt">O caminho, em bambara</span>
+        </div>
+        <div class="offre-pack">
+          <span data-lang="fr">Pack Essentiel</span>
+          <span data-lang="en">Essential Pack</span>
+          <span data-lang="pt">Pacote Essencial</span>
+        </div>
+        <div class="offre-prix"><span>75 000 – 100 000</span> FCFA<span data-lang="fr"> / mois</span><span data-lang="en"> / month</span><span data-lang="pt"> / mês</span></div>
+        <ul class="offre-list">
+          <li>
+            <span data-lang="fr">3 publications hebdomadaires sur Facebook et Instagram</span>
+            <span data-lang="en">3 weekly posts on Facebook and Instagram</span>
+            <span data-lang="pt">3 publicações semanais no Facebook e Instagram</span>
+          </li>
+          <li>
+            <span data-lang="fr">Création des visuels et rédaction des textes</span>
+            <span data-lang="en">Visual creation and copywriting</span>
+            <span data-lang="pt">Criação de visuais e redação de textos</span>
+          </li>
+          <li>
+            <span data-lang="fr">Modération et gestion des interactions</span>
+            <span data-lang="en">Moderation and interaction management</span>
+            <span data-lang="pt">Moderação e gestão das interações</span>
+          </li>
+          <li>
+            <span data-lang="fr">Rapport mensuel synthétique</span>
+            <span data-lang="en">Monthly summary report</span>
+            <span data-lang="pt">Relatório mensal sintético</span>
+          </li>
+        </ul>
+        <a class="offre-cta" href="https://wa.me/33668822271?text=Bonjour%20Yelen%20Digital%2C%20le%20Pack%20SIRA%20m%27int%C3%A9resse.">
+          <span data-lang="fr">Écrire sur WhatsApp</span>
+          <span data-lang="en">Message on WhatsApp</span>
+          <span data-lang="pt">Escrever no WhatsApp</span>
+        </a>
+      </div>
+
+      <div class="offre-card featured">
+        <div class="offre-badge">
+          <span data-lang="fr">Le plus choisi</span>
+          <span data-lang="en">Most popular</span>
+          <span data-lang="pt">Mais escolhido</span>
+        </div>
+        <div class="offre-nom">FANGA</div>
+        <div class="offre-sens">
+          <span data-lang="fr">La puissance, en bambara</span>
+          <span data-lang="en">The power, in Bambara</span>
+          <span data-lang="pt">O poder, em bambara</span>
+        </div>
+        <div class="offre-pack">
+          <span data-lang="fr">Pack Croissance</span>
+          <span data-lang="en">Growth Pack</span>
+          <span data-lang="pt">Pacote Crescimento</span>
+        </div>
+        <div class="offre-prix"><span>150 000 – 200 000</span> FCFA<span data-lang="fr"> / mois</span><span data-lang="en"> / month</span><span data-lang="pt"> / mês</span></div>
+        <ul class="offre-list">
+          <li>
+            <span data-lang="fr">5 publications hebdomadaires + stories et reels</span>
+            <span data-lang="en">5 weekly posts + stories and reels</span>
+            <span data-lang="pt">5 publicações semanais + stories e reels</span>
+          </li>
+          <li>
+            <span data-lang="fr">1 campagne Meta Ads mensuelle gérée de A à Z</span>
+            <span data-lang="en">1 monthly Meta Ads campaign, managed end to end</span>
+            <span data-lang="pt">1 campanha Meta Ads mensal gerida de A a Z</span>
+          </li>
+          <li>
+            <span data-lang="fr">Stratégie éditoriale personnalisée sur 30 jours</span>
+            <span data-lang="en">Custom 30-day editorial strategy</span>
+            <span data-lang="pt">Estratégia editorial personalizada de 30 dias</span>
+          </li>
+          <li>
+            <span data-lang="fr">Rédaction SEO et optimisation des profils</span>
+            <span data-lang="en">SEO copywriting and profile optimization</span>
+            <span data-lang="pt">Redação SEO e otimização dos perfis</span>
+          </li>
+          <li>
+            <span data-lang="fr">Rapport de performance détaillé avec recommandations</span>
+            <span data-lang="en">Detailed performance report with recommendations</span>
+            <span data-lang="pt">Relatório de desempenho detalhado com recomendações</span>
+          </li>
+        </ul>
+        <a class="offre-cta" href="https://wa.me/33668822271?text=Bonjour%20Yelen%20Digital%2C%20le%20Pack%20FANGA%20m%27int%C3%A9resse.">
+          <span data-lang="fr">Écrire sur WhatsApp</span>
+          <span data-lang="en">Message on WhatsApp</span>
+          <span data-lang="pt">Escrever no WhatsApp</span>
+        </a>
+      </div>
+
+      <div class="offre-card">
+        <div class="offre-nom">DIYA</div>
+        <div class="offre-sens">
+          <span data-lang="fr">L'éclat, en bambara</span>
+          <span data-lang="en">The radiance, in Bambara</span>
+          <span data-lang="pt">O brilho, em bambara</span>
+        </div>
+        <div class="offre-pack">
+          <span data-lang="fr">Pack Visibilité 360°</span>
+          <span data-lang="en">360° Visibility Pack</span>
+          <span data-lang="pt">Pacote Visibilidade 360°</span>
+        </div>
+        <div class="offre-prix"><span data-lang="fr">À partir de</span><span data-lang="en">From</span><span data-lang="pt">A partir de</span> <span>400 000</span> FCFA</div>
+        <ul class="offre-list">
+          <li>
+            <span data-lang="fr">L'intégralité du Pack Croissance</span>
+            <span data-lang="en">Everything in the Growth Pack</span>
+            <span data-lang="pt">Tudo o que está incluído no Pacote Crescimento</span>
+          </li>
+          <li>
+            <span data-lang="fr">Création ou refonte du site web vitrine</span>
+            <span data-lang="en">Showcase website creation or redesign</span>
+            <span data-lang="pt">Criação ou renovação do site institucional</span>
+          </li>
+          <li>
+            <span data-lang="fr">Référencement naturel (SEO) et Google My Business</span>
+            <span data-lang="en">SEO and Google My Business</span>
+            <span data-lang="pt">SEO e Google My Business</span>
+          </li>
+          <li>
+            <span data-lang="fr">Production de contenu vidéo court format (Reels, TikTok)</span>
+            <span data-lang="en">Short-form video production (Reels, TikTok)</span>
+            <span data-lang="pt">Produção de vídeo curto (Reels, TikTok)</span>
+          </li>
+          <li>
+            <span data-lang="fr">Audit de marque et recommandations trimestrielles</span>
+            <span data-lang="en">Quarterly brand audit and recommendations</span>
+            <span data-lang="pt">Auditoria de marca e recomendações trimestrais</span>
+          </li>
+        </ul>
+        <a class="offre-cta" href="https://wa.me/33668822271?text=Bonjour%20Yelen%20Digital%2C%20le%20Pack%20DIYA%20m%27int%C3%A9resse.">
+          <span data-lang="fr">Écrire sur WhatsApp</span>
+          <span data-lang="en">Message on WhatsApp</span>
+          <span data-lang="pt">Escrever no WhatsApp</span>
+        </a>
+      </div>
+
+      <div class="offre-card">
+        <div class="offre-nom">KUMA</div>
+        <div class="offre-sens">
+          <span data-lang="fr">La parole, le conseil, en bambara</span>
+          <span data-lang="en">The word, the counsel, in Bambara</span>
+          <span data-lang="pt">A palavra, o conselho, em bambara</span>
+        </div>
+        <div class="offre-pack">
+          <span data-lang="fr">Conseil Stratégique</span>
+          <span data-lang="en">Strategic Advisory</span>
+          <span data-lang="pt">Consultoria Estratégica</span>
+        </div>
+        <div class="offre-prix">
+          <span data-lang="fr">Sur devis</span>
+          <span data-lang="en">Custom quote</span>
+          <span data-lang="pt">Sob orçamento</span>
+        </div>
+        <ul class="offre-list">
+          <li>
+            <span data-lang="fr">Audit complet de la présence digitale existante</span>
+            <span data-lang="en">Full audit of your existing digital presence</span>
+            <span data-lang="pt">Auditoria completa da presença digital existente</span>
+          </li>
+          <li>
+            <span data-lang="fr">Feuille de route communication sur 6 à 12 mois</span>
+            <span data-lang="en">6-to-12-month communication roadmap</span>
+            <span data-lang="pt">Roteiro de comunicação de 6 a 12 meses</span>
+          </li>
+          <li>
+            <span data-lang="fr">Formation et montée en compétence des équipes</span>
+            <span data-lang="en">Team training and upskilling</span>
+            <span data-lang="pt">Formação e capacitação das equipas</span>
+          </li>
+          <li>
+            <span data-lang="fr">Veille concurrentielle et benchmarking sectoriel</span>
+            <span data-lang="en">Competitive intelligence and sector benchmarking</span>
+            <span data-lang="pt">Vigilância concorrencial e benchmarking setorial</span>
+          </li>
+        </ul>
+        <a class="offre-cta" href="https://wa.me/33668822271?text=Bonjour%20Yelen%20Digital%2C%20je%20souhaite%20un%20devis%20KUMA.">
+          <span data-lang="fr">Écrire sur WhatsApp</span>
+          <span data-lang="en">Message on WhatsApp</span>
+          <span data-lang="pt">Escrever no WhatsApp</span>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="offres-stats fade-up delay-2">
+      <div class="offre-stat">
+        <span class="offre-stat-num">×3 à ×10</span>
+        <span class="offre-stat-label">
+          <span data-lang="fr">Portée organique visée à 3-6 mois</span>
+          <span data-lang="en">Targeted organic reach at 3-6 months</span>
+          <span data-lang="pt">Alcance orgânico visado a 3-6 meses</span>
+        </span>
+      </div>
+      <div class="offre-stat">
+        <span class="offre-stat-num">4 à 10%</span>
+        <span class="offre-stat-label">
+          <span data-lang="fr">Taux d'engagement visé</span>
+          <span data-lang="en">Targeted engagement rate</span>
+          <span data-lang="pt">Taxa de envolvimento visada</span>
+        </span>
+      </div>
+      <div class="offre-stat">
+        <span class="offre-stat-num">+30 à 120%</span>
+        <span class="offre-stat-label">
+          <span data-lang="fr">Croissance des abonnés visée</span>
+          <span data-lang="en">Targeted follower growth</span>
+          <span data-lang="pt">Crescimento de seguidores visado</span>
+        </span>
+      </div>
+      <div class="offre-stat">
+        <span class="offre-stat-num">3 mois</span>
+        <span class="offre-stat-label">
+          <span data-lang="fr">Engagement minimum pour des résultats mesurables</span>
+          <span data-lang="en">Minimum commitment for measurable results</span>
+          <span data-lang="pt">Compromisso mínimo para resultados mensuráveis</span>
+        </span>
+      </div>
+    </div>
+    <p class="offres-note fade-up delay-3">
+      <span data-lang="fr">Objectifs progressifs — les résultats dépendent de votre secteur et de votre présence de départ.</span>
+      <span data-lang="en">Progressive targets — results depend on your sector and starting presence.</span>
+      <span data-lang="pt">Objetivos progressivos — os resultados dependem do seu setor e da presença de partida.</span>
+    </p>
+  </div>
+
   <!-- ===== SLIDE 6 - SERVICES ===== -->
 
   <div class="slide" id="slide-services">
@@ -1721,7 +2044,7 @@ body { }
   <div class="slide" id="slide-contact">
     <div class="contact-inner">
       <div class="contact-left">
-        <div class="section-number">08</div>
+        <div class="section-number">09</div>
         <div class="fade-up">
           <span class="section-tag">
             <span data-lang="fr">Parlons de votre projet</span>
@@ -1848,7 +2171,7 @@ body { }
       </div>
     </div>
     <div class="slide-footer">
-      <span class="footer-copy">© 2025 <span>Yelen Digital</span>. 
+      <span class="footer-copy">© 2026 <span>Yelen Digital</span>.
         <span data-lang="fr">Tous droits réservés.</span>
         <span data-lang="en">All rights reserved.</span>
         <span data-lang="pt">Todos os direitos reservados.</span>
@@ -1880,7 +2203,7 @@ body { }
 
 <div class="slide-progress" id="slideProgress">
   <span class="progress-num" id="progressCurrent">01</span>
-  <span class="progress-label">/ 08</span>
+  <span class="progress-label">/ 09</span>
 </div>
 
 <script>
@@ -1901,7 +2224,7 @@ document.body.classList.add('lang-fr');
 /* =============================================
    FULLPAGE SLIDE ENGINE
 ============================================= */
-const TOTAL_SLIDES = 8;
+const TOTAL_SLIDES = 9;
 let currentSlide = 0;
 let isAnimating = false;
 let touchStartY = 0;
@@ -1961,12 +2284,12 @@ window.addEventListener('touchend', (e) => {
 function triggerSlideAnimations(index) {
   const slideIds = [
     'slide-hero', 'slide-fondatrice', 'slide-vision',
-    'slide-valeurs', 'slide-methode', 'slide-services',
-    'slide-bio', 'slide-contact'
+    'slide-valeurs', 'slide-methode', 'slide-offres',
+    'slide-services', 'slide-bio', 'slide-contact'
   ];
   const slide = document.getElementById(slideIds[index]);
   if (!slide) return;
-  const animEls = slide.querySelectorAll('.fade-up, .fade-left, .fade-right, .valeur-card, .methode-step, .service-card, .timeline-item');
+  const animEls = slide.querySelectorAll('.fade-up, .fade-left, .fade-right, .valeur-card, .methode-step, .service-card, .timeline-item, .offre-card');
   animEls.forEach(el => el.classList.add('show'));
 }
 
@@ -2054,7 +2377,7 @@ window.addEventListener('load', () => {
     requestAnimationFrame(animRing);
   }
   animRing();
-  document.querySelectorAll('a, button, .dot-item, .valeur-card, .service-card').forEach(el => {
+  document.querySelectorAll('a, button, .dot-item, .valeur-card, .service-card, .offre-card').forEach(el => {
     el.addEventListener('mouseenter', () => {
       ring.style.transform = 'translate(-50%,-50%) scale(1.8)'; ring.style.borderColor = 'var(--gold-lt)';
       dot.style.transform = 'translate(-50%,-50%) scale(0.5)';
