@@ -1115,6 +1115,50 @@ body { }
 .delay-4 { transition-delay: 0.4s !important; }
 .delay-5 { transition-delay: 0.5s !important; }
 .delay-6 { transition-delay: 0.6s !important; }
+
+/* =============================================
+   SLIDE GUIDE
+============================================= */
+#slide-guide {
+  background: var(--black); display:flex; flex-direction:column;
+  padding: 80px 80px 100px; overflow:hidden;
+  background-image: radial-gradient(ellipse 50% 60% at 80% 50%, rgba(212,175,55,.07), transparent 70%);
+}
+.guide-slide-inner {
+  display:flex; gap:64px; align-items:center; flex:1; margin-top:36px;
+}
+.guide-slide-text { flex:1; }
+.guide-slide-desc {
+  font-family:var(--font-body); font-style:italic;
+  font-size:clamp(20px,2.4vw,27px); color:var(--gray-lt);
+  line-height:1.5; margin-bottom:32px; max-width:44ch;
+}
+.guide-slide-facts {
+  display:flex; gap:36px; margin-bottom:40px; padding-bottom:32px;
+  border-bottom:1px solid rgba(212,175,55,.2);
+}
+.guide-slide-facts span { font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gray-lt); }
+.guide-slide-facts b { display:block; font-size:30px; font-weight:800; color:var(--gold); margin-bottom:4px; letter-spacing:0; }
+.guide-slide-btn {
+  display:inline-flex; align-items:center; padding:18px 36px;
+  background:linear-gradient(135deg,var(--gold-dk),var(--gold));
+  color:var(--black); font-weight:800; font-size:12px; letter-spacing:.22em; text-transform:uppercase;
+  text-decoration:none; transition:background .3s;
+}
+.guide-slide-btn:hover { background:linear-gradient(135deg,var(--gold),var(--gold-lt)); }
+.guide-slide-covers { display:flex; gap:24px; align-items:flex-end; flex-shrink:0; }
+.guide-slide-covers img {
+  width:155px; height:auto; box-shadow:0 20px 60px rgba(0,0,0,.7);
+  border:1px solid rgba(212,175,55,.18);
+}
+.guide-slide-covers img:first-child { transform:rotate(-3deg) translateY(12px); }
+.guide-slide-covers img:last-child  { transform:rotate(2deg); }
+@media (max-width:900px) {
+  #slide-guide { padding:60px 24px 80px; }
+  .guide-slide-inner { flex-direction:column; gap:36px; margin-top:20px; }
+  .guide-slide-covers { justify-content:center; }
+  .guide-slide-covers img { width:115px; }
+}
 </style>
 
 </head>
@@ -1241,7 +1285,8 @@ body { }
     <span data-lang="en">Founder</span>
     <span data-lang="pt">Fundadora</span>
   </a>
-  <a onclick="goToSlide(8);toggleMenu()">Contact</a>
+  <a onclick="goToSlide(8);toggleMenu()">Guide</a>
+  <a onclick="goToSlide(9);toggleMenu()">Contact</a>
 </div>
 
 <!-- DOT NAVIGATION -->
@@ -1255,7 +1300,8 @@ body { }
   <div class="dot-item"        data-label="Offres"     onclick="goToSlide(5)"></div>
   <div class="dot-item"        data-label="Services"   onclick="goToSlide(6)"></div>
   <div class="dot-item"        data-label="Fondatrice" onclick="goToSlide(7)"></div>
-  <div class="dot-item"        data-label="Contact"    onclick="goToSlide(8)"></div>
+  <div class="dot-item"        data-label="Guide"      onclick="goToSlide(8)"></div>
+  <div class="dot-item"        data-label="Contact"    onclick="goToSlide(9)"></div>
 </div>
 
 <!-- SLIDES CONTAINER -->
@@ -1300,7 +1346,7 @@ body { }
           <span data-lang="en">Discover the agency</span>
           <span data-lang="pt">Descobrir a agência</span>
         </a>
-        <a class="btn-outline" onclick="goToSlide(8)">
+        <a class="btn-outline" onclick="goToSlide(9)">
           <span data-lang="fr">Nous contacter</span>
           <span data-lang="en">Contact us</span>
           <span data-lang="pt">Contactar-nos</span>
@@ -2135,7 +2181,31 @@ body { }
     </div>
   </div>
 
-  <!-- ===== SLIDE 8 - CONTACT ===== -->
+  <!-- ===== SLIDE 8 - GUIDE ===== -->
+
+  <div class="slide" id="slide-guide">
+    <div class="slide-header fade-up">
+      <span class="section-tag">Ressource gratuite</span>
+      <h2>Le <span>Guide</span> Yelen Digital</h2>
+    </div>
+    <div class="guide-slide-inner">
+      <div class="guide-slide-text">
+        <p class="guide-slide-desc fade-up delay-1">7 signaux qui abîment l'image de votre entreprise en ligne. Le test de 10 minutes pour savoir si votre présence vous coûte des clients.</p>
+        <div class="guide-slide-facts fade-up delay-2">
+          <span><b>7</b>signaux</span>
+          <span><b>10</b>minutes</span>
+          <span><b>0</b>coût</span>
+        </div>
+        <a class="guide-slide-btn fade-up delay-3" href="/guide/">Télécharger le guide →</a>
+      </div>
+      <div class="guide-slide-covers fade-right delay-2">
+        <img src="/guide/img/cover-tpe.png" width="758" height="1075" alt="Guide TPE – 7 signaux" loading="lazy">
+        <img src="/guide/img/cover-pme.png" width="758" height="1075" alt="Guide PME – 7 signaux" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SLIDE 9 - CONTACT ===== -->
 
   <div class="slide" id="slide-contact">
     <div class="contact-inner">
