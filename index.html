@@ -2390,7 +2390,7 @@ document.body.classList.add('lang-fr');
 /* =============================================
    FULLPAGE SLIDE ENGINE
 ============================================= */
-const TOTAL_SLIDES = 9;
+const TOTAL_SLIDES = 10;
 let currentSlide = 0;
 let isAnimating = false;
 let touchStartY = 0;
@@ -2451,7 +2451,7 @@ function triggerSlideAnimations(index) {
   const slideIds = [
     'slide-hero', 'slide-fondatrice', 'slide-vision',
     'slide-valeurs', 'slide-methode', 'slide-offres',
-    'slide-services', 'slide-bio', 'slide-contact'
+    'slide-services', 'slide-bio', 'slide-guide', 'slide-contact'
   ];
   const slide = document.getElementById(slideIds[index]);
   if (!slide) return;
