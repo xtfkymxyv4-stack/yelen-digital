@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guide gratuit : 7 signaux qui abîment l'image de votre entreprise | Yelen Digital</title>
+<meta name="description" content="Le test de 10 minutes pour savoir si votre présence en ligne vous coûte des clients. Guide gratuit pour TPE et PME, par Yelen Digital.">
+<meta name="theme-color" content="#0A0A0A">
+<meta property="og:type" content="website">
+<meta property="og:title" content="7 signaux qui abîment l'image de votre entreprise en ligne">
+<meta property="og:description" content="Le test de 10 minutes pour savoir où vous en êtes. Guide gratuit pour TPE et PME.">
+<meta property="og:image" content="https://yelendigital.com/guide/img/cover-tpe.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' fill='%230A0A0A'/%3E%3Ccircle cx='14' cy='14' r='4.5' fill='none' stroke='%23D4AF37' stroke-width='1.4'/%3E%3Ccircle cx='14' cy='14' r='1.8' fill='%23D4AF37'/%3E%3Cpath d='M14 2v5M14 21v5M2 14h5M21 14h5' stroke='%23D4AF37' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;1,400;1,600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --black:#0A0A0A; --charcoal:#1C1C1E; --white:#FFFFFF; --cream:#F8F5EE;
+  --gold:#D4AF37; --gold-lt:#F0D060; --gold-dk:#9A7B1A;
+  --gray:#888888; --gray-lt:#CCCCCC;
+  --font-head:'Montserrat',sans-serif; --font-body:'Cormorant Garamond',serif;
+  --gutter:16px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px;-webkit-text-size-adjust:100%}
+body{
+  background:var(--black);color:var(--white);font-family:var(--font-head);
+  min-height:100vh;line-height:1.5;
+  background-image:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(212,175,55,.10),transparent 70%);
+  background-repeat:no-repeat;
+}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 var(--gutter)}
+
+/* Header */
+.top{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand svg{width:30px;height:30px;flex:none}
+.brand-name{font-weight:800;font-size:14px;letter-spacing:.18em;text-transform:uppercase}
+.brand-name b{color:var(--gold);font-weight:800}
+.top-tag{font-family:var(--font-body);font-style:italic;font-size:15px;color:var(--gray);display:none}
+
+/* Layout */
+.grid{display:grid;grid-template-columns:1fr;gap:36px;padding:20px 0 64px}
+
+/* Hero */
+.kicker{font-size:11px;font-weight:600;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;margin-bottom:18px}
+h1{font-weight:800;font-size:clamp(28px,7.2vw,52px);line-height:1.08;letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--gold-lt)}
+.lead{font-family:var(--font-body);font-style:italic;font-size:clamp(20px,4.6vw,26px);color:var(--gray-lt);margin-top:18px;line-height:1.4}
+.facts{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:28px;padding-top:24px;border-top:1px solid rgba(212,175,55,.25)}
+.fact{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-lt)}
+.fact b{color:var(--gold-lt);font-weight:700;margin-right:6px}
+.sign{margin-top:28px;font-family:var(--font-body);font-size:18px;color:var(--gray-lt);line-height:1.5;max-width:46ch}
+.sign strong{display:block;font-family:var(--font-head);font-size:11px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-top:8px}
+
+/* Form card */
+.card-form{background:var(--charcoal);border:1px solid rgba(212,175,55,.22);padding:24px 20px}
+fieldset{border:0;min-width:0}
+legend,.step{display:flex;align-items:center;gap:12px;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.step-n{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border:1px solid var(--gold);border-radius:50%;font-size:11px;letter-spacing:0}
+
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.choice{position:relative;display:block;cursor:pointer}
+.choice input{position:absolute;opacity:0;inset:0;width:100%;height:100%;cursor:pointer;margin:0}
+.choice-in{display:block;height:100%;padding:10px 10px 14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);transition:border-color .25s,background .25s,transform .25s}
+.choice-in img{display:block;width:100%;height:auto;margin-bottom:12px}
+.choice-t{display:block;font-weight:800;font-size:15px;letter-spacing:.1em}
+.choice-s{display:block;font-family:var(--font-body);font-size:16px;color:var(--gray-lt);line-height:1.25;margin-top:2px}
+.choice:hover .choice-in{border-color:rgba(212,175,55,.5)}
+.choice input:checked + .choice-in{border-color:var(--gold);background:rgba(212,175,55,.08);box-shadow:0 0 0 1px var(--gold)}
+.choice input:checked + .choice-in .choice-t{color:var(--gold-lt)}
+.choice input:focus-visible + .choice-in{outline:2px solid var(--gold-lt);outline-offset:3px}
+
+.program{margin:20px 0 4px;padding:16px 16px 6px;border-left:2px solid var(--gold);background:rgba(255,255,255,.03)}
+.program[hidden]{display:none}
+.program-t{font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.program ol{list-style:none;counter-reset:s}
+.program li{counter-increment:s;display:flex;gap:12px;font-family:var(--font-body);font-size:18px;line-height:1.3;color:var(--gray-lt);margin-bottom:10px}
+.program li::before{content:counter(s,decimal-leading-zero);font-family:var(--font-head);font-weight:700;font-size:11px;letter-spacing:.1em;color:var(--gold);padding-top:5px}
+.hint{font-family:var(--font-body);font-style:italic;font-size:16px;color:var(--gray);margin-top:14px}
+
+.sep{height:1px;background:rgba(255,255,255,.08);margin:26px 0}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gray);margin-bottom:8px}
+.field input{
+  width:100%;height:52px;padding:0 16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);
+  color:var(--white);font-family:var(--font-head);font-size:16px;outline:none;border-radius:0;
+  transition:border-color .25s,background .25s;-webkit-appearance:none;appearance:none
+}
+.field input::placeholder{color:rgba(255,255,255,.25)}
+.field input:focus{border-color:var(--gold);background:rgba(212,175,55,.05)}
+.field .note{font-family:var(--font-body);font-size:15px;color:var(--gray);margin-top:6px;line-height:1.3}
+.row{display:grid;grid-template-columns:1fr;gap:0 14px}
+
+.btn{
+  width:100%;min-height:56px;margin-top:10px;padding:0 24px;border:0;cursor:pointer;
+  background:linear-gradient(135deg,var(--gold-dk),var(--gold));color:var(--black);
+  font-family:var(--font-head);font-weight:800;font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  transition:background .3s,opacity .3s
+}
+.btn:hover{background:linear-gradient(135deg,var(--gold),var(--gold-lt))}
+.btn:focus-visible{outline:2px solid var(--gold-lt);outline-offset:3px}
+.btn[disabled]{opacity:.6;cursor:progress}
+.legal{font-family:var(--font-body);font-size:15px;color:var(--gray);margin-top:14px;line-height:1.35;text-align:center}
+.error{display:none;margin-top:16px;padding:14px 16px;border:1px solid #c0583f;background:rgba(192,88,63,.1);font-size:13px;line-height:1.5;color:#f1c9bd}
+.error.show{display:block}
+.error a{color:var(--gold-lt);font-weight:600}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+footer{border-top:1px solid rgba(255,255,255,.08);padding:24px 0 32px;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--gray);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+footer a{text-decoration:none}
+footer a:hover{color:var(--gold-lt)}
+
+@media (min-width:640px){
+  :root{--gutter:32px}
+  .top-tag{display:block}
+  .card-form{padding:32px 32px 28px}
+  .row{grid-template-columns:1fr 1fr}
+}
+@media (min-width:960px){
+  .grid{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px;align-items:start;padding-top:40px}
+  .hero{position:sticky;top:32px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="/" aria-label="Yelen Digital, accueil">
+      <svg viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <circle cx="14" cy="14" r="4.5" stroke="#D4AF37" stroke-width="1.2"/>
+        <line x1="14" y1="1.5" x2="14" y2="7" stroke="#D4AF37" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="14" y1="21" x2="14" y2="26.5" stroke="#D4AF37" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="1.5" y1="14" x2="7" y2="14" stroke="#D4AF37" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="21" y1="14" x2="26.5" y2="14" stroke="#D4AF37" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="5.5" y1="5.5" x2="9.5" y2="9.5" stroke="#F0D060" stroke-width="1" stroke-linecap="round"/>
+        <line x1="18.5" y1="18.5" x2="22.5" y2="22.5" stroke="#F0D060" stroke-width="1" stroke-linecap="round"/>
+        <line x1="22.5" y1="5.5" x2="18.5" y2="9.5" stroke="#F0D060" stroke-width="1" stroke-linecap="round"/>
+        <line x1="9.5" y1="18.5" x2="5.5" y2="22.5" stroke="#F0D060" stroke-width="1" stroke-linecap="round"/>
+        <circle cx="14" cy="14" r="1.8" fill="#D4AF37"/>
+      </svg>
+      <span class="brand-name"><b>Y</b>elen Digital</span>
+    </a>
+    <span class="top-tag">Éclairons votre marque</span>
+  </header>
+
+  <main class="grid">
+    <section class="hero">
+      <p class="kicker">Guide gratuit</p>
+      <h1>7 signaux qui abîment <em>l'image de votre entreprise</em> en ligne</h1>
+      <p class="lead">Le test de 10 minutes pour savoir si votre présence en ligne vous coûte des clients.</p>
+      <div class="facts">
+        <span class="fact"><b>7</b>signaux</span>
+        <span class="fact"><b>2</b>min par test</span>
+        <span class="fact"><b>0</b>coût</span>
+      </div>
+      <p class="sign">Chaque signal se vérifie avec votre téléphone, sans compétence technique. À la fin, un score sur 7 vous dit par où commencer.
+        <strong>Rosalie Gueye, fondatrice de Yelen Digital</strong>
+      </p>
+    </section>
+
+    <section class="card-form" aria-label="Recevoir le guide">
+      <form id="guide-form" name="guide-yelen" method="POST" action="/guide/merci/" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="guide-yelen">
+        <input type="hidden" name="source" id="source" value="direct">
+        <p class="hp" aria-hidden="true"><label>Ne pas remplir <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+        <fieldset>
+          <legend><span class="step-n">1</span>Votre structure</legend>
+          <div class="choices">
+            <label class="choice">
+              <input type="radio" name="taille" value="TPE" required>
+              <span class="choice-in">
+                <img src="/guide/img/cover-tpe.png" width="758" height="1075" alt="Couverture du guide pour TPE" loading="lazy">
+                <span class="choice-t">TPE</span>
+                <span class="choice-s">Jusqu'à 9 personnes</span>
+              </span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="taille" value="PME" required>
+              <span class="choice-in">
+                <img src="/guide/img/cover-pme.png" width="758" height="1075" alt="Couverture du guide pour PME" loading="lazy">
+                <span class="choice-t">PME</span>
+                <span class="choice-s">10 personnes et plus</span>
+              </span>
+            </label>
+          </div>
+          <p class="hint" id="hint">Choisissez votre structure pour voir le programme.</p>
+          <div class="program" id="program" hidden>
+            <p class="program-t">Au programme</p>
+            <ol id="program-list"></ol>
+          </div>
+        </fieldset>
+
+        <div class="sep"></div>
+
+        <p class="step"><span class="step-n">2</span>Où l'envoyer</p>
+        <div class="row">
+          <div class="field">
+            <label for="prenom">Prénom</label>
+            <input id="prenom" name="prenom" type="text" autocomplete="given-name" required placeholder="Awa">
+          </div>
+          <div class="field">
+            <label for="entreprise">Entreprise</label>
+            <input id="entreprise" name="entreprise" type="text" autocomplete="organization" required placeholder="Nom de votre entreprise">
+          </div>
+        </div>
+        <div class="field">
+          <label for="whatsapp">WhatsApp</label>
+          <input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" required
+                 pattern="^\+?[0-9][0-9 ().\-]{7,19}$" placeholder="+221 77 000 00 00" title="Numéro avec l'indicatif du pays, par exemple +221 77 000 00 00">
+          <p class="note">Avec l'indicatif du pays. C'est là que nous échangerons sur votre score.</p>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="vous@entreprise.com">
+        </div>
+
+        <button class="btn" type="submit" id="submit">Recevoir le guide</button>
+        <p class="error" id="error" role="alert">Un souci technique nous a empêchés d'enregistrer votre demande. Écrivez « LIVRET » sur <a href="https://wa.me/33668822271?text=LIVRET" rel="noopener">WhatsApp</a> et je vous l'envoie directement.</p>
+        <p class="legal">Le guide s'affiche juste après. Aucune relance sans votre accord.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <span>Yelen Digital · Dakar &amp; Paris</span>
+    <a href="mailto:contact@yelendigital.com">contact@yelendigital.com</a>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var PROGRAMS = {
+    TPE: ["Profil et bio : la première impression", "Cohérence visuelle", "Régularité de publication", "Preuve sociale : avis et témoignages", "Fiche Google My Business", "Réactivité aux messages", "Mesure : savoir ce qui fonctionne"],
+    PME: ["Cohérence des canaux", "Site et conversion", "Expertise visible", "E-réputation", "Image employeur", "Prise de parole", "Pilotage : décider avec des chiffres"]
+  };
+
+  var form = document.getElementById("guide-form");
+  var program = document.getElementById("program");
+  var list = document.getElementById("program-list");
+  var hint = document.getElementById("hint");
+  var btn = document.getElementById("submit");
+  var err = document.getElementById("error");
+
+  // Origine du visiteur : /guide/?s=insta-bio, /guide/?s=reel, etc.
+  try {
+    var s = new URLSearchParams(location.search).get("s");
+    if (s) document.getElementById("source").value = s.slice(0, 40);
+  } catch (e) {}
+
+  function showProgram(type) {
+    list.innerHTML = "";
+    PROGRAMS[type].forEach(function (t) {
+      var li = document.createElement("li");
+      li.textContent = t;
+      list.appendChild(li);
+    });
+    program.hidden = false;
+    hint.hidden = true;
+  }
+
+  Array.prototype.forEach.call(form.querySelectorAll('input[name="taille"]'), function (r) {
+    r.addEventListener("change", function () { if (r.checked) showProgram(r.value); });
+  });
+
+  function encode(fd) {
+    var p = new URLSearchParams();
+    fd.forEach(function (v, k) { p.append(k, v); });
+    return p.toString();
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    err.classList.remove("show");
+    btn.disabled = true;
+    btn.textContent = "Envoi en cours";
+
+    var fd = new FormData(form);
+    var taille = (fd.get("taille") || "TPE").toLowerCase();
+    var prenom = (fd.get("prenom") || "").toString().trim();
+
+    fetch("/guide/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode(fd)
+    }).then(function (res) {
+      if (!res.ok) throw new Error("http " + res.status);
+      try { sessionStorage.setItem("yelen_prenom", prenom); } catch (e) {}
+      window.location.href = "/guide/merci/?t=" + encodeURIComponent(taille);
+    }).catch(function () {
+      btn.disabled = false;
+      btn.textContent = "Recevoir le guide";
+      err.classList.add("show");
+    });
+  });
+})();
+</script>
+</body>
+</html>
