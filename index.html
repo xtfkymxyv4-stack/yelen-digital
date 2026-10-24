@@ -677,23 +677,26 @@ body { }
 .offres-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; width:100%; max-width:1280px; }
 @media (max-width:1100px) {
   #slide-offres { padding: 70px 0 24px; overflow: hidden; }
-  #slide-offres .slide-header { padding-left: 24px; padding-right: 24px; }
+  #slide-offres .slide-header { padding-left: 24px; padding-right: 60px; }
   .offres-grid {
     display: flex;
     overflow-x: auto; scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none; gap: 14px;
-    padding: 4px 24px 8px; max-width: none;
+    padding: 4px 60px 8px 24px; max-width: none;
   }
   .offres-grid::-webkit-scrollbar { display: none; }
-  .offre-card { scroll-snap-align: start; flex-shrink: 0; min-width: clamp(260px, 46vw, 400px); }
+  .offre-card {
+    scroll-snap-align: start; flex-shrink: 0; flex-grow: 0;
+    width: 43vw; max-width: 380px; min-width: 240px;
+  }
   .offres-note { padding: 0 24px; }
 }
 @media (max-width:600px) {
   #slide-offres { padding: 70px 0 20px; }
-  #slide-offres .slide-header { padding-left: 16px; padding-right: 16px; }
-  .offres-grid { gap: 12px; padding: 4px 16px 8px; }
-  .offre-card { min-width: min(320px, 78vw); }
+  #slide-offres .slide-header { padding-left: 16px; padding-right: 40px; }
+  .offres-grid { gap: 12px; padding: 4px 40px 8px 16px; }
+  .offre-card { width: 75vw; max-width: 300px; min-width: 220px; }
   .offres-note { padding: 0 16px; }
 }
 
