@@ -2448,12 +2448,8 @@ window.addEventListener('touchend', (e) => {
    SLIDE ANIMATIONS
 ============================================= */
 function triggerSlideAnimations(index) {
-  const slideIds = [
-    'slide-hero', 'slide-fondatrice', 'slide-vision',
-    'slide-valeurs', 'slide-methode', 'slide-offres',
-    'slide-services', 'slide-bio', 'slide-guide', 'slide-contact'
-  ];
-  const slide = document.getElementById(slideIds[index]);
+  const slides = document.querySelectorAll('#slides-container > .slide');
+  const slide = slides[index];
   if (!slide) return;
   const animEls = slide.querySelectorAll('.fade-up, .fade-left, .fade-right, .valeur-card, .methode-step, .service-card, .timeline-item, .offre-card');
   animEls.forEach(el => el.classList.add('show'));
@@ -2563,6 +2559,18 @@ function toggleMenu() {
   document.getElementById('mobileMenu').classList.toggle('open');
 }
 </script>
+
+<!-- Déclaration Netlify Forms pour guide-yelen (scan build-time) -->
+<form name="guide-yelen" data-netlify="true" hidden aria-hidden="true">
+  <input type="text" name="prenom">
+  <input type="text" name="entreprise">
+  <input type="tel" name="whatsapp">
+  <input type="email" name="email">
+  <input type="radio" name="taille" value="TPE">
+  <input type="radio" name="taille" value="PME">
+  <input type="text" name="source">
+  <input type="hidden" name="form-name" value="guide-yelen">
+</form>
 
 </body>
 </html>
