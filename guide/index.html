@@ -223,7 +223,6 @@ footer a:hover{color:var(--gold-lt)}
         </div>
 
         <button class="btn" type="submit" id="submit">Recevoir le guide</button>
-        <p class="error" id="error" role="alert">Un souci technique nous a empêchés d'enregistrer votre demande. Écrivez « LIVRET » sur <a href="https://wa.me/33668822271?text=LIVRET" rel="noopener">WhatsApp</a> et je vous l'envoie directement.</p>
         <p class="legal">Le guide s'affiche juste après. Aucune relance sans votre accord.</p>
       </form>
     </section>
@@ -267,38 +266,17 @@ footer a:hover{color:var(--gold-lt)}
   }
 
   Array.prototype.forEach.call(form.querySelectorAll('input[name="taille"]'), function (r) {
-    r.addEventListener("change", function () { if (r.checked) showProgram(r.value); });
+    r.addEventListener("change", function () {
+      if (r.checked) {
+        showProgram(r.value);
+        form.action = "/guide/merci/?t=" + r.value.toLowerCase();
+      }
+    });
   });
 
-  function encode(fd) {
-    var p = new URLSearchParams();
-    fd.forEach(function (v, k) { p.append(k, v); });
-    return p.toString();
-  }
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    err.classList.remove("show");
+  form.addEventListener("submit", function () {
     btn.disabled = true;
-    btn.textContent = "Envoi en cours";
-
-    var fd = new FormData(form);
-    var taille = (fd.get("taille") || "TPE").toLowerCase();
-    var prenom = (fd.get("prenom") || "").toString().trim();
-
-    fetch("/guide/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode(fd)
-    }).then(function (res) {
-      if (!res.ok) throw new Error("http " + res.status);
-      try { sessionStorage.setItem("yelen_prenom", prenom); } catch (e) {}
-      window.location.href = "/guide/merci/?t=" + encodeURIComponent(taille);
-    }).catch(function () {
-      btn.disabled = false;
-      btn.textContent = "Recevoir le guide";
-      err.classList.add("show");
-    });
+    btn.textContent = "Envoi en cours…";
   });
 })();
 </script>
