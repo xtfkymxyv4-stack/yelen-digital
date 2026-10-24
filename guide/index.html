@@ -166,10 +166,12 @@ footer a:hover{color:var(--gold-lt)}
     </section>
 
     <section class="card-form" aria-label="Recevoir le guide">
-      <form id="guide-form" name="guide-yelen" method="POST" action="/guide/merci/" data-netlify="true" data-netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="guide-yelen">
+      <form id="guide-form" method="POST" action="https://formsubmit.co/contact@yelendigital.com">
+        <input type="hidden" name="_next" id="next-url" value="https://yelendigital.com/guide/merci/?t=tpe">
+        <input type="hidden" name="_subject" value="Nouveau téléchargement – Guide Yelen Digital">
+        <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="source" id="source" value="direct">
-        <p class="hp" aria-hidden="true"><label>Ne pas remplir <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
         <fieldset>
           <legend><span class="step-n">1</span>Votre structure</legend>
@@ -269,7 +271,7 @@ footer a:hover{color:var(--gold-lt)}
     r.addEventListener("change", function () {
       if (r.checked) {
         showProgram(r.value);
-        form.action = "/guide/merci/?t=" + r.value.toLowerCase();
+        document.getElementById("next-url").value = "https://yelendigital.com/guide/merci/?t=" + r.value.toLowerCase();
       }
     });
   });
