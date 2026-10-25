@@ -43,6 +43,12 @@ a{color:inherit}
 .brand-name b{color:var(--gold);font-weight:800}
 .top-tag{font-family:var(--font-body);font-style:italic;font-size:15px;color:var(--gray);display:none}
 
+.langs{display:flex;gap:14px}
+.langs a{font-size:11px;font-weight:600;letter-spacing:.2em;color:var(--gray);text-decoration:none;padding:6px 0;border-bottom:1px solid transparent}
+.langs a:hover{color:var(--gold-lt)}
+.langs a.on{color:var(--gold);border-bottom-color:var(--gold)}
+.top-right{display:flex;align-items:center;gap:24px}
+
 /* Layout */
 .grid{display:grid;grid-template-columns:1fr;gap:36px;padding:20px 0 64px}
 
@@ -147,108 +153,167 @@ footer a:hover{color:var(--gold-lt)}
       </svg>
       <span class="brand-name"><b>Y</b>elen Digital</span>
     </a>
-    <span class="top-tag">Éclairons votre marque</span>
+    <div class="top-right"><span class="top-tag" data-i="tag">Éclairons votre marque</span>
+    <nav class="langs" aria-label="Langue"><a href="?l=fr" data-l="fr">FR</a><a href="?l=en" data-l="en">EN</a><a href="?l=pt" data-l="pt">PT</a></nav></div>
   </header>
 
   <main class="grid">
     <section class="hero">
-      <p class="kicker">Guide gratuit</p>
-      <h1>7 signaux qui abîment <em>l'image de votre entreprise</em> en ligne</h1>
-      <p class="lead">Le test de 10 minutes pour savoir si votre présence en ligne vous coûte des clients.</p>
+      <p class="kicker" data-i="kicker">Guide gratuit</p>
+      <h1 data-i="h1">7 signaux qui abîment <em>l'image de votre entreprise</em> en ligne</h1>
+      <p class="lead" data-i="lead">Le test de 10 minutes pour savoir si votre présence en ligne vous coûte des clients.</p>
       <div class="facts">
-        <span class="fact"><b>7</b>signaux</span>
-        <span class="fact"><b>2</b>min par test</span>
-        <span class="fact"><b>0</b>coût</span>
+        <span class="fact"><b>7</b><span data-i="f1">signaux</span></span>
+        <span class="fact"><b>2</b><span data-i="f2">min par test</span></span>
+        <span class="fact"><b>0</b><span data-i="f3">coût</span></span>
       </div>
-      <p class="sign">Chaque signal se vérifie avec votre téléphone, sans compétence technique. À la fin, un score sur 7 vous dit par où commencer.
-        <strong>Rosalie Gueye, fondatrice de Yelen Digital</strong>
+      <p class="sign"><span data-i="sign">Chaque signal se vérifie avec votre téléphone, sans compétence technique. À la fin, un score sur 7 vous dit par où commencer.</span>
+        <strong data-i="signer">Rosalie Gueye, fondatrice de Yelen Digital</strong>
       </p>
     </section>
 
-    <section class="card-form" aria-label="Recevoir le guide">
+    <section class="card-form" data-ia="aria-label:aria">
       <form id="guide-form" method="POST" action="https://formsubmit.co/contact@yelendigital.com">
         <input type="hidden" name="_next" id="next-url" value="https://yelendigital.com/guide/merci/?t=tpe">
         <input type="hidden" name="_subject" value="Nouveau téléchargement – Guide Yelen Digital">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="source" id="source" value="direct">
+        <input type="hidden" name="langue" id="langue" value="fr">
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
         <fieldset>
-          <legend><span class="step-n">1</span>Votre structure</legend>
+          <legend><span class="step-n">1</span><span data-i="l1">Votre structure</span></legend>
           <div class="choices">
             <label class="choice">
               <input type="radio" name="taille" value="TPE" required>
               <span class="choice-in">
-                <img src="/guide/img/cover-tpe.png" width="758" height="1075" alt="Couverture du guide pour TPE" loading="lazy">
-                <span class="choice-t">TPE</span>
-                <span class="choice-s">Jusqu'à 9 personnes</span>
+                <img src="/guide/img/cover-tpe.png" data-cover="tpe" width="758" height="1075" alt="Couverture du guide pour TPE" data-ia="alt:alt_tpe" loading="lazy">
+                <span class="choice-t" data-i="t_tpe">TPE</span>
+                <span class="choice-s" data-i="s_tpe">Jusqu'à 9 personnes</span>
               </span>
             </label>
             <label class="choice">
               <input type="radio" name="taille" value="PME" required>
               <span class="choice-in">
-                <img src="/guide/img/cover-pme.png" width="758" height="1075" alt="Couverture du guide pour PME" loading="lazy">
-                <span class="choice-t">PME</span>
-                <span class="choice-s">10 personnes et plus</span>
+                <img src="/guide/img/cover-pme.png" data-cover="pme" width="758" height="1075" alt="Couverture du guide pour PME" data-ia="alt:alt_pme" loading="lazy">
+                <span class="choice-t" data-i="t_pme">PME</span>
+                <span class="choice-s" data-i="s_pme">10 personnes et plus</span>
               </span>
             </label>
           </div>
-          <p class="hint" id="hint">Choisissez votre structure pour voir le programme.</p>
+          <p class="hint" id="hint" data-i="hint">Choisissez votre structure pour voir le programme.</p>
           <div class="program" id="program" hidden>
-            <p class="program-t">Au programme</p>
+            <p class="program-t" data-i="prog">Au programme</p>
             <ol id="program-list"></ol>
           </div>
         </fieldset>
 
         <div class="sep"></div>
 
-        <p class="step"><span class="step-n">2</span>Où l'envoyer</p>
+        <p class="step"><span class="step-n">2</span><span data-i="l2">Où l'envoyer</span></p>
         <div class="row">
           <div class="field">
-            <label for="prenom">Prénom</label>
-            <input id="prenom" name="prenom" type="text" autocomplete="given-name" required placeholder="Awa">
+            <label for="prenom" data-i="prenom">Prénom</label>
+            <input id="prenom" name="prenom" type="text" autocomplete="given-name" required placeholder="Awa" data-ia="placeholder:ph_prenom">
           </div>
           <div class="field">
-            <label for="entreprise">Entreprise</label>
-            <input id="entreprise" name="entreprise" type="text" autocomplete="organization" required placeholder="Nom de votre entreprise">
+            <label for="entreprise" data-i="entreprise">Entreprise</label>
+            <input id="entreprise" name="entreprise" type="text" autocomplete="organization" required placeholder="Nom de votre entreprise" data-ia="placeholder:ph_ent">
           </div>
         </div>
         <div class="field">
           <label for="whatsapp">WhatsApp</label>
           <input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" required
-                 pattern="^\+?[0-9][0-9 ().\-]{7,19}$" placeholder="+221 77 000 00 00" title="Numéro avec l'indicatif du pays, par exemple +221 77 000 00 00">
-          <p class="note">Avec l'indicatif du pays. C'est là que nous échangerons sur votre score.</p>
+                 pattern="^\+?[0-9][0-9 ().\-]{7,19}$" placeholder="+221 77 000 00 00" title="Numéro avec l'indicatif du pays, par exemple +221 77 000 00 00" data-ia="title:wa_title">
+          <p class="note" data-i="wa_note">Avec l'indicatif du pays. C'est là que nous échangerons sur votre score.</p>
         </div>
         <div class="field">
           <label for="email">Email</label>
-          <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="vous@entreprise.com">
+          <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="vous@entreprise.com" data-ia="placeholder:ph_mail">
         </div>
 
-        <button class="btn" type="submit" id="submit">Recevoir le guide</button>
-        <p class="legal">Le guide s'affiche juste après. Aucune relance sans votre accord.</p>
+        <button class="btn" type="submit" id="submit" data-i="submit">Recevoir le guide</button>
+        <p class="legal" data-i="legal">Le guide s'affiche juste après. Aucune relance sans votre accord.</p>
       </form>
     </section>
   </main>
 
   <footer>
-    <span>Yelen Digital · Dakar &amp; Paris</span>
+    <span data-i="foot">Yelen Digital · Dakar &amp; Paris</span>
     <a href="mailto:contact@yelendigital.com">contact@yelendigital.com</a>
   </footer>
 </div>
 
 <script>
 (function () {
-  var PROGRAMS = {
+  var I18N = {
+    en: {
+      title: "Free guide: 7 signals that damage your business's image | Yelen Digital",
+      desc: "The 10-minute test to find out whether your online presence is costing you clients. Free guide for small businesses and SMEs, by Yelen Digital.",
+      tag: "Illuminating your brand", kicker: "Free guide",
+      h1: "7 signals that damage <em>your business's image</em> online",
+      lead: "The 10-minute test to find out whether your online presence is costing you clients.",
+      f1: "signals", f2: "min per test", f3: "cost",
+      sign: "Each signal can be checked with your phone, no technical skill needed. At the end, a score out of 7 tells you where to start.",
+      signer: "Rosalie Gueye, founder of Yelen Digital",
+      aria: "Receive the guide", l1: "Your business", alt_tpe: "Cover of the small business guide", alt_pme: "Cover of the SME guide",
+      t_tpe: "SMALL BUSINESS", s_tpe: "Up to 9 people", t_pme: "SME", s_pme: "10 people or more",
+      hint: "Choose your business size to see the programme.", prog: "On the programme",
+      l2: "Where to send it", prenom: "First name", entreprise: "Company",
+      ph_ent: "Your company name", ph_prenom: "Awa",
+      wa_title: "Number with country code, for example +221 77 000 00 00",
+      wa_note: "With the country code. This is where we will talk about your score.",
+      ph_mail: "you@company.com", submit: "Get the guide",
+      legal: "The guide appears right after. No follow-up without your consent.",
+      foot: "Yelen Digital · Dakar &amp; Paris", sending: "Sending…",
+      programs: {
+        TPE: ["Profile and bio: the first impression", "Visual consistency", "Consistent posting", "Social proof: reviews and testimonials", "Google My Business listing", "Responsiveness to messages", "Measurement: knowing what works"],
+        PME: ["Channel consistency", "Website and conversion", "Visible expertise", "Online reputation", "Employer image", "Brand voice", "Performance tracking: deciding with numbers"]
+      }
+    },
+    pt: {
+      title: "Guia gratuito: 7 sinais que prejudicam a imagem da sua empresa | Yelen Digital",
+      desc: "O teste de 10 minutos para saber se a sua presença online lhe está a custar clientes. Guia gratuito para microempresas e PME, pela Yelen Digital.",
+      tag: "Iluminando a sua marca", kicker: "Guia gratuito",
+      h1: "7 sinais que prejudicam a <em>imagem da sua empresa</em> online",
+      lead: "O teste de 10 minutos para saber se a sua presença online lhe está a custar clientes.",
+      f1: "sinais", f2: "min por teste", f3: "custo",
+      sign: "Cada sinal verifica-se com o seu telemóvel, sem competências técnicas. No final, uma pontuação em 7 diz-lhe por onde começar.",
+      signer: "Rosalie Gueye, fundadora da Yelen Digital",
+      aria: "Receber o guia", l1: "A sua estrutura", alt_tpe: "Capa do guia para microempresas", alt_pme: "Capa do guia para PME",
+      t_tpe: "MICROEMPRESA", s_tpe: "Até 9 pessoas", t_pme: "PME", s_pme: "10 pessoas ou mais",
+      hint: "Escolha a sua estrutura para ver o programa.", prog: "No programa",
+      l2: "Para onde enviar", prenom: "Nome próprio", entreprise: "Empresa",
+      ph_ent: "Nome da sua empresa", ph_prenom: "Awa",
+      wa_title: "Número com indicativo do país, por exemplo +221 77 000 00 00",
+      wa_note: "Com o indicativo do país. É aí que falaremos sobre a sua pontuação.",
+      ph_mail: "voce@empresa.com", submit: "Receber o guia",
+      legal: "O guia aparece logo a seguir. Nenhum contacto sem o seu acordo.",
+      foot: "Yelen Digital · Dacar &amp; Paris", sending: "A enviar…",
+      programs: {
+        TPE: ["Perfil e bio: a primeira impressão", "Coerência visual", "Regularidade de publicação", "Prova social: avaliações e testemunhos", "Ficha Google My Business", "Reatividade às mensagens", "Medição: saber o que funciona"],
+        PME: ["Coerência dos canais", "Site e conversão", "Expertise visível", "E-reputação", "Imagem de empregador", "Porta-voz", "Acompanhamento: decidir com números"]
+      }
+    }
+  };
+  var FR = { programs: {
     TPE: ["Profil et bio : la première impression", "Cohérence visuelle", "Régularité de publication", "Preuve sociale : avis et témoignages", "Fiche Google My Business", "Réactivité aux messages", "Mesure : savoir ce qui fonctionne"],
     PME: ["Cohérence des canaux", "Site et conversion", "Expertise visible", "E-réputation", "Image employeur", "Prise de parole", "Pilotage : décider avec des chiffres"]
-  };
+  }, sending: "Envoi en cours…", title: document.title, desc: (document.querySelector('meta[name="description"]') || {}).content };
+
+  var lang = "fr";
+  try {
+    var q = new URLSearchParams(location.search).get("l");
+    if (q === "en" || q === "pt" || q === "fr") lang = q;
+  } catch (e) {}
+  function T(key) { return lang === "fr" ? null : I18N[lang][key]; }
 
   var form = document.getElementById("guide-form");
   var program = document.getElementById("program");
   var list = document.getElementById("program-list");
   var hint = document.getElementById("hint");
   var btn = document.getElementById("submit");
-  var err = document.getElementById("error");
+  var current = null;
 
   // Origine du visiteur : /guide/?s=insta-bio, /guide/?s=reel, etc.
   try {
@@ -256,9 +321,11 @@ footer a:hover{color:var(--gold-lt)}
     if (s) document.getElementById("source").value = s.slice(0, 40);
   } catch (e) {}
 
-  function showProgram(type) {
+  function renderProgram() {
+    if (!current) return;
+    var items = lang === "fr" ? FR.programs[current] : I18N[lang].programs[current];
     list.innerHTML = "";
-    PROGRAMS[type].forEach(function (t) {
+    items.forEach(function (t) {
       var li = document.createElement("li");
       li.textContent = t;
       list.appendChild(li);
@@ -267,19 +334,65 @@ footer a:hover{color:var(--gold-lt)}
     hint.hidden = true;
   }
 
+  function nextUrl() {
+    var u = "https://yelendigital.com/guide/merci/?t=" + (current ? current.toLowerCase() : "tpe");
+    return lang === "fr" ? u : u + "&l=" + lang;
+  }
+
+  function apply() {
+    document.documentElement.lang = lang;
+    Array.prototype.forEach.call(document.querySelectorAll("[data-i]"), function (el) {
+      if (el.dataset.fr === undefined) el.dataset.fr = el.innerHTML;
+      var k = el.getAttribute("data-i");
+      el.innerHTML = lang === "fr" ? el.dataset.fr : I18N[lang][k];
+    });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-ia]"), function (el) {
+      el.getAttribute("data-ia").split(";").forEach(function (pair) {
+        var a = pair.split(":"), attr = a[0], k = a[1];
+        var store = "data-fr-" + attr;
+        if (!el.hasAttribute(store)) el.setAttribute(store, el.getAttribute(attr) || "");
+        el.setAttribute(attr, lang === "fr" ? el.getAttribute(store) : I18N[lang][k]);
+      });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll("img[data-cover]"), function (img) {
+      img.src = "/guide/img/cover-" + img.getAttribute("data-cover") + (lang === "fr" ? "" : "-" + lang) + ".png";
+    });
+    document.title = lang === "fr" ? FR.title : I18N[lang].title;
+    var md = document.querySelector('meta[name="description"]');
+    if (md) md.content = lang === "fr" ? FR.desc : I18N[lang].desc;
+    Array.prototype.forEach.call(document.querySelectorAll(".langs a"), function (a) {
+      a.classList.toggle("on", a.getAttribute("data-l") === lang);
+    });
+    document.getElementById("langue").value = lang;
+    document.getElementById("next-url").value = nextUrl();
+    renderProgram();
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll(".langs a"), function (a) {
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      lang = a.getAttribute("data-l");
+      try { history.replaceState(null, "", "?l=" + lang + (document.getElementById("source").value !== "direct" ? "&s=" + encodeURIComponent(document.getElementById("source").value) : "")); } catch (x) {}
+      apply();
+    });
+  });
+
   Array.prototype.forEach.call(form.querySelectorAll('input[name="taille"]'), function (r) {
     r.addEventListener("change", function () {
       if (r.checked) {
-        showProgram(r.value);
-        document.getElementById("next-url").value = "https://yelendigital.com/guide/merci/?t=" + r.value.toLowerCase();
+        current = r.value;
+        renderProgram();
+        document.getElementById("next-url").value = nextUrl();
       }
     });
   });
 
   form.addEventListener("submit", function () {
     btn.disabled = true;
-    btn.textContent = "Envoi en cours…";
+    btn.textContent = lang === "fr" ? FR.sending : I18N[lang].sending;
   });
+
+  apply();
 })();
 </script>
 </body>

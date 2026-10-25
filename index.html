@@ -2420,6 +2420,8 @@ function setLang(lang) {
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
   });
+  var gb = document.querySelector('.guide-slide-btn');
+  if (gb) gb.setAttribute('href', lang === 'fr' ? '/guide/' : '/guide/?l=' + lang);
 }
 // Init
 document.body.classList.add('lang-fr');

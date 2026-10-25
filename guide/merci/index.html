@@ -83,6 +83,10 @@ footer a:hover{color:var(--gold-lt)}
   .test{padding:32px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.langs{display:flex;gap:14px}
+.langs a{font-size:11px;font-weight:600;letter-spacing:.2em;color:var(--gray);text-decoration:none;padding:6px 0;border-bottom:1px solid transparent}
+.langs a:hover{color:var(--gold-lt)}
+.langs a.on{color:var(--gold);border-bottom-color:var(--gold)}
 </style>
 </head>
 <body>
@@ -104,16 +108,17 @@ footer a:hover{color:var(--gold-lt)}
       </svg>
       <span class="brand-name"><b>Y</b>elen Digital</span>
     </a>
+    <nav class="langs" aria-label="Langue"><a href="?l=fr" data-l="fr">FR</a><a href="?l=en" data-l="en">EN</a><a href="?l=pt" data-l="pt">PT</a></nav>
   </header>
 
   <main>
     <section class="intro">
-      <p class="kicker">C'est prêt</p>
+      <p class="kicker" data-i="kicker">C'est prêt</p>
       <h1 id="titre">Votre guide est prêt.</h1>
-      <p class="lead">Dix minutes, votre téléphone, et un score sur 7 à la fin.</p>
+      <p class="lead" data-i="lead">Dix minutes, votre téléphone, et un score sur 7 à la fin.</p>
     </section>
 
-    <p class="step"><span class="step-n">1</span>Téléchargez-le</p>
+    <p class="step"><span class="step-n">1</span><span data-i="s1">Téléchargez-le</span></p>
     <div class="guides" id="guides">
       <noscript>
         <div class="guide"><div><p class="guide-t">Guide TPE</p><p class="guide-s">Jusqu'à 9 personnes</p><a class="btn" href="/guide/pdf/Yelen-Digital-Guide-TPE-7-signaux.pdf">Télécharger</a></div></div>
@@ -122,83 +127,130 @@ footer a:hover{color:var(--gold-lt)}
     </div>
     <p class="other" id="other" hidden></p>
 
-    <p class="step"><span class="step-n">2</span>Faites le test, puis envoyez-moi votre score</p>
+    <p class="step"><span class="step-n">2</span><span data-i="s2">Faites le test, puis envoyez-moi votre score</span></p>
     <div class="test">
-      <p>Chaque signal se valide en deux minutes. Quand vous avez votre score sur 7, <strong>écrivez-moi directement</strong> : je vous dis par où commencer, sans engagement.</p>
+      <p data-i="test">Chaque signal se valide en deux minutes. Quand vous avez votre score sur 7, <strong>écrivez-moi directement</strong> : je vous dis par où commencer, sans engagement.</p>
       <a class="wa" id="wa" href="https://wa.me/33668822271" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.200z"/></svg>
-        <span>Envoyer mon score sur WhatsApp</span>
+        <span data-i="wa">Envoyer mon score sur WhatsApp</span>
       </a>
     </div>
   </main>
 
   <footer>
-    <span>Yelen Digital · Dakar &amp; Paris</span>
+    <span data-i="foot">Yelen Digital · Dakar &amp; Paris</span>
     <a href="/">yelendigital.com</a>
   </footer>
 </div>
 
 <script>
 (function () {
-  var DATA = {
-    tpe: { label: "TPE", sub: "Jusqu'à 9 personnes", pdf: "/guide/pdf/Yelen-Digital-Guide-TPE-7-signaux.pdf", img: "/guide/img/cover-tpe.png", file: "Yelen-Digital-Guide-TPE.pdf" },
-    pme: { label: "PME", sub: "10 personnes et plus", pdf: "/guide/pdf/Yelen-Digital-Guide-PME-7-signaux.pdf", img: "/guide/img/cover-pme.png", file: "Yelen-Digital-Guide-PME.pdf" }
+  var TXT = {
+    fr: { title: "Votre guide est prêt | Yelen Digital", kicker: "C'est prêt", h1: "Votre guide est prêt.", h1n: "Votre guide est prêt, ",
+      lead: "Dix minutes, votre téléphone, et un score sur 7 à la fin.", s1: "Téléchargez-le", s2: "Faites le test, puis envoyez-moi votre score",
+      test: "Chaque signal se valide en deux minutes. Quand vous avez votre score sur 7, <strong>écrivez-moi directement</strong> : je vous dis par où commencer, sans engagement.",
+      wa: "Envoyer mon score sur WhatsApp", foot: "Yelen Digital · Dakar &amp; Paris",
+      tpe: "Guide TPE", pme: "Guide PME", subTpe: "Jusqu'à 9 personnes", subPme: "10 personnes et plus",
+      meta: ". 7 signaux, 10 pages.", dl: "Télécharger le PDF", save: "Enregistrez-le dans vos fichiers pour le garder.",
+      diff: "Votre structure est différente ? ", get: "Téléchargez le guide ", alt: "Couverture du guide ",
+      msg1: "Bonjour Rosalie, j'ai fait le test du guide ", msg2: "Mon score : ", msg0: "Bonjour Rosalie, j'ai fait le test du guide. Mon score : " },
+    en: { title: "Your guide is ready | Yelen Digital", kicker: "It's ready", h1: "Your guide is ready.", h1n: "Your guide is ready, ",
+      lead: "Ten minutes, your phone, and a score out of 7 at the end.", s1: "Download it", s2: "Take the test, then send me your score",
+      test: "Each signal takes two minutes to check. Once you have your score out of 7, <strong>write to me directly</strong>: I'll tell you where to start, no strings attached.",
+      wa: "Send my score on WhatsApp", foot: "Yelen Digital · Dakar &amp; Paris",
+      tpe: "Small business guide", pme: "SME guide", subTpe: "Up to 9 people", subPme: "10 people or more",
+      meta: ". 7 signals, 10 pages.", dl: "Download the PDF", save: "Save it to your files to keep it.",
+      diff: "Is your business size different? ", get: "Download the ", alt: "Cover of the ",
+      msg1: "Hello Rosalie, I took the test from the ", msg2: "My score: ", msg0: "Hello Rosalie, I took the test from the guide. My score: " },
+    pt: { title: "O seu guia está pronto | Yelen Digital", kicker: "Está pronto", h1: "O seu guia está pronto.", h1n: "O seu guia está pronto, ",
+      lead: "Dez minutos, o seu telemóvel e uma pontuação em 7 no final.", s1: "Descarregue-o", s2: "Faça o teste e depois envie-me a sua pontuação",
+      test: "Cada sinal valida-se em dois minutos. Quando tiver a sua pontuação em 7, <strong>escreva-me diretamente</strong>: digo-lhe por onde começar, sem compromisso.",
+      wa: "Enviar a minha pontuação no WhatsApp", foot: "Yelen Digital · Dacar &amp; Paris",
+      tpe: "Guia microempresas", pme: "Guia PME", subTpe: "Até 9 pessoas", subPme: "10 pessoas ou mais",
+      meta: ". 7 sinais, 10 páginas.", dl: "Descarregar o PDF", save: "Guarde-o nos seus ficheiros para o conservar.",
+      diff: "A sua estrutura é diferente? ", get: "Descarregue o ", alt: "Capa do ",
+      msg1: "Olá Rosalie, fiz o teste do ", msg2: "A minha pontuação: ", msg0: "Olá Rosalie, fiz o teste do guia. A minha pontuação: " }
   };
+  var SUF = { fr: "7-signaux", en: "7-signals-en", pt: "7-signals-pt" };
 
-  var t = "";
-  try { t = (new URLSearchParams(location.search).get("t") || "").toLowerCase(); } catch (e) {}
-  var single = DATA[t] ? t : null;
-
-  // Prénom, posé par la page précédente (texte brut, jamais interprété en HTML)
+  var lang = "fr", t = "";
   try {
-    var p = sessionStorage.getItem("yelen_prenom");
-    if (p) document.getElementById("titre").textContent = "Votre guide est prêt, " + p.slice(0, 40) + ".";
+    var qs = new URLSearchParams(location.search);
+    var l = qs.get("l"); if (l === "en" || l === "pt" || l === "fr") lang = l;
+    t = (qs.get("t") || "").toLowerCase();
   } catch (e) {}
+  var single = (t === "tpe" || t === "pme") ? t : null;
+
+  var prenom = "";
+  try { prenom = (sessionStorage.getItem("yelen_prenom") || "").slice(0, 40); } catch (e) {}
+
+  function data(key) {
+    var X = TXT[lang], K = key.toUpperCase();
+    return { label: lang === "fr" ? X[key] : X[key], sub: key === "tpe" ? X.subTpe : X.subPme,
+      pdf: "/guide/pdf/Yelen-Digital-Guide-" + K + "-" + SUF[lang] + ".pdf",
+      img: "/guide/img/cover-" + key + (lang === "fr" ? "" : "-" + lang) + ".png",
+      file: "Yelen-Digital-Guide-" + K + (lang === "fr" ? "" : "-" + lang.toUpperCase()) + ".pdf" };
+  }
 
   function card(key) {
-    var d = DATA[key];
-    var box = document.createElement("div");
-    box.className = "guide";
-
+    var X = TXT[lang], d = data(key);
+    var box = document.createElement("div"); box.className = "guide";
     var img = document.createElement("img");
-    img.src = d.img; img.alt = "Couverture du guide " + d.label;
-    img.width = 758; img.height = 1075;
-
+    img.src = d.img; img.alt = X.alt + d.label; img.width = 758; img.height = 1075;
     var txt = document.createElement("div");
-    var h = document.createElement("p"); h.className = "guide-t"; h.textContent = "Guide " + d.label;
-    var s = document.createElement("p"); s.className = "guide-s"; s.textContent = d.sub + ". 7 signaux, 10 pages.";
-    var a = document.createElement("a"); a.className = "btn"; a.href = d.pdf; a.setAttribute("download", d.file);
-    a.textContent = "Télécharger le PDF";
-    var n = document.createElement("p"); n.className = "save"; n.textContent = "Enregistrez-le dans vos fichiers pour le garder.";
+    var h = document.createElement("p"); h.className = "guide-t"; h.textContent = d.label;
+    var s = document.createElement("p"); s.className = "guide-s"; s.textContent = d.sub + X.meta;
+    var a = document.createElement("a"); a.className = "btn"; a.href = d.pdf; a.setAttribute("download", d.file); a.textContent = X.dl;
+    var n = document.createElement("p"); n.className = "save"; n.textContent = X.save;
     txt.appendChild(h); txt.appendChild(s); txt.appendChild(a); txt.appendChild(n);
-
     box.appendChild(img); box.appendChild(txt);
     return box;
   }
 
-  var wrap = document.getElementById("guides");
-  wrap.innerHTML = "";
-  var msg;
+  function render() {
+    var X = TXT[lang];
+    document.documentElement.lang = lang;
+    document.title = X.title;
+    Array.prototype.forEach.call(document.querySelectorAll("[data-i]"), function (el) { el.innerHTML = X[el.getAttribute("data-i")]; });
+    document.getElementById("titre").textContent = prenom ? X.h1n + prenom + "." : X.h1;
+    Array.prototype.forEach.call(document.querySelectorAll(".langs a"), function (a) {
+      a.classList.toggle("on", a.getAttribute("data-l") === lang);
+    });
 
-  if (single) {
-    wrap.appendChild(card(single));
-    var other = single === "tpe" ? "pme" : "tpe";
+    var wrap = document.getElementById("guides");
+    wrap.innerHTML = "";
     var o = document.getElementById("other");
-    o.hidden = false;
-    o.appendChild(document.createTextNode("Votre structure est différente ? "));
-    var link = document.createElement("a");
-    link.href = DATA[other].pdf; link.setAttribute("download", DATA[other].file);
-    link.textContent = "Téléchargez le guide " + DATA[other].label;
-    o.appendChild(link); o.appendChild(document.createTextNode("."));
-    msg = "Bonjour Rosalie, j'ai fait le test du guide " + DATA[single].label + ". Mon score : ";
-  } else {
-    wrap.className = "guides two";
-    wrap.appendChild(card("tpe"));
-    wrap.appendChild(card("pme"));
-    msg = "Bonjour Rosalie, j'ai fait le test du guide. Mon score : ";
+    o.innerHTML = ""; o.hidden = true;
+    var msg;
+    if (single) {
+      wrap.className = "guides";
+      wrap.appendChild(card(single));
+      var other = single === "tpe" ? "pme" : "tpe", od = data(other);
+      o.hidden = false;
+      o.appendChild(document.createTextNode(X.diff));
+      var link = document.createElement("a");
+      link.href = od.pdf; link.setAttribute("download", od.file); link.textContent = X.get + (lang === "fr" ? od.label.replace("Guide ", "") : od.label);
+      o.appendChild(link); o.appendChild(document.createTextNode("."));
+      msg = lang === "fr" ? X.msg1 + data(single).label.replace("Guide ", "") + ". " + X.msg2
+                          : X.msg1 + data(single).label + ". " + X.msg2;
+      if (lang === "fr") msg = X.msg1 + single.toUpperCase() + ". " + X.msg2;
+    } else {
+      wrap.className = "guides two";
+      wrap.appendChild(card("tpe")); wrap.appendChild(card("pme"));
+      msg = X.msg0;
+    }
+    document.getElementById("wa").href = "https://wa.me/33668822271?text=" + encodeURIComponent(msg);
   }
 
-  document.getElementById("wa").href = "https://wa.me/33668822271?text=" + encodeURIComponent(msg);
+  Array.prototype.forEach.call(document.querySelectorAll(".langs a"), function (a) {
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      lang = a.getAttribute("data-l");
+      try { history.replaceState(null, "", "?" + (single ? "t=" + single + "&" : "") + "l=" + lang); } catch (x) {}
+      render();
+    });
+  });
+  render();
 })();
 </script>
 </body>
