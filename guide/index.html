@@ -36,13 +36,15 @@ a{color:inherit}
 .wrap{max-width:1120px;margin:0 auto;padding:0 var(--gutter)}
 
 /* Header */
-.top{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
+.top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 16px;padding:20px 0}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
 .brand svg{width:30px;height:30px;flex:none}
 .brand-name{font-weight:800;font-size:14px;letter-spacing:.18em;text-transform:uppercase}
 .brand-name b{color:var(--gold);font-weight:800}
 .top-tag{font-family:var(--font-body);font-style:italic;font-size:15px;color:var(--gray);display:none}
 
+.back{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;white-space:nowrap;padding:6px 0;border-bottom:1px solid transparent}
+.back:hover{color:var(--gold-lt);border-bottom-color:var(--gold-lt)}
 .langs{display:flex;gap:14px}
 .langs a{font-size:11px;font-weight:600;letter-spacing:.2em;color:var(--gray);text-decoration:none;padding:6px 0;border-bottom:1px solid transparent}
 .langs a:hover{color:var(--gold-lt)}
@@ -153,7 +155,7 @@ footer a:hover{color:var(--gold-lt)}
       </svg>
       <span class="brand-name"><b>Y</b>elen Digital</span>
     </a>
-    <div class="top-right"><span class="top-tag" data-i="tag">Éclairons votre marque</span>
+    <div class="top-right"><a class="back" href="/" data-i="back">← Retour au site</a><span class="top-tag" data-i="tag">Éclairons votre marque</span>
     <nav class="langs" aria-label="Langue"><a href="?l=fr" data-l="fr">FR</a><a href="?l=en" data-l="en">EN</a><a href="?l=pt" data-l="pt">PT</a></nav></div>
   </header>
 
@@ -250,7 +252,7 @@ footer a:hover{color:var(--gold-lt)}
     en: {
       title: "Free guide: 7 signals that damage your business's image | Yelen Digital",
       desc: "The 10-minute test to find out whether your online presence is costing you clients. Free guide for small businesses and SMEs, by Yelen Digital.",
-      tag: "Illuminating your brand", kicker: "Free guide",
+      back: "← Back to site", tag: "Illuminating your brand", kicker: "Free guide",
       h1: "7 signals that damage <em>your business's image</em> online",
       lead: "The 10-minute test to find out whether your online presence is costing you clients.",
       f1: "signals", f2: "min per test", f3: "cost",
@@ -274,7 +276,7 @@ footer a:hover{color:var(--gold-lt)}
     pt: {
       title: "Guia gratuito: 7 sinais que prejudicam a imagem da sua empresa | Yelen Digital",
       desc: "O teste de 10 minutos para saber se a sua presença online lhe está a custar clientes. Guia gratuito para microempresas e PME, pela Yelen Digital.",
-      tag: "Iluminando a sua marca", kicker: "Guia gratuito",
+      back: "← Voltar ao site", tag: "Iluminando a sua marca", kicker: "Guia gratuito",
       h1: "7 sinais que prejudicam a <em>imagem da sua empresa</em> online",
       lead: "O teste de 10 minutos para saber se a sua presença online lhe está a custar clientes.",
       f1: "sinais", f2: "min por teste", f3: "custo",

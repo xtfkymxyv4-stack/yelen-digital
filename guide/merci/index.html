@@ -29,7 +29,7 @@ body{
 }
 a{color:inherit}
 .wrap{max-width:760px;margin:0 auto;padding:0 var(--gutter)}
-.top{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
+.top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 16px;padding:20px 0}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
 .brand svg{width:30px;height:30px;flex:none}
 .brand-name{font-weight:800;font-size:14px;letter-spacing:.18em;text-transform:uppercase}
@@ -83,6 +83,9 @@ footer a:hover{color:var(--gold-lt)}
   .test{padding:32px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.back{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;white-space:nowrap;padding:6px 0;border-bottom:1px solid transparent}
+.back:hover{color:var(--gold-lt);border-bottom-color:var(--gold-lt)}
+.top-right{display:flex;align-items:center;gap:20px}
 .langs{display:flex;gap:14px}
 .langs a{font-size:11px;font-weight:600;letter-spacing:.2em;color:var(--gray);text-decoration:none;padding:6px 0;border-bottom:1px solid transparent}
 .langs a:hover{color:var(--gold-lt)}
@@ -108,7 +111,8 @@ footer a:hover{color:var(--gold-lt)}
       </svg>
       <span class="brand-name"><b>Y</b>elen Digital</span>
     </a>
-    <nav class="langs" aria-label="Langue"><a href="?l=fr" data-l="fr">FR</a><a href="?l=en" data-l="en">EN</a><a href="?l=pt" data-l="pt">PT</a></nav>
+    <div class="top-right"><a class="back" href="/" data-i="back">← Retour au site</a>
+    <nav class="langs" aria-label="Langue"><a href="?l=fr" data-l="fr">FR</a><a href="?l=en" data-l="en">EN</a><a href="?l=pt" data-l="pt">PT</a></nav></div>
   </header>
 
   <main>
@@ -146,7 +150,7 @@ footer a:hover{color:var(--gold-lt)}
 <script>
 (function () {
   var TXT = {
-    fr: { title: "Votre guide est prêt | Yelen Digital", kicker: "C'est prêt", h1: "Votre guide est prêt.", h1n: "Votre guide est prêt, ",
+    fr: { back: "← Retour au site", title: "Votre guide est prêt | Yelen Digital", kicker: "C'est prêt", h1: "Votre guide est prêt.", h1n: "Votre guide est prêt, ",
       lead: "Dix minutes, votre téléphone, et un score sur 7 à la fin.", s1: "Téléchargez-le", s2: "Faites le test, puis envoyez-moi votre score",
       test: "Chaque signal se valide en deux minutes. Quand vous avez votre score sur 7, <strong>écrivez-moi directement</strong> : je vous dis par où commencer, sans engagement.",
       wa: "Envoyer mon score sur WhatsApp", foot: "Yelen Digital · Dakar &amp; Paris",
@@ -154,7 +158,7 @@ footer a:hover{color:var(--gold-lt)}
       meta: ". 7 signaux, 10 pages.", dl: "Télécharger le PDF", save: "Enregistrez-le dans vos fichiers pour le garder.",
       diff: "Votre structure est différente ? ", get: "Téléchargez le guide ", alt: "Couverture du guide ",
       msg1: "Bonjour Rosalie, j'ai fait le test du guide ", msg2: "Mon score : ", msg0: "Bonjour Rosalie, j'ai fait le test du guide. Mon score : " },
-    en: { title: "Your guide is ready | Yelen Digital", kicker: "It's ready", h1: "Your guide is ready.", h1n: "Your guide is ready, ",
+    en: { back: "← Back to site", title: "Your guide is ready | Yelen Digital", kicker: "It's ready", h1: "Your guide is ready.", h1n: "Your guide is ready, ",
       lead: "Ten minutes, your phone, and a score out of 7 at the end.", s1: "Download it", s2: "Take the test, then send me your score",
       test: "Each signal takes two minutes to check. Once you have your score out of 7, <strong>write to me directly</strong>: I'll tell you where to start, no strings attached.",
       wa: "Send my score on WhatsApp", foot: "Yelen Digital · Dakar &amp; Paris",
@@ -162,7 +166,7 @@ footer a:hover{color:var(--gold-lt)}
       meta: ". 7 signals, 10 pages.", dl: "Download the PDF", save: "Save it to your files to keep it.",
       diff: "Is your business size different? ", get: "Download the ", alt: "Cover of the ",
       msg1: "Hello Rosalie, I took the test from the ", msg2: "My score: ", msg0: "Hello Rosalie, I took the test from the guide. My score: " },
-    pt: { title: "O seu guia está pronto | Yelen Digital", kicker: "Está pronto", h1: "O seu guia está pronto.", h1n: "O seu guia está pronto, ",
+    pt: { back: "← Voltar ao site", title: "O seu guia está pronto | Yelen Digital", kicker: "Está pronto", h1: "O seu guia está pronto.", h1n: "O seu guia está pronto, ",
       lead: "Dez minutos, o seu telemóvel e uma pontuação em 7 no final.", s1: "Descarregue-o", s2: "Faça o teste e depois envie-me a sua pontuação",
       test: "Cada sinal valida-se em dois minutos. Quando tiver a sua pontuação em 7, <strong>escreva-me diretamente</strong>: digo-lhe por onde começar, sem compromisso.",
       wa: "Enviar a minha pontuação no WhatsApp", foot: "Yelen Digital · Dacar &amp; Paris",
