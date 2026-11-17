@@ -256,7 +256,7 @@ body { }
 .dot-item:hover::before { opacity:1; }
 
 @media (max-width:768px) {
-  #dot-nav { right:14px; }
+  #dot-nav { display:none; }
   .dot-item { width:6px; height:6px; }
 }
 
@@ -297,11 +297,13 @@ body { }
   .nav-burger { display:flex; }
   #nav { padding: 16px 20px; }
   #nav.scrolled { padding: 12px 20px; }
-  .lang-switcher { right: 52px; }
+  .lang-switcher { right: 68px; top: 50%; transform: translateY(-50%); gap: 2px; }
+  .lang-btn { font-size: 10px; padding: 3px 5px; }
+  .lang-sep { display: none; }
 }
 @media (max-width:380px) {
   .nav-logo-tagline { display:none; }
-  .lang-switcher { right: 46px; gap: 5px; }
+  .lang-switcher { right: 62px; }
   .nav-logo-icon svg { width: 24px; height: 24px; }
   .nav-logo-name { font-size: 15px; }
 }
@@ -319,7 +321,8 @@ body { }
   .btn-outline { padding: 11px 24px; font-size: 10px; }
   .hero-line { bottom: 24px; }
   .slide-progress { bottom: 16px; }
-  .whatsapp-fab { bottom: 16px; left: 16px; }
+  .whatsapp-fab { bottom: 60px; right: 14px; left: auto; width: 38px; height: 38px; opacity: .92; }
+  .whatsapp-tooltip { display:none; }
 }
 
 /* =============================================
@@ -1115,6 +1118,7 @@ body { }
   opacity:0; pointer-events:none; transition:opacity 0.3s ease;
 }
 .whatsapp-fab:hover .whatsapp-tooltip { opacity:1; }
+@media (max-width:768px){ .whatsapp-fab{ bottom:60px; right:14px; left:auto; width:38px; height:38px; opacity:.92; } .whatsapp-tooltip{ display:none; } }
 
 /* =============================================
    PROGRESS INDICATOR
